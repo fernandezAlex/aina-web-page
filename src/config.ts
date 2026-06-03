@@ -31,7 +31,7 @@ export const heroConfig: HeroConfig = {
     { label: "Mision", href: "#about" },
     { label: "Programas", href: "#services" },
     { label: "Impacto", href: "#work" },
-    { label: "Contacto", href: "#contact" },
+    { label: "Únete", href: "#unete" },
   ],
 };
 
@@ -87,7 +87,7 @@ export const featuredProjectsConfig: FeaturedProjectsConfig = {
   titleRegular: "Como se traduce",
   titleItalic: "el apoyo en accion",
   viewAllText: "Explorar la mision",
-  viewAllHref: "#contact",
+  viewAllHref: "#unete",
   viewProjectText: "Sumarte a esta linea de trabajo",
   projects: [
     {
@@ -306,7 +306,7 @@ export const faqConfig: FAQConfig = {
   titleItalic: "antes de publicar",
   ctaText: "Esta demo ya incorpora la direccion visual y narrativa principal.",
   ctaButtonText: "Revisar siguiente paso",
-  ctaHref: "#contact",
+  ctaHref: "#unete",
   faqs: [
     {
       id: "faq-1",
@@ -345,15 +345,16 @@ export interface FooterConfig {
 
 export const footerConfig: FooterConfig = {
   logoText: "SI ASHA",
-  contactLabel: "Contacto",
+  contactLabel: "",
   email: "",
-  locationText: "Nepal y red internacional de apoyo\nEmail pendiente de confirmacion oficial",
+  locationText: "",
   navigationLabel: "Secciones",
   navLinks: [
     { label: "Inicio", href: "#hero" },
     { label: "Mision", href: "#about" },
     { label: "Programas", href: "#services" },
     { label: "Impacto", href: "#work" },
+    { label: "Únete", href: "#unete" },
   ],
   socialLabel: "Canales",
   socialLinks: [],
@@ -361,6 +362,6 @@ export const footerConfig: FooterConfig = {
   copyright: "© Si Asha Foundation demo concept.",
   bottomLinks: [
     { label: "Transparencia", href: "#work" },
-    { label: "Colaborar", href: "#contact" },
+    { label: "Colaborar", href: "#unete" },
   ],
 };

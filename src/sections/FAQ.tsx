@@ -17,8 +17,6 @@ export function FAQ() {
   const accordionRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
 
-  if (!faqConfig.titleRegular && faqConfig.faqs.length === 0) return null;
-
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Header — slide up
@@ -76,6 +74,8 @@ export function FAQ() {
     return () => ctx.revert();
   }, []);
 
+  if (!faqConfig.titleRegular && faqConfig.faqs.length === 0) return null;
+
   return (
     <section
       ref={sectionRef}
@@ -129,7 +129,7 @@ export function FAQ() {
             )}
             {faqConfig.ctaButtonText && (
               <a
-                href={faqConfig.ctaHref || '#contact'}
+                href={faqConfig.ctaHref || '#unete'}
                 className="inline-flex items-center gap-2 px-8 py-4 bg-white text-forest-dark font-sans font-semibold text-sm rounded-full hover:bg-offwhite transition-colors duration-300"
               >
                 {faqConfig.ctaButtonText}
