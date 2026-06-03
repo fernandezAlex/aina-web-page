@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, BookOpen, Bell } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { bookShowcaseImages, booksImages } from '../content/images';
 
 const AMAZON_URL =
   'https://www.amazon.es/fuerza-esperanza-sue%C3%B1o-levantar-escuela/dp/8417622586/ref=tmm_pap_swatch_0';
@@ -60,7 +61,7 @@ export function Books() {
     <section
       ref={sectionRef}
       id="libros"
-      className="relative w-full py-24 md:py-32 bg-white overflow-hidden"
+      className="relative w-full overflow-hidden bg-white pb-24 pt-0 md:pb-32 md:pt-0"
     >
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-softblack/10 to-transparent" />
       <div className="absolute -right-24 top-20 h-72 w-72 rounded-full bg-forest-mid/10 blur-3xl" />
@@ -68,12 +69,12 @@ export function Books() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
         <div ref={headerRef} className="max-w-3xl mb-14 md:mb-20 opacity-0">
-          <p className="text-softblack/50 text-sm font-body uppercase tracking-widest mb-4">
+          <p className="accent-kicker text-sm font-body uppercase tracking-widest mb-4">
             Libros
           </p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-sans font-bold text-softblack tracking-tight leading-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-sans font-bold text-primary tracking-tight leading-tight">
             Nepal desde dentro.{' '}
-            <span className="font-serif italic font-normal text-softblack/70">
+            <span className="font-serif italic font-normal text-primary/75">
               Sin filtros.
             </span>
           </h2>
@@ -84,30 +85,50 @@ export function Books() {
             data-book-card
             className="opacity-0 group relative overflow-hidden rounded-3xl bg-forest-dark p-8 md:p-10 min-h-[460px] flex flex-col justify-between"
           >
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.16),transparent_34%),linear-gradient(135deg,rgba(255,255,255,0.08),transparent_55%)]" />
+            <img
+              src={booksImages[0].src}
+              alt={booksImages[0].alt}
+              className="absolute inset-0 h-full w-full object-cover opacity-30 transition-transform duration-700 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.14),transparent_34%),linear-gradient(135deg,rgba(103,17,39,0.94),rgba(141,31,57,0.82))]" />
             <div className="relative z-10">
               <div className="mb-8 inline-flex h-14 w-14 items-center justify-center rounded-full bg-white/10 text-white ring-1 ring-white/15">
                 <BookOpen className="h-6 w-6" strokeWidth={1.5} />
               </div>
-              <p className="text-white/45 text-xs font-body uppercase tracking-[0.28em] mb-4">
-                Libro publicado
-              </p>
-              <h3 className="max-w-2xl text-3xl md:text-4xl lg:text-5xl font-sans font-bold text-white tracking-tight leading-tight">
-                Asha, o la fuerza de la esperanza
-              </h3>
-              <p className="mt-6 max-w-2xl text-white/65 font-body text-base md:text-lg leading-relaxed">
-                Un relato íntimo sobre el sueño de levantar una escuela en Nepal y sobre las
-                personas que lo hicieron posible. Una historia de infancia, discapacidad,
-                dignidad y compromiso contada desde el terreno, con la honestidad de quien
-                ha visto de cerca cuánto puede cambiar una vida cuando alguien decide quedarse.
-              </p>
+              <div className="grid items-start gap-6 lg:grid-cols-[190px_minmax(0,1fr)] lg:gap-8">
+                <div className="overflow-hidden rounded-2xl border border-white/12 bg-white/6 shadow-[0_24px_60px_rgba(0,0,0,0.24)] backdrop-blur-sm max-w-[220px]">
+                  <img
+                    src={bookShowcaseImages[0].src}
+                    alt={bookShowcaseImages[0].alt}
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <div>
+                  <p className="text-secondary/80 text-xs font-body uppercase tracking-[0.28em] mb-4">
+                    Libro publicado
+                  </p>
+                  <h3 className="max-w-2xl text-3xl md:text-4xl lg:text-5xl font-sans font-bold text-white tracking-tight leading-tight">
+                    Asha, o la fuerza de la esperanza
+                  </h3>
+                  <p className="mt-6 max-w-2xl text-white/65 font-body text-base md:text-lg leading-relaxed">
+                    Este no es un libro sobre teorias ni sobre cooperacion contada desde fuera.
+                    Es la historia real de como una chica de 21 anos termino viviendo entre
+                    burocracia, pobreza, choque cultural, perdidas, contradicciones y aprendizajes
+                    mientras intentaba levantar una escuela de educacion especial en Nepal desde cero.
+                    Un viaje intimo y sin filtros sobre el lado mas humano, y tambien mas duro,
+                    de construir una mision de vida lejos de casa y dejar una huella real.
+                  </p>
+                </div>
+              </div>
             </div>
 
             <div className="relative z-10 mt-10">
               <Button
                 asChild
                 size="lg"
-                className="bg-white text-forest-dark hover:bg-white/90 rounded-full px-7 shadow-none"
+                className="bg-secondary text-softblack hover:bg-white rounded-full px-7 shadow-none"
               >
                 <a href={AMAZON_URL} target="_blank" rel="noreferrer">
                   Comprar en Amazon
@@ -119,24 +140,35 @@ export function Books() {
 
           <article
             data-book-card
-            className="opacity-0 relative overflow-hidden rounded-3xl bg-offwhite p-8 md:p-10 min-h-[460px] flex flex-col justify-between border border-softblack/10"
+            className="opacity-0 group relative overflow-hidden rounded-3xl bg-offwhite p-8 md:p-10 min-h-[460px] flex flex-col justify-between border border-softblack/10"
           >
-            <div className="absolute right-0 top-0 h-40 w-40 translate-x-12 -translate-y-12 rounded-full bg-forest-dark/10" />
+            <img
+              src={booksImages[1].src}
+              alt={booksImages[1].alt}
+              className="absolute inset-0 h-full w-full object-cover opacity-35 transition-transform duration-700 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_88%_12%,rgba(255,255,255,0.18),transparent_28%),linear-gradient(145deg,rgba(255,122,43,0.88),rgba(212,73,29,0.82)_42%,rgba(103,17,39,0.72)_100%)]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-softblack/52 via-softblack/18 to-transparent" />
+            <div className="absolute right-0 top-0 h-40 w-40 translate-x-12 -translate-y-12 rounded-full bg-white/14 blur-2xl" />
             <div className="relative z-10">
-              <div className="mb-8 inline-flex h-14 w-14 items-center justify-center rounded-full bg-forest-dark text-white">
+              <div className="mb-8 inline-flex h-14 w-14 items-center justify-center rounded-full bg-forest-dark/90 text-white ring-1 ring-white/15">
                 <Bell className="h-6 w-6" strokeWidth={1.5} />
               </div>
-              <p className="text-softblack/45 text-xs font-body uppercase tracking-[0.28em] mb-4">
+              <p className="text-white/72 text-xs font-body uppercase tracking-[0.28em] mb-4">
                 Próximo lanzamiento
               </p>
-              <h3 className="text-3xl md:text-4xl font-sans font-bold text-softblack tracking-tight leading-tight">
+              <h3 className="max-w-xl text-3xl md:text-4xl font-sans font-bold text-white tracking-tight leading-tight">
                 Un nuevo libro está en camino
               </h3>
-              <p className="mt-6 text-softblack/60 font-body text-base md:text-lg leading-relaxed">
-                La próxima historia ya se está escribiendo: más Nepal, más preguntas incómodas
-                y más mirada directa a lo que sucede cuando la esperanza deja de ser una idea
-                bonita y se convierte en trabajo diario. Apúntate para recibir novedades antes
-                del lanzamiento.
+              <p className="mt-6 max-w-xl text-white/88 font-body text-base md:text-lg leading-relaxed">
+                Hay historias que todavia no han sido contadas. Despues de anos viviendo entre
+                Nepal y Espana, Aina Barca esta escribiendo una nueva obra basada en algunas de
+                las experiencias mas intensas, complejas y transformadoras de todo este camino.
+                Sera un libro mucho mas intimo y personal sobre lo que ocurre detras de una mision
+                de vida: la presion, las contradicciones, el impacto emocional, las relaciones
+                humanas, el sentido de proposito y el precio invisible de dedicar una vida a
+                intentar cambiar otras.
               </p>
             </div>
 
@@ -144,7 +176,7 @@ export function Books() {
               <Button
                 asChild
                 size="lg"
-                className="bg-forest-dark text-white hover:bg-forest-mid rounded-full px-7 shadow-none"
+                className="bg-secondary text-softblack hover:bg-white rounded-full px-7 shadow-none"
               >
                 <a href={EARLY_ACCESS_URL} target="_blank" rel="noreferrer">
                   Quiero enterarme antes que nadie

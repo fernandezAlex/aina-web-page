@@ -1,529 +1,278 @@
 export interface SiteConfig {
-  language: string;
-  siteTitle: string;
-  siteDescription: string;
+	language: string;
+	siteTitle: string;
+	siteDescription: string;
 }
 
 export const siteConfig: SiteConfig = {
-  language: "es",
-  siteTitle: "Aina Barca | Educación, terapia y cuidado en Nepal",
-  siteDescription:
-    "Landing inspirada en las guías de marca de Aina Barca para presentar su misión, programas e impacto junto a una invitación clara a colaborar.",
+	language: "es",
+	siteTitle: "Aina Barca | El amor puesto en accion",
+	siteDescription:
+		"Web de Aina Barca sobre su historia, vision, libros, prensa, reconocimientos y formas de colaborar.",
 };
 
-const mainNavLinks = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Sobre Aina", href: "#sobre-aina" },
-  { label: "La Visión", href: "#vision" },
-  { label: "Libros", href: "#libros" },
-  { label: "Prensa", href: "#prensa" },
-  { label: "Reconocimientos", href: "#reconocimientos" },
-  { label: "Únete", href: "#unete" },
-];
+const asset = (path: string) =>
+	`${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
+
+export interface StatItem {
+	value: number;
+	label: string;
+	prefix?: string;
+	suffix?: string;
+	useGrouping?: boolean;
+}
 
 export interface HeroConfig {
-  backgroundText: string;
-  heroImage: string;
-  heroImageAlt: string;
-  overlayText: string;
-  brandName: string;
-  headline: string;
-  subtitle: string;
-  description: string;
-  navLinks: { label: string; href: string }[];
+	backgroundText: string;
+	heroImage: string;
+	heroImageAlt: string;
+	overlayText: string;
+	brandName: string;
+	navLinks: { label: string; href: string }[];
 }
 
 export const heroConfig: HeroConfig = {
-  backgroundText: "AINA",
-  heroImage: "",
-  heroImageAlt: "Retrato o imagen de marca de Aina Barca pendiente de incorporar",
-  overlayText: "El amor puesto en acción",
-  brandName: "Aina Barca",
-  headline: "El amor puesto en acción",
-  subtitle: "Una vida dedicada a construir oportunidades donde antes no las había.",
-  description:
-    "Aina Barca ha hecho de Nepal un territorio de compromiso, cuidado y transformación. Desde la Familia de Hetauda hasta la Fundación Si Asha y Aina Institute, su trabajo acompaña a niñas, niños, jóvenes y familias con discapacidad intelectual y del desarrollo para abrir caminos de educación, terapia, autonomía y pertenencia. Su historia une presencia cotidiana, visión social y acción concreta: crear estructuras que sostienen la dignidad, multiplican oportunidades y convierten la esperanza en futuro.",
-  navLinks: [
-    { label: "Inicio", href: "#hero" },
-    { label: "Mision", href: "#sobre-aina" },
-    { label: "Programas", href: "#services" },
-    { label: "Visión", href: "#vision" },
-    { label: "Impacto", href: "#work" },
-    { label: "Prensa", href: "#prensa" },
-    { label: "Reconocimientos", href: "#reconocimientos" },
-    { label: "Únete", href: "#unete" },
-    { label: "Libros", href: "#libros" },
-    { label: "Contacto", href: "#contact" },
-  ],
+	backgroundText: "AINA BARCA",
+	heroImage: asset("/aina-transparente.png"),
+	heroImageAlt: "Silueta recortada de Aina Barca",
+	overlayText: "El amor puesto en accion",
+	brandName: "Aina Barca",
+	navLinks: [
+		{ label: "Inicio", href: "#hero" },
+		{ label: "Sobre Aina", href: "#sobre-aina" },
+		{ label: "La Vision", href: "#vision" },
+		{ label: "Libros", href: "#libros" },
+		{ label: "Prensa", href: "#prensa" },
+		{ label: "Reconocimientos", href: "#reconocimientos" },
+		{ label: "Unete", href: "#unete" },
+	],
 };
 
-export interface PortfolioImage {
-  src: string;
-  alt: string;
+export interface IntroMissionConfig {
+	titleLine1: string;
+	titleLine2: string;
+	paragraphs: Array<{
+		text: string;
+		links?: Array<{
+			label: string;
+			href: string;
+		}>;
+	}>;
+	images: {
+		src: string;
+		alt: string;
+	}[];
 }
 
-export interface IntroGridConfig {
-  titleLine1: string;
-  titleLine2: string;
-  description: string;
-  portfolioImages: PortfolioImage[];
-  accentText: string;
-}
-
-export const introGridConfig: IntroGridConfig = {
-  titleLine1: "Create hope.",
-  titleLine2: "Take action.",
-  description:
-    "Si Asha Foundation trabaja con ninos y jovenes con discapacidad intelectual y del desarrollo en Nepal. Su enfoque combina educacion especializada, terapias, acompanamiento familiar y cuidado cotidiano para que cada nino pueda aprender, participar y crecer con dignidad.",
-  portfolioImages: [
-    { src: "/siasha/who-we-are-hero.webp", alt: "Comunidad de Si Asha Foundation" },
-    { src: "/siasha/children-happy.webp", alt: "Ninos en un programa de Si Asha Foundation" },
-    { src: "/siasha/hetauda-school.webp", alt: "Escuela de Si Asha Foundation en Hetauda" },
-    { src: "/siasha/bardibas-school.webp", alt: "Centro de Si Asha Foundation en Bardibas" },
-    { src: "/siasha/aina-with-children.webp", alt: "Equipo acompanando a ninos y familias" },
-  ],
-  accentText: "Escuela a escuela. Provincia a provincia.",
+export const introMissionConfig: IntroMissionConfig = {
+	titleLine1: "Una vida dedicada a construir",
+	titleLine2: "oportunidades donde antes no las habia.",
+	paragraphs: [
+		{
+			text: "Desde hace mas de una decada, Aina Barca trabaja para construir educacion, inclusion y dignidad para personas con discapacidad intelectual en Nepal, mientras impulsa la formacion de nuevas generaciones de lideres sociales capaces de generar impacto real en el mundo.",
+		},
+		{
+			text: "Fundadora de Familia de Hetauda, Fundacion Si Asha y Aina Institute, su trabajo conecta accion social, liderazgo humano y transformacion estructural desde una misma vision: crear oportunidades donde antes no existian.",
+			links: [
+				{
+					label: "Familia de Hetauda",
+					href: "https://familiadehetauda.org/",
+				},
+				{
+					label: "Fundacion Si Asha",
+					href: "https://siasha.org/es/",
+				},
+				{
+					label: "Aina Institute",
+					href: "https://ainainstitute.es/?utm_source=chatgpt.com",
+				},
+			],
+		},
+	],
+	images: [
+		{
+			src: asset("/aina/main/aina-outdoor-smile.jpg"),
+			alt: "Aina Barca sonríe al aire libre",
+		},
+		{
+			src: asset("/aina/main/aina-talk.jpg"),
+			alt: "Aina Barca durante una conversación pública",
+		},
+		{
+			src: asset("/aina/main/aina-child-embrace.jpg"),
+			alt: "Aina Barca abraza a un niño en un momento emotivo",
+		},
+		{
+			src: asset("/aina/main/aina-child-floor-portrait.jpg"),
+			alt: "Aina Barca acompaña de cerca a un niño en un retrato vertical",
+		},
+		{
+			src: asset("/aina/main/aina-studio-portrait-2.jpg"),
+			alt: "Retrato de estudio de Aina Barca sonriendo",
+		},
+	],
 };
-
-export interface Project {
-  id: number;
-  title: string;
-  category: string;
-  year: string;
-  image: string;
-  description: string;
-}
-
-export interface FeaturedProjectsConfig {
-  subtitle: string;
-  titleRegular: string;
-  titleItalic: string;
-  viewAllText: string;
-  viewAllHref: string;
-  viewProjectText: string;
-  projects: Project[];
-}
-
-export const featuredProjectsConfig: FeaturedProjectsConfig = {
-  subtitle: "Impacto visible",
-  titleRegular: "Como se traduce",
-  titleItalic: "el apoyo en accion",
-  viewAllText: "Explorar la mision",
-  viewAllHref: "#unete",
-  viewProjectText: "Sumarte a esta linea de trabajo",
-  projects: [
-    {
-      id: 1,
-      title: "Educacion especializada",
-      category: "Derecho a aprender",
-      year: "En marcha",
-      image: "/siasha/program-education.webp",
-      description:
-        "Las escuelas de Si Asha Foundation ofrecen aprendizaje adaptado, acompanamiento profesional y espacios donde cada nino puede desarrollar autonomia y confianza.",
-    },
-    {
-      id: 2,
-      title: "Terapias y rehabilitacion",
-      category: "Desarrollo y bienestar",
-      year: "Continuo",
-      image: "/siasha/program-therapy.webp",
-      description:
-        "La terapia ocupacional, fisica y del habla forma parte del dia a dia para fortalecer movilidad, comunicacion y participacion social.",
-    },
-    {
-      id: 3,
-      title: "Apoyo a familias",
-      category: "Acompanamiento real",
-      year: "Largo plazo",
-      image: "/siasha/family-support.webp",
-      description:
-        "Las familias reciben orientacion y respaldo para sostener el desarrollo de sus hijos tambien fuera del aula y de los centros terapeuticos.",
-    },
-    {
-      id: 4,
-      title: "Inclusion y sensibilizacion",
-      category: "Cambio social",
-      year: "Provincia a provincia",
-      image: "/siasha/awareness-inclusion.webp",
-      description:
-        "El trabajo de Si Asha no termina en la escuela: tambien impulsa una sociedad que reconozca la dignidad y el valor de cada nino.",
-    },
-  ],
-};
-
-
-export interface VisionCard {
-  title: string;
-  subtitle: string;
-  description: string;
-  ctaLabel: string;
-  href: string;
-  initials: string;
-  logoSrc?: string;
-  logoAlt?: string;
-}
-
-export interface VisionConfig {
-  eyebrow: string;
-  heading: string;
-  subheading: string;
-  description: string;
-  cards: VisionCard[];
-  ctaTitle: string;
-  ctaButtonText: string;
-  ctaHref: string;
-}
-
-export const visionConfig: VisionConfig = {
-  eyebrow: "Ecosistema Si Asha",
-  heading: "Una misma visión",
-  subheading: "Diferentes formas de transformar vidas.",
-  description:
-    "Compartimos la convicción de que nadie debería quedar excluido por nacer en un lugar sin oportunidades. Cada entidad sostiene una parte del camino: acompañar a las familias, abrir escuelas, crear rehabilitación, formar equipos locales y activar una red internacional de apoyo.",
-  cards: [
-    {
-      title: "Familia de Hetauda",
-      subtitle: "Origen del movimiento",
-      description:
-        "El primer impulso en Hetauda: una comunidad que abrió camino para que niños y jóvenes con discapacidad intelectual pudieran aprender, recibir apoyo y ser reconocidos.",
-      ctaLabel: "Conocer el origen",
-      href: "https://siasha.org/how-we-work/",
-      initials: "FH",
-    },
-    {
-      title: "Fundación Si Asha",
-      subtitle: "Red de apoyo en España",
-      description:
-        "La estructura que moviliza alianzas, voluntariado y recursos para consolidar el modelo Asha y hacerlo crecer provincia a provincia en Nepal.",
-      ctaLabel: "Ver la fundación",
-      href: "https://siasha.org/es/",
-      initials: "SA",
-      logoSrc: "/siasha/hero-logo.png",
-      logoAlt: "Logotipo de Fundación Si Asha",
-    },
-    {
-      title: "Si Asha Foundation",
-      subtitle: "Acción directa en Nepal",
-      description:
-        "La contraparte local que convierte la visión en trabajo diario: coordinación de proyectos, equipos profesionales y acompañamiento real sobre el terreno.",
-      ctaLabel: "Explorar Si Asha",
-      href: "https://siasha.org/",
-      initials: "SA",
-      logoSrc: "/siasha/hero-logo.png",
-      logoAlt: "Logotipo de Si Asha Foundation",
-    },
-    {
-      title: "Asha Special School & Rehabilitation Centers",
-      subtitle: "Educación y rehabilitación",
-      description:
-        "Escuelas, talleres y centros de rehabilitación donde cada avance educativo, terapéutico y emocional abre una posibilidad nueva de autonomía.",
-      ctaLabel: "Ver los centros",
-      href: "https://siasha.org/how-we-work/",
-      initials: "AS",
-    },
-    {
-      title: "Aina Institute",
-      subtitle: "Formación que financia impacto",
-      description:
-        "Una vía educativa conectada con el propósito social: preparar talento y canalizar recursos hacia Familia de Hetauda y Fundación Si Asha.",
-      ctaLabel: "Conocer Aina Institute",
-      href: "https://www.educations.com/institutions/aina-institute",
-      initials: "AI",
-    },
-  ],
-  ctaTitle: "Que ningún niño quede invisible para la Sociedad",
-  ctaButtonText: "Pasa a la acción",
-  ctaHref: "#unete",
-};
-
-export interface ServiceItem {
-  iconName: string;
-  title: string;
-  description: string;
-}
-
-export interface ServicesConfig {
-  subtitle: string;
-  titleLine1: string;
-  titleLine2Italic: string;
-  description: string;
-  services: ServiceItem[];
-}
-
-export const servicesConfig: ServicesConfig = {
-  subtitle: "Lo que hacemos",
-  titleLine1: "Un modelo completo",
-  titleLine2Italic: "de cuidado e inclusion",
-  description:
-    "La marca Si Asha transmite esperanza activa, estructura y compromiso. Esta version del template recoge esa direccion con una narrativa mas humana, mas clara y mas institucional a la vez.",
-  services: [
-    {
-      iconName: "Sparkles",
-      title: "Educacion adaptada",
-      description:
-        "Escuelas y metodologias disenadas para ninos y jovenes con discapacidad intelectual y del desarrollo.",
-    },
-    {
-      iconName: "Camera",
-      title: "Terapias continuas",
-      description:
-        "Procesos terapeuticos integrados en la rutina diaria para impulsar autonomia, comunicacion y bienestar.",
-    },
-    {
-      iconName: "Diamond",
-      title: "Cuidado cotidiano",
-      description:
-        "Proteccion, acompanamiento y entornos estables para ninos que necesitan mas apoyo para sostener su desarrollo.",
-    },
-    {
-      iconName: "Users",
-      title: "Comunidad y confianza",
-      description:
-        "Trabajo con familias, equipos locales y personas colaboradoras para construir impacto real y sostenible.",
-    },
-  ],
-};
-
-export interface StatItem {
-  value: number;
-  label: string;
-  prefix?: string;
-  suffix?: string;
-  useGrouping?: boolean;
-}
-
-export interface AboutAinaNarrativeBlock {
-  eyebrow: string;
-  title: string;
-  text: string;
-}
 
 export interface AboutAinaConfig {
-  subtitle: string;
-  titleRegular: string;
-  titleItalic: string;
-  statsLabel: string;
-  narrativeBlocks: AboutAinaNarrativeBlock[];
-  impactStats: StatItem[];
+	subtitle: string;
+	title: string;
+	intro: string;
+	paragraphs: string[];
+	impactLabel: string;
+	impactStats: StatItem[];
 }
 
 export const aboutAinaConfig: AboutAinaConfig = {
-  subtitle: "Sobre Aina",
-  titleRegular: "Una historia que empezo con un viaje y se convirtio en una red de",
-  titleItalic: "esperanza activa",
-  statsLabel: "Impacto acumulado",
-  narrativeBlocks: [
-    {
-      eyebrow: "El viaje",
-      title: "Nepal, 21 anos",
-      text: "Aina llego a Nepal con 21 anos en un viaje que iba a ser temporal, pero que termino cambiando su manera de mirar la infancia, la discapacidad y la responsabilidad compartida.",
-    },
-    {
-      eyebrow: "La realidad",
-      title: "Ninos y ninas fuera de todo",
-      text: "Alli se encontro con ninos y ninas con discapacidad intelectual excluidos de la escuela, de los espacios de juego y de muchas oportunidades basicas para crecer con dignidad.",
-    },
-    {
-      eyebrow: "La decision",
-      title: "Quedarse para escuchar y aprender",
-      text: "La respuesta no fue imponer soluciones rapidas: decidio quedarse, escuchar a las familias, aprender del contexto y empezar a construir escuelas junto a la comunidad local.",
-    },
-    {
-      eyebrow: "El camino",
-      title: "Una red que sigue creciendo",
-      text: "Aquel primer impulso evoluciono hacia escuelas de educacion especial, fisioterapia, acompanamiento a familias y una red de apoyo que sostiene procesos de inclusion a largo plazo.",
-    },
-  ],
-  impactStats: [
-    { value: 157, prefix: "+", label: "ninos y ninas escolarizados", useGrouping: true },
-    { value: 60, prefix: "+", label: "mujeres en el equipo profesional", useGrouping: true },
-    { value: 1000, prefix: "+", label: "familias acompanadas", useGrouping: true },
-  ],
+	subtitle: "Sobre Aina",
+	title:
+		"Hay viajes que cambian una vida. Y decisiones que terminan cambiando muchas otras.",
+	intro:
+		"Con 21 anos, un viaje a Nepal hizo que Aina se encontrara frente a una realidad imposible de ignorar: ninos y ninas con discapacidad intelectual completamente excluidos, familias sin recursos ni apoyo y personas invisibles para gran parte de la sociedad.",
+	paragraphs: [
+		"Ninos que nunca habian ido a la escuela. Madres que creian que sus hijos no tendrian futuro. Familias acostumbradas a vivir el rechazo y el silencio.",
+		"Lo que empezo como una experiencia de voluntariado termino convirtiendose en una mision de vida.",
+		"Mientras muchos habrian seguido adelante, ella decidio quedarse. Escuchar. Aprender. Y convertir el amor en accion, construyendo escuelas donde antes no habia nada.",
+		"Lo que un dia comenzo con una idea y muchisima incertidumbre, hoy se ha convertido en escuelas de educacion especial, centros de fisioterapia y una red de apoyo e inclusion para cientos de personas y familias en Nepal.",
+		"Porque transformar vidas no consiste solo en ayudar. Consiste en crear estructuras capaces de sostener dignidad, autonomia y oportunidades a largo plazo.",
+	],
+	impactLabel: "Impacto acumulado",
+	impactStats: [
+		{
+			value: 157,
+			prefix: "+",
+			label: "ninos y ninas con discapacidad escolarizados",
+			useGrouping: true,
+		},
+		{
+			value: 60,
+			prefix: "+",
+			label: "mujeres forman parte del equipo profesional",
+			useGrouping: true,
+		},
+		{
+			value: 1000,
+			prefix: "+",
+			label: "familias han encontrado apoyo, comunidad y esperanza",
+			useGrouping: true,
+		},
+	],
 };
 
-export interface FeatureCard {
-  image: string;
-  imageAlt: string;
-  title: string;
-  description: string;
+export interface VisionCard {
+	title: string;
+	subtitle: string;
+	description: string;
+	ctaLabel: string;
+	href: string;
+	initials: string;
+	logoSrc?: string;
+	logoAlt?: string;
 }
 
-export interface WhyChooseMeConfig {
-  subtitle: string;
-  titleRegular: string;
-  titleItalic: string;
-  statsLabel: string;
-  stats: StatItem[];
-  featureCards: FeatureCard[];
-  wideImage: string;
-  wideImageAlt: string;
-  wideTitle: string;
-  wideDescription: string;
+export interface VisionConfig {
+	eyebrow: string;
+	heading: string;
+	subheading: string;
+	description: string;
+	cards: VisionCard[];
+	closingTitle: string;
+	closingParagraphs: string[];
+	closingBackgroundImage: string;
+	ctaButtonText: string;
+	ctaHref: string;
 }
 
-export const whyChooseMeConfig: WhyChooseMeConfig = {
-  subtitle: "Por que Si Asha",
-  titleRegular: "Esperanza con",
-  titleItalic: "estructura y dignidad",
-  statsLabel: "Claves del modelo",
-  stats: [
-    { value: 2012, suffix: "", label: "Ano de inicio del proyecto en Nepal" },
-    { value: 3, suffix: "", label: "Centros en funcionamiento en el recorrido actual" },
-    { value: 4, suffix: "", label: "Pilares del trabajo: educacion, terapia, cuidado e inclusion" },
-    { value: 1, suffix: "", label: "Compromiso: que ningun nino quede invisible" },
-  ],
-  featureCards: [
-    {
-      image: "/siasha/who-we-are-vertical-1.webp",
-      imageAlt: "Nina en programa educativo de Si Asha Foundation",
-      title: "Cercania humana",
-      description:
-        "La identidad visual debe mostrar presencia, acompanamiento y trabajo real con ninos y familias.",
-    },
-    {
-      image: "/siasha/childrens-vertical-1.webp",
-      imageAlt: "Ninos sonriendo en Si Asha Foundation",
-      title: "Seriedad con calidez",
-      description:
-        "El tono evita el paternalismo y apuesta por una organizacion creible, activa y profundamente humana.",
-    },
-  ],
-  wideImage: "/siasha/transparency-hero.webp",
-  wideImageAlt: "Equipo y comunidad de Si Asha Foundation",
-  wideTitle: "Confianza que se ve",
-  wideDescription:
-    "Fotografia documental, mensajes concretos y llamadas a la accion claras para reforzar transparencia, continuidad e impacto.",
-};
-
-export interface Testimonial {
-  id: number;
-  name: string;
-  role: string;
-  image: string;
-  quote: string;
-}
-
-export interface TestimonialsConfig {
-  subtitle: string;
-  titleRegular: string;
-  titleItalic: string;
-  testimonials: Testimonial[];
-}
-
-export const testimonialsConfig: TestimonialsConfig = {
-  subtitle: "Pilares de marca",
-  titleRegular: "Lo que esta landing",
-  titleItalic: "quiere transmitir",
-  testimonials: [
-    {
-      id: 1,
-      name: "Mision",
-      role: "Marco institucional",
-      image: "/siasha/hero-logo.png",
-      quote:
-        "La esperanza no aparece sola: se construye con educacion, terapia, cuidado y compromiso sostenido.",
-    },
-    {
-      id: 2,
-      name: "Vision",
-      role: "Direccion de crecimiento",
-      image: "/siasha/team-board.webp",
-      quote:
-        "El horizonte es una Nepal mas inclusiva, donde el acceso al apoyo especializado no dependa de la geografia.",
-    },
-    {
-      id: 3,
-      name: "Gobernanza",
-      role: "Confianza y continuidad",
-      image: "/siasha/kailash-kaundinya.webp",
-      quote:
-        "La marca debe sentirse suficientemente institucional para generar confianza y suficientemente humana para mover a la accion.",
-    },
-  ],
-};
-
-export interface FAQItem {
-  id: string;
-  question: string;
-  answer: string;
-}
-
-export interface FAQConfig {
-  subtitle: string;
-  titleRegular: string;
-  titleItalic: string;
-  ctaText: string;
-  ctaButtonText: string;
-  ctaHref: string;
-  faqs: FAQItem[];
-}
-
-export const faqConfig: FAQConfig = {
-  subtitle: "Preguntas frecuentes",
-  titleRegular: "Lo esencial",
-  titleItalic: "antes de publicar",
-  ctaText: "Esta demo ya incorpora la direccion visual y narrativa principal.",
-  ctaButtonText: "Revisar siguiente paso",
-  ctaHref: "#unete",
-  faqs: [
-    {
-      id: "faq-1",
-      question: "Que recoge esta adaptacion del estilo de Si Asha Foundation?",
-      answer:
-        "La paleta oficial, un tono mas editorial y serio, el enfoque en dignidad y accion, y el uso de fotografia real vinculada al trabajo de la fundacion.",
-    },
-    {
-      id: "faq-2",
-      question: "Que evita a proposito?",
-      answer:
-        "Lenguaje paternalista, promesas vagas, estetica de startup y recursos visuales que conviertan a los ninos en simbolos de sufrimiento.",
-    },
-    {
-      id: "faq-3",
-      question: "Que quedaria por validar antes de una publicacion final?",
-      answer:
-        "El email canonico de contacto, enlaces sociales definitivos y cualquier cifra publica que la fundacion quiera destacar de forma oficial.",
-    },
-  ],
+export const visionConfig: VisionConfig = {
+	eyebrow: "La Vision",
+	heading: "Una misma vision",
+	subheading: "Diferentes formas de transformar vidas.",
+	description:
+		"Todo lo que Aina Barca ha construido nace de una misma conviccion: que ninguna persona deberia quedar excluida por haber nacido en un lugar sin oportunidades.",
+	cards: [
+		{
+			title: "Familia de Hetauda",
+			subtitle: "Donde nacio la primera escuela",
+			description:
+				"En 2012, Aina Barca impulso en Hetauda la primera escuela de educacion especial para ninos y ninas con discapacidad intelectual de la region. Hoy, la ONG Familia de Hetauda sigue acompanando a cientos de familias a traves de educacion, inclusion y apoyo especializado en Nepal.",
+			ctaLabel: "Ir a la web",
+			href: "https://familiadehetauda.org/",
+			initials: "FH",
+		},
+		{
+			title: "Fundacion Si Asha",
+			subtitle: "Una vision que quiere llegar a todo Nepal",
+			description:
+				"Fundacion Si Asha nace en Espana con un objetivo claro: seguir expandiendo el acceso a educacion especial, inclusion y oportunidades a todas las provincias de Nepal. Porque la dignidad no deberia depender del lugar donde una persona nace.",
+			ctaLabel: "Ir a la web",
+			href: "https://siasha.org/es/",
+			initials: "SA",
+			logoSrc: asset("/siasha/hero-logo.png"),
+			logoAlt: "Logotipo de Fundacion Si Asha",
+		},
+		{
+			title: "Si Asha Foundation",
+			subtitle: "El corazon que sostiene cada proyecto",
+			description:
+				"La contraparte nepali responsable de coordinar el trabajo diario sobre el terreno: escuelas, equipos, terapias, programas educativos y acompanamiento a familias en Nepal. Detras de cada nino acompanado, hay un equipo humano haciendo posible que todo siga adelante.",
+			ctaLabel: "Ir a la web",
+			href: "https://www.siashafoundation.org/",
+			initials: "SF",
+			logoSrc: asset("/siasha/hero-logo.png"),
+			logoAlt: "Logotipo de Si Asha Foundation",
+		},
+		{
+			title: "Asha Special School & Rehabilitation Centers",
+			subtitle: "Mucho mas que escuelas",
+			description:
+				"Espacios creados para garantizar educacion, fisioterapia, inclusion y oportunidades reales para ninos y jovenes con discapacidad intelectual. Lugares donde los ninos encuentran, por primera vez, apoyo, comunidad y esperanza de futuro.",
+			ctaLabel: "Ir a la web",
+			href: "https://www.siashafoundation.org/",
+			initials: "AS",
+		},
+		{
+			title: "Aina Institute",
+			subtitle: "Cuando ayudas a personas que ayudan, el impacto se multiplica",
+			description:
+				"Aina Institute forma a nuevas generaciones de lideres sociales capaces de transformar proposito en proyectos solidos, sostenibles y capaces de generar impacto real. Porque cambiar vidas requiere vision, estructura y accion.",
+			ctaLabel: "Ir a la web",
+			href: "https://www.educations.com/institutions/aina-institute",
+			initials: "AI",
+		},
+	],
+	closingTitle: "Que ningun nino quede invisible para la sociedad",
+	closingParagraphs: [
+		"La vision es seguir expandiendo las Asha Special Schools para que cada vez mas ninos puedan acceder a educacion especializada, inclusion y un futuro digno.",
+		"Porque el lugar donde una persona nace no deberia definir las oportunidades que tendra en la vida.",
+		"Pero nada de esto se construye solo.",
+		"Cada escuela, cada nino acompanado y cada familia apoyada existen gracias a personas que decidieron no mirar hacia otro lado.",
+		"Personas que entendieron que el amor, cuando se convierte en accion, transforma vidas.",
+	],
+	closingBackgroundImage: asset("/aina/main/aina-child-embrace.jpg"),
+	ctaButtonText: "Pasa a la accion",
+	ctaHref: "#unete",
 };
 
 export interface FooterConfig {
-  logoText: string;
-  contactLabel: string;
-  email: string;
-  locationText: string;
-  navigationLabel: string;
-  navLinks: { label: string; href: string }[];
-  socialLabel: string;
-  socialLinks: { iconName: string; href: string; label: string }[];
-  tagline: string;
-  copyright: string;
-  bottomLinks: { label: string; href: string }[];
+	logoText: string;
+	navigationLabel: string;
+	navLinks: { label: string; href: string }[];
+	closingText: string;
+	copyright: string;
 }
 
 export const footerConfig: FooterConfig = {
-  logoText: "AINA BARCA",
-  contactLabel: "Contacto",
-  email: "",
-  locationText: "",
-  navigationLabel: "Secciones",
-  navLinks: [
-    { label: "Inicio", href: "#hero" },
-    { label: "Mision", href: "#sobre-aina" },
-    { label: "Programas", href: "#services" },
-    { label: "Visión", href: "#vision" },
-    { label: "Impacto", href: "#work" },
-    { label: "Prensa", href: "#prensa" },
-    { label: "Reconocimientos", href: "#reconocimientos" },
-    { label: "Únete", href: "#unete" },
-    { label: "Libros", href: "#libros" },
-  ],
-  socialLabel: "Canales",
-  socialLinks: [],
-  tagline: "Hope is built every day.\nEvery gesture matters.",
-  copyright: "© Aina Barca demo concept.",
-  bottomLinks: [
-    { label: "Prensa", href: "#prensa" },
-    { label: "Únete", href: "#unete" },
-  ],
+	logoText: "AINA BARCA",
+	navigationLabel: "Secciones",
+	navLinks: [
+		{ label: "Inicio", href: "#hero" },
+		{ label: "Sobre Aina", href: "#sobre-aina" },
+		{ label: "La Vision", href: "#vision" },
+		{ label: "Libros", href: "#libros" },
+		{ label: "Prensa", href: "#prensa" },
+		{ label: "Reconocimientos", href: "#reconocimientos" },
+		{ label: "Unete", href: "#unete" },
+	],
+	closingText:
+		"El amor puesto en accion. Una vision compartida para construir educacion, inclusion y dignidad en Nepal.",
+	copyright: `© ${new Date().getFullYear()} Aina Barca`,
 };
