@@ -10,9 +10,6 @@ export function FeaturedProjects() {
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const projectsRef = useRef<HTMLDivElement>(null);
-
-  if (!featuredProjectsConfig.titleRegular && featuredProjectsConfig.projects.length === 0) return null;
-
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Header — slide up
@@ -121,6 +118,8 @@ export function FeaturedProjects() {
 
     return () => ctx.revert();
   }, []);
+
+  if (!featuredProjectsConfig.titleRegular && featuredProjectsConfig.projects.length === 0) return null;
 
   return (
     <section
