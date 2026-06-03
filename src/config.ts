@@ -6,10 +6,20 @@ export interface SiteConfig {
 
 export const siteConfig: SiteConfig = {
   language: "es",
-  siteTitle: "Si Asha Foundation | Educación, terapia y cuidado en Nepal",
+  siteTitle: "Aina Barca | Educación, terapia y cuidado en Nepal",
   siteDescription:
-    "Landing inspirada en las guías de marca de Si Asha Foundation para presentar su misión, programas e impacto junto a una invitación clara a colaborar.",
+    "Landing inspirada en las guías de marca de Aina Barca para presentar su misión, programas e impacto junto a una invitación clara a colaborar.",
 };
+
+const mainNavLinks = [
+  { label: "Inicio", href: "#inicio" },
+  { label: "Sobre Aina", href: "#sobre-aina" },
+  { label: "La Visión", href: "#vision" },
+  { label: "Libros", href: "#libros" },
+  { label: "Prensa", href: "#prensa" },
+  { label: "Reconocimientos", href: "#reconocimientos" },
+  { label: "Únete", href: "#unete" },
+];
 
 export interface HeroConfig {
   backgroundText: string;
@@ -21,18 +31,12 @@ export interface HeroConfig {
 }
 
 export const heroConfig: HeroConfig = {
-  backgroundText: "SI ASHA",
+  backgroundText: "AINA BARCA",
   heroImage: "/siasha/hero-logo.png",
-  heroImageAlt: "Logotipo de Si Asha Foundation",
+  heroImageAlt: "Logotipo de Aina Barca",
   overlayText: "La esperanza se construye cada dia.",
-  brandName: "Si Asha Foundation",
-  navLinks: [
-    { label: "Inicio", href: "#hero" },
-    { label: "Mision", href: "#about" },
-    { label: "Programas", href: "#services" },
-    { label: "Impacto", href: "#work" },
-    { label: "Contacto", href: "#contact" },
-  ],
+  brandName: "Aina Barca",
+  navLinks: mainNavLinks,
 };
 
 export interface PortfolioImage {
@@ -87,7 +91,7 @@ export const featuredProjectsConfig: FeaturedProjectsConfig = {
   titleRegular: "Como se traduce",
   titleItalic: "el apoyo en accion",
   viewAllText: "Explorar la mision",
-  viewAllHref: "#contact",
+  viewAllHref: "#unete",
   viewProjectText: "Sumarte a esta linea de trabajo",
   projects: [
     {
@@ -306,7 +310,7 @@ export const faqConfig: FAQConfig = {
   titleItalic: "antes de publicar",
   ctaText: "Esta demo ya incorpora la direccion visual y narrativa principal.",
   ctaButtonText: "Revisar siguiente paso",
-  ctaHref: "#contact",
+  ctaHref: "#unete",
   faqs: [
     {
       id: "faq-1",
@@ -344,23 +348,18 @@ export interface FooterConfig {
 }
 
 export const footerConfig: FooterConfig = {
-  logoText: "SI ASHA",
+  logoText: "AINA BARCA",
   contactLabel: "Contacto",
   email: "",
   locationText: "Nepal y red internacional de apoyo\nEmail pendiente de confirmacion oficial",
   navigationLabel: "Secciones",
-  navLinks: [
-    { label: "Inicio", href: "#hero" },
-    { label: "Mision", href: "#about" },
-    { label: "Programas", href: "#services" },
-    { label: "Impacto", href: "#work" },
-  ],
+  navLinks: mainNavLinks,
   socialLabel: "Canales",
   socialLinks: [],
   tagline: "Hope is built every day.\nEvery gesture matters.",
-  copyright: "© Si Asha Foundation demo concept.",
+  copyright: "© Aina Barca demo concept.",
   bottomLinks: [
-    { label: "Transparencia", href: "#work" },
-    { label: "Colaborar", href: "#contact" },
+    { label: "Prensa", href: "#prensa" },
+    { label: "Únete", href: "#unete" },
   ],
 };

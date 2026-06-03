@@ -79,6 +79,7 @@ export function FAQ() {
   return (
     <section
       ref={sectionRef}
+      id="preguntas-frecuentes"
       className="relative w-full py-24 md:py-32 bg-forest-dark"
     >
       <div className="max-w-4xl mx-auto px-6 md:px-12">
@@ -129,7 +130,7 @@ export function FAQ() {
             )}
             {faqConfig.ctaButtonText && (
               <a
-                href={faqConfig.ctaHref || '#contact'}
+                href={faqConfig.ctaHref || '#unete'}
                 className="inline-flex items-center gap-2 px-8 py-4 bg-white text-forest-dark font-sans font-semibold text-sm rounded-full hover:bg-offwhite transition-colors duration-300"
               >
                 {faqConfig.ctaButtonText}
