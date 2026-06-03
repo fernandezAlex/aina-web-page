@@ -17,9 +17,6 @@ export function Footer() {
   const footerRef = useRef<HTMLElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-
-  if (!footerConfig.logoText && !footerConfig.email && footerConfig.navLinks.length === 0) return null;
-
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Logo — scale up + fade
@@ -53,6 +50,8 @@ export function Footer() {
 
     return () => ctx.revert();
   }, []);
+
+  if (!footerConfig.logoText && !footerConfig.email && footerConfig.navLinks.length === 0) return null;
 
   return (
     <footer

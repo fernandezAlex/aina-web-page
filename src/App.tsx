@@ -3,6 +3,7 @@ import { useLenis } from './hooks/useLenis';
 import { Hero } from './sections/Hero';
 import { IntroGrid } from './sections/IntroGrid';
 import { Services } from './sections/Services';
+import { AboutAina } from './sections/AboutAina';
 import { WhyChooseMe } from './sections/WhyChooseMe';
 import { FeaturedProjects } from './sections/FeaturedProjects';
 import { Testimonials } from './sections/Testimonials';
@@ -35,6 +36,9 @@ function App() {
 
       {/* Intro & Masonry Grid - White Section */}
       <IntroGrid />
+
+      {/* About Aina - Narrative Section */}
+      <AboutAina />
 
       {/* Services - Dark Section */}
       <Services />
