@@ -11,8 +11,6 @@ export function FeaturedProjects() {
   const headerRef = useRef<HTMLDivElement>(null);
   const projectsRef = useRef<HTMLDivElement>(null);
 
-  if (!featuredProjectsConfig.titleRegular && featuredProjectsConfig.projects.length === 0) return null;
-
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Header — slide up
@@ -122,6 +120,8 @@ export function FeaturedProjects() {
     return () => ctx.revert();
   }, []);
 
+  if (!featuredProjectsConfig.titleRegular && featuredProjectsConfig.projects.length === 0) return null;
+
   return (
     <section
       ref={sectionRef}
@@ -142,7 +142,7 @@ export function FeaturedProjects() {
           </div>
           {featuredProjectsConfig.viewAllText && (
             <a
-              href={featuredProjectsConfig.viewAllHref || '#contact'}
+              href={featuredProjectsConfig.viewAllHref || '#unete'}
               className="mt-6 md:mt-0 inline-flex items-center gap-2 text-white/70 hover:text-white font-body text-sm transition-colors duration-300 group"
             >
               {featuredProjectsConfig.viewAllText}
@@ -207,7 +207,7 @@ export function FeaturedProjects() {
                 </p>
                 {featuredProjectsConfig.viewProjectText && (
                   <a
-                    href="#contact"
+                    href="#unete"
                     className={`project-text-item inline-flex items-center gap-2 text-white font-body text-sm border-b border-white/30 pb-1 hover:border-white transition-colors duration-300 group/link ${
                       index % 2 === 1 ? 'md:flex-row-reverse' : ''
                     }`}

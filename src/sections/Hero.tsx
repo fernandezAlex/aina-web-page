@@ -78,6 +78,8 @@ export function Hero() {
 
   if (!hasHeroContent) return null;
 
+  if (!heroConfig.backgroundText && !heroConfig.heroImage && heroConfig.navLinks.length === 0) return null;
+
   return (
     <section
       ref={sectionRef}
