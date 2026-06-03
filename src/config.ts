@@ -17,17 +17,24 @@ export interface HeroConfig {
   heroImageAlt: string;
   overlayText: string;
   brandName: string;
+  headline: string;
+  subtitle: string;
+  description: string;
   navLinks: { label: string; href: string }[];
 }
 
 export const heroConfig: HeroConfig = {
-  backgroundText: "SI ASHA",
-  heroImage: "/siasha/hero-logo.png",
-  heroImageAlt: "Logotipo de Si Asha Foundation",
-  overlayText: "La esperanza se construye cada dia.",
-  brandName: "Si Asha Foundation",
+  backgroundText: "AINA",
+  heroImage: "",
+  heroImageAlt: "Retrato o imagen de marca de Aina Barca pendiente de incorporar",
+  overlayText: "El amor puesto en acción",
+  brandName: "Aina Barca",
+  headline: "El amor puesto en acción",
+  subtitle: "Una vida dedicada a construir oportunidades donde antes no las había.",
+  description:
+    "Aina Barca ha hecho de Nepal un territorio de compromiso, cuidado y transformación. Desde la Familia de Hetauda hasta la Fundación Si Asha y Aina Institute, su trabajo acompaña a niñas, niños, jóvenes y familias con discapacidad intelectual y del desarrollo para abrir caminos de educación, terapia, autonomía y pertenencia. Su historia une presencia cotidiana, visión social y acción concreta: crear estructuras que sostienen la dignidad, multiplican oportunidades y convierten la esperanza en futuro.",
   navLinks: [
-    { label: "Inicio", href: "#hero" },
+    { label: "Inicio", href: "#inicio" },
     { label: "Mision", href: "#about" },
     { label: "Programas", href: "#services" },
     { label: "Impacto", href: "#work" },
@@ -350,7 +357,7 @@ export const footerConfig: FooterConfig = {
   locationText: "Nepal y red internacional de apoyo\nEmail pendiente de confirmacion oficial",
   navigationLabel: "Secciones",
   navLinks: [
-    { label: "Inicio", href: "#hero" },
+    { label: "Inicio", href: "#inicio" },
     { label: "Mision", href: "#about" },
     { label: "Programas", href: "#services" },
     { label: "Impacto", href: "#work" },
