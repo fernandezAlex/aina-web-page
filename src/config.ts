@@ -30,6 +30,7 @@ export const heroConfig: HeroConfig = {
     { label: "Inicio", href: "#hero" },
     { label: "Mision", href: "#about" },
     { label: "Programas", href: "#services" },
+    { label: "Visión", href: "#vision" },
     { label: "Impacto", href: "#work" },
     { label: "Contacto", href: "#contact" },
   ],
@@ -127,6 +128,91 @@ export const featuredProjectsConfig: FeaturedProjectsConfig = {
         "El trabajo de Si Asha no termina en la escuela: tambien impulsa una sociedad que reconozca la dignidad y el valor de cada nino.",
     },
   ],
+};
+
+
+export interface VisionCard {
+  title: string;
+  subtitle: string;
+  description: string;
+  ctaLabel: string;
+  href: string;
+  initials: string;
+  logoSrc?: string;
+  logoAlt?: string;
+}
+
+export interface VisionConfig {
+  eyebrow: string;
+  heading: string;
+  subheading: string;
+  description: string;
+  cards: VisionCard[];
+  ctaTitle: string;
+  ctaButtonText: string;
+  ctaHref: string;
+}
+
+export const visionConfig: VisionConfig = {
+  eyebrow: "Ecosistema Si Asha",
+  heading: "Una misma visión",
+  subheading: "Diferentes formas de transformar vidas.",
+  description:
+    "Compartimos la convicción de que nadie debería quedar excluido por nacer en un lugar sin oportunidades. Cada entidad sostiene una parte del camino: acompañar a las familias, abrir escuelas, crear rehabilitación, formar equipos locales y activar una red internacional de apoyo.",
+  cards: [
+    {
+      title: "Familia de Hetauda",
+      subtitle: "Origen del movimiento",
+      description:
+        "El primer impulso en Hetauda: una comunidad que abrió camino para que niños y jóvenes con discapacidad intelectual pudieran aprender, recibir apoyo y ser reconocidos.",
+      ctaLabel: "Conocer el origen",
+      href: "https://siasha.org/how-we-work/",
+      initials: "FH",
+    },
+    {
+      title: "Fundación Si Asha",
+      subtitle: "Red de apoyo en España",
+      description:
+        "La estructura que moviliza alianzas, voluntariado y recursos para consolidar el modelo Asha y hacerlo crecer provincia a provincia en Nepal.",
+      ctaLabel: "Ver la fundación",
+      href: "https://siasha.org/es/",
+      initials: "SA",
+      logoSrc: "/siasha/hero-logo.png",
+      logoAlt: "Logotipo de Fundación Si Asha",
+    },
+    {
+      title: "Si Asha Foundation",
+      subtitle: "Acción directa en Nepal",
+      description:
+        "La contraparte local que convierte la visión en trabajo diario: coordinación de proyectos, equipos profesionales y acompañamiento real sobre el terreno.",
+      ctaLabel: "Explorar Si Asha",
+      href: "https://siasha.org/",
+      initials: "SA",
+      logoSrc: "/siasha/hero-logo.png",
+      logoAlt: "Logotipo de Si Asha Foundation",
+    },
+    {
+      title: "Asha Special School & Rehabilitation Centers",
+      subtitle: "Educación y rehabilitación",
+      description:
+        "Escuelas, talleres y centros de rehabilitación donde cada avance educativo, terapéutico y emocional abre una posibilidad nueva de autonomía.",
+      ctaLabel: "Ver los centros",
+      href: "https://siasha.org/how-we-work/",
+      initials: "AS",
+    },
+    {
+      title: "Aina Institute",
+      subtitle: "Formación que financia impacto",
+      description:
+        "Una vía educativa conectada con el propósito social: preparar talento y canalizar recursos hacia Familia de Hetauda y Fundación Si Asha.",
+      ctaLabel: "Conocer Aina Institute",
+      href: "https://www.educations.com/institutions/aina-institute",
+      initials: "AI",
+    },
+  ],
+  ctaTitle: "Que ningún niño quede invisible para la Sociedad",
+  ctaButtonText: "Pasa a la acción",
+  ctaHref: "#unete",
 };
 
 export interface ServiceItem {
@@ -353,6 +439,7 @@ export const footerConfig: FooterConfig = {
     { label: "Inicio", href: "#hero" },
     { label: "Mision", href: "#about" },
     { label: "Programas", href: "#services" },
+    { label: "Visión", href: "#vision" },
     { label: "Impacto", href: "#work" },
   ],
   socialLabel: "Canales",
