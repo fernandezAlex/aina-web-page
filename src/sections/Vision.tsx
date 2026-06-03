@@ -105,12 +105,22 @@ export function Vision() {
               key={card.title}
               className="vision-card group flex min-h-[360px] flex-col rounded-3xl border border-softblack/10 bg-white/80 p-6 opacity-0 shadow-[0_24px_80px_rgba(27,20,19,0.08)] backdrop-blur transition-all duration-500 hover:-translate-y-2 hover:border-forest-mid/25 hover:shadow-[0_30px_90px_rgba(103,17,39,0.14)]"
             >
-              <div className="mb-8 flex h-24 items-center justify-center rounded-2xl bg-offwhite/80 ring-1 ring-softblack/5">
+              <div
+                className={`mb-8 overflow-hidden rounded-2xl ring-1 ring-softblack/5 ${
+                  card.mediaMode === 'image'
+                    ? 'h-32 bg-softblack/5'
+                    : 'flex h-24 items-center justify-center bg-offwhite/80'
+                }`}
+              >
                 {card.logoSrc ? (
                   <img
                     src={card.logoSrc}
                     alt={card.logoAlt || `${card.title} logo`}
-                    className="max-h-16 max-w-[75%] object-contain"
+                    className={
+                      card.mediaMode === 'image'
+                        ? 'h-full w-full object-cover transition-transform duration-500 group-hover:scale-105'
+                        : 'max-h-16 max-w-[75%] object-contain'
+                    }
                     loading="lazy"
                   />
                 ) : (

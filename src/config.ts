@@ -167,6 +167,7 @@ export interface VisionCard {
 	initials: string;
 	logoSrc?: string;
 	logoAlt?: string;
+	mediaMode?: "logo" | "image";
 }
 
 export interface VisionConfig {
@@ -197,6 +198,9 @@ export const visionConfig: VisionConfig = {
 			ctaLabel: "Ir a la web",
 			href: "https://familiadehetauda.org/",
 			initials: "FH",
+			logoSrc: asset("/vision/familia-de-hetauda-logo.png"),
+			logoAlt: "Logotipo oficial de Familia de Hetauda",
+			mediaMode: "logo",
 		},
 		{
 			title: "Fundacion Si Asha",
@@ -206,8 +210,9 @@ export const visionConfig: VisionConfig = {
 			ctaLabel: "Ir a la web",
 			href: "https://siasha.org/es/",
 			initials: "SA",
-			logoSrc: asset("/siasha/hero-logo.png"),
-			logoAlt: "Logotipo de Fundacion Si Asha",
+			logoSrc: asset("/vision/fundacion-si-asha-logo.png"),
+			logoAlt: "Logotipo oficial de Fundacion Si Asha",
+			mediaMode: "logo",
 		},
 		{
 			title: "Si Asha Foundation",
@@ -217,8 +222,9 @@ export const visionConfig: VisionConfig = {
 			ctaLabel: "Ir a la web",
 			href: "https://www.siashafoundation.org/",
 			initials: "SF",
-			logoSrc: asset("/siasha/hero-logo.png"),
-			logoAlt: "Logotipo de Si Asha Foundation",
+			logoSrc: asset("/vision/si-asha-foundation-logo.png"),
+			logoAlt: "Logotipo oficial de Si Asha Foundation",
+			mediaMode: "logo",
 		},
 		{
 			title: "Asha Special School & Rehabilitation Centers",
@@ -228,6 +234,9 @@ export const visionConfig: VisionConfig = {
 			ctaLabel: "Ir a la web",
 			href: "https://www.siashafoundation.org/",
 			initials: "AS",
+			logoSrc: asset("/siasha/hetauda-school.webp"),
+			logoAlt: "Imagen real de Asha Special School en Hetauda",
+			mediaMode: "image",
 		},
 		{
 			title: "Aina Institute",
@@ -235,8 +244,11 @@ export const visionConfig: VisionConfig = {
 			description:
 				"Aina Institute forma a nuevas generaciones de lideres sociales capaces de transformar proposito en proyectos solidos, sostenibles y capaces de generar impacto real. Porque cambiar vidas requiere vision, estructura y accion.",
 			ctaLabel: "Ir a la web",
-			href: "https://www.educations.com/institutions/aina-institute",
+			href: "https://ainainstitute.es/",
 			initials: "AI",
+			logoSrc: asset("/vision/aina-institute-logo.png"),
+			logoAlt: "Logotipo oficial de Aina Institute",
+			mediaMode: "logo",
 		},
 	],
 	closingTitle: "Que ningun nino quede invisible para la sociedad",
