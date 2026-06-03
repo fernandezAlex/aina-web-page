@@ -10,7 +10,17 @@ export function Hero() {
   const textRef = useRef<HTMLDivElement>(null);
   const modelRef = useRef<HTMLDivElement>(null);
   const overlayTextRef = useRef<HTMLDivElement>(null);
+
+  const hasHeroContent = Boolean(
+    heroConfig.backgroundText ||
+      heroConfig.heroImage ||
+      heroConfig.headline ||
+      heroConfig.navLinks.length > 0
+  );
+
   useEffect(() => {
+    if (!hasHeroContent) return;
+
     const ctx = gsap.context(() => {
       // Store ScrollTrigger instances for cleanup
       const triggers: ScrollTrigger[] = [];
@@ -64,14 +74,16 @@ export function Hero() {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [hasHeroContent]);
+
+  if (!hasHeroContent) return null;
 
   if (!heroConfig.backgroundText && !heroConfig.heroImage && heroConfig.navLinks.length === 0) return null;
 
   return (
     <section
       ref={sectionRef}
-      id="hero"
+      id="inicio"
       className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-forest-dark"
     >
       {/* Layer 1: Background gradient */}
@@ -90,9 +102,9 @@ export function Hero() {
         ref={textRef}
         className="absolute inset-0 flex items-center justify-center z-10 will-change-transform"
       >
-        <h1 className="text-[12vw] md:text-[14vw] lg:text-[16vw] font-sans font-extrabold text-white/15 tracking-tighter leading-none select-none whitespace-nowrap">
+        <p aria-hidden="true" className="text-[12vw] md:text-[14vw] lg:text-[16vw] font-sans font-extrabold text-white/15 tracking-tighter leading-none select-none whitespace-nowrap">
           {heroConfig.backgroundText}
-        </h1>
+        </p>
       </div>
 
       {/* Layer 3: Hero Model Image (Cutout) */}
@@ -114,17 +126,39 @@ export function Hero() {
         </div>
       )}
 
-      {/* Layer 4: Overlay Text */}
-      {heroConfig.overlayText && (
-        <div
-          ref={overlayTextRef}
-          className="absolute bottom-[15%] right-[8%] md:right-[12%] z-30 will-change-transform"
-        >
-          <p className="font-serif italic text-xl md:text-2xl lg:text-3xl text-white/90 tracking-wide">
-            {heroConfig.overlayText}
-          </p>
+      {/* Layer 4: Main content */}
+      <div
+        ref={overlayTextRef}
+        className="absolute inset-x-0 bottom-[12%] z-30 px-6 md:px-12 will-change-transform"
+      >
+        <div className="mx-auto flex max-w-5xl flex-col items-start gap-5 text-white md:items-center md:text-center">
+          {heroConfig.brandName && (
+            <p className="font-body text-sm font-semibold uppercase tracking-[0.35em] text-sand-light/90 md:text-base">
+              {heroConfig.brandName}
+            </p>
+          )}
+          {heroConfig.overlayText && (
+            <p className="font-serif italic text-xl tracking-wide text-white/90 md:text-2xl lg:text-3xl">
+              {heroConfig.overlayText}
+            </p>
+          )}
+          {heroConfig.headline && (
+            <h1 className="max-w-4xl font-sans text-5xl font-extrabold leading-[0.95] tracking-tight md:text-7xl lg:text-8xl">
+              {heroConfig.headline}
+            </h1>
+          )}
+          {heroConfig.subtitle && (
+            <p className="max-w-3xl font-serif text-2xl italic leading-snug text-sand-light md:text-3xl">
+              {heroConfig.subtitle}
+            </p>
+          )}
+          {heroConfig.description && (
+            <p className="max-w-3xl font-body text-base leading-7 text-white/80 md:text-lg md:leading-8">
+              {heroConfig.description}
+            </p>
+          )}
         </div>
-      )}
+      </div>
 
       {/* Navigation hint */}
       <nav className="absolute top-0 left-0 right-0 z-40 px-6 md:px-12 py-6 flex items-center justify-between">
