@@ -1,55 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { StatsCard } from '../components/StatsCard';
 import { whyChooseMeConfig } from '../config';
 
 gsap.registerPlugin(ScrollTrigger);
-
-interface CounterProps {
-  end: number;
-  suffix?: string;
-  duration?: number;
-  shouldAnimate: boolean;
-}
-
-function Counter({ end, suffix = '', duration = 2, shouldAnimate }: CounterProps) {
-  const [count, setCount] = useState(0);
-  const countRef = useRef(0);
-
-  useEffect(() => {
-    if (!shouldAnimate) return;
-
-    const startTime = Date.now();
-    const endTime = startTime + duration * 1000;
-
-    const updateCount = () => {
-      const now = Date.now();
-      const progress = Math.min((now - startTime) / (duration * 1000), 1);
-      const easeProgress = 1 - Math.pow(1 - progress, 3);
-      const newCount = Math.floor(easeProgress * end);
-
-      if (newCount !== countRef.current) {
-        countRef.current = newCount;
-        setCount(newCount);
-      }
-
-      if (now < endTime) {
-        requestAnimationFrame(updateCount);
-      } else {
-        setCount(end);
-      }
-    };
-
-    requestAnimationFrame(updateCount);
-  }, [end, duration, shouldAnimate]);
-
-  return (
-    <span>
-      {count}
-      {suffix}
-    </span>
-  );
-}
 
 export function WhyChooseMe() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -58,9 +13,6 @@ export function WhyChooseMe() {
   const statsRef = useRef<HTMLDivElement>(null);
   const wideRef = useRef<HTMLDivElement>(null);
   const [shouldAnimateStats, setShouldAnimateStats] = useState(false);
-
-  if (!whyChooseMeConfig.titleRegular && whyChooseMeConfig.stats.length === 0 && whyChooseMeConfig.featureCards.length === 0) return null;
-
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Section header — slide up
@@ -225,6 +177,8 @@ export function WhyChooseMe() {
     return () => ctx.revert();
   }, []);
 
+  if (!whyChooseMeConfig.titleRegular && whyChooseMeConfig.stats.length === 0 && whyChooseMeConfig.featureCards.length === 0) return null;
+
   return (
     <section
       ref={sectionRef}
@@ -275,29 +229,11 @@ export function WhyChooseMe() {
               ref={statsRef}
               className="feature-card-stats opacity-0 bg-offwhite rounded-lg p-8 md:p-10 flex flex-col justify-between"
             >
-              <div>
-                {whyChooseMeConfig.statsLabel && (
-                  <p className="text-softblack/50 text-sm font-body uppercase tracking-widest mb-8">
-                    {whyChooseMeConfig.statsLabel}
-                  </p>
-                )}
-                <div className="space-y-8">
-                  {whyChooseMeConfig.stats.map((stat, index) => (
-                    <div key={index} className="border-b border-softblack/10 pb-6 last:border-0">
-                      <p className="text-4xl md:text-5xl font-sans font-bold text-softblack tracking-tight">
-                        <Counter
-                          end={stat.value}
-                          suffix={stat.suffix}
-                          shouldAnimate={shouldAnimateStats}
-                        />
-                      </p>
-                      <p className="text-softblack/60 font-body text-sm mt-1">
-                        {stat.label}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <StatsCard
+                stats={whyChooseMeConfig.stats}
+                label={whyChooseMeConfig.statsLabel}
+                shouldAnimate={shouldAnimateStats}
+              />
             </div>
           )}
         </div>

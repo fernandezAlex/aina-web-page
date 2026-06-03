@@ -3,10 +3,15 @@ import { useLenis } from './hooks/useLenis';
 import { Hero } from './sections/Hero';
 import { IntroGrid } from './sections/IntroGrid';
 import { Services } from './sections/Services';
+import { AboutAina } from './sections/AboutAina';
 import { WhyChooseMe } from './sections/WhyChooseMe';
 import { FeaturedProjects } from './sections/FeaturedProjects';
 import { Testimonials } from './sections/Testimonials';
+import { Press } from './sections/Press';
+import { Recognitions } from './sections/Recognitions';
+import { Books } from './sections/Books';
 import { FAQ } from './sections/FAQ';
+import { Join } from './sections/Join';
 import { Footer } from './sections/Footer';
 import { siteConfig } from './config';
 import './App.css';
@@ -36,6 +41,9 @@ function App() {
       {/* Intro & Masonry Grid - White Section */}
       <IntroGrid />
 
+      {/* About Aina - Narrative Section */}
+      <AboutAina />
+
       {/* Services - Dark Section */}
       <Services />
 
@@ -48,10 +56,21 @@ function App() {
       {/* Testimonials Carousel - White Section */}
       <Testimonials />
 
+      {/* Press - White Section */}
+      <Press />
+
+      {/* Recognitions - Dark Section */}
+      <Recognitions />
+      {/* Books - White Section */}
+      <Books />
+
       {/* FAQ Accordion - Dark Section */}
       <FAQ />
 
-      {/* Footer - White Section with Massive Typography */}
+      {/* Join - Collaboration Section */}
+      <Join />
+
+      {/* Footer - Legal and Social Closing */}
       <Footer />
     </main>
   );

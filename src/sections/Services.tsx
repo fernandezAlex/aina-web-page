@@ -17,9 +17,6 @@ export function Services() {
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
-
-  if (!servicesConfig.titleLine1 && servicesConfig.services.length === 0) return null;
-
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Heading — slide up
@@ -62,6 +59,8 @@ export function Services() {
 
     return () => ctx.revert();
   }, []);
+
+  if (!servicesConfig.titleLine1 && servicesConfig.services.length === 0) return null;
 
   return (
     <section

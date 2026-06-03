@@ -27,16 +27,33 @@ export interface HeroConfig {
   heroImageAlt: string;
   overlayText: string;
   brandName: string;
+  headline: string;
+  subtitle: string;
+  description: string;
   navLinks: { label: string; href: string }[];
 }
 
 export const heroConfig: HeroConfig = {
-  backgroundText: "AINA BARCA",
-  heroImage: "/siasha/hero-logo.png",
-  heroImageAlt: "Logotipo de Aina Barca",
-  overlayText: "La esperanza se construye cada dia.",
+  backgroundText: "AINA",
+  heroImage: "",
+  heroImageAlt: "Retrato o imagen de marca de Aina Barca pendiente de incorporar",
+  overlayText: "El amor puesto en acción",
   brandName: "Aina Barca",
-  navLinks: mainNavLinks,
+  headline: "El amor puesto en acción",
+  subtitle: "Una vida dedicada a construir oportunidades donde antes no las había.",
+  description:
+    "Aina Barca ha hecho de Nepal un territorio de compromiso, cuidado y transformación. Desde la Familia de Hetauda hasta la Fundación Si Asha y Aina Institute, su trabajo acompaña a niñas, niños, jóvenes y familias con discapacidad intelectual y del desarrollo para abrir caminos de educación, terapia, autonomía y pertenencia. Su historia une presencia cotidiana, visión social y acción concreta: crear estructuras que sostienen la dignidad, multiplican oportunidades y convierten la esperanza en futuro.",
+  navLinks: [
+    { label: "Inicio", href: "#hero" },
+    { label: "Mision", href: "#sobre-aina" },
+    { label: "Programas", href: "#services" },
+    { label: "Impacto", href: "#work" },
+    { label: "Prensa", href: "#prensa" },
+    { label: "Reconocimientos", href: "#reconocimientos" },
+    { label: "Únete", href: "#unete" },
+    { label: "Libros", href: "#libros" },
+    { label: "Contacto", href: "#contact" },
+  ],
 };
 
 export interface PortfolioImage {
@@ -183,9 +200,60 @@ export const servicesConfig: ServicesConfig = {
 
 export interface StatItem {
   value: number;
-  suffix: string;
   label: string;
+  prefix?: string;
+  suffix?: string;
+  useGrouping?: boolean;
 }
+
+export interface AboutAinaNarrativeBlock {
+  eyebrow: string;
+  title: string;
+  text: string;
+}
+
+export interface AboutAinaConfig {
+  subtitle: string;
+  titleRegular: string;
+  titleItalic: string;
+  statsLabel: string;
+  narrativeBlocks: AboutAinaNarrativeBlock[];
+  impactStats: StatItem[];
+}
+
+export const aboutAinaConfig: AboutAinaConfig = {
+  subtitle: "Sobre Aina",
+  titleRegular: "Una historia que empezo con un viaje y se convirtio en una red de",
+  titleItalic: "esperanza activa",
+  statsLabel: "Impacto acumulado",
+  narrativeBlocks: [
+    {
+      eyebrow: "El viaje",
+      title: "Nepal, 21 anos",
+      text: "Aina llego a Nepal con 21 anos en un viaje que iba a ser temporal, pero que termino cambiando su manera de mirar la infancia, la discapacidad y la responsabilidad compartida.",
+    },
+    {
+      eyebrow: "La realidad",
+      title: "Ninos y ninas fuera de todo",
+      text: "Alli se encontro con ninos y ninas con discapacidad intelectual excluidos de la escuela, de los espacios de juego y de muchas oportunidades basicas para crecer con dignidad.",
+    },
+    {
+      eyebrow: "La decision",
+      title: "Quedarse para escuchar y aprender",
+      text: "La respuesta no fue imponer soluciones rapidas: decidio quedarse, escuchar a las familias, aprender del contexto y empezar a construir escuelas junto a la comunidad local.",
+    },
+    {
+      eyebrow: "El camino",
+      title: "Una red que sigue creciendo",
+      text: "Aquel primer impulso evoluciono hacia escuelas de educacion especial, fisioterapia, acompanamiento a familias y una red de apoyo que sostiene procesos de inclusion a largo plazo.",
+    },
+  ],
+  impactStats: [
+    { value: 157, prefix: "+", label: "ninos y ninas escolarizados", useGrouping: true },
+    { value: 60, prefix: "+", label: "mujeres en el equipo profesional", useGrouping: true },
+    { value: 1000, prefix: "+", label: "familias acompanadas", useGrouping: true },
+  ],
+};
 
 export interface FeatureCard {
   image: string;
@@ -351,9 +419,18 @@ export const footerConfig: FooterConfig = {
   logoText: "AINA BARCA",
   contactLabel: "Contacto",
   email: "",
-  locationText: "Nepal y red internacional de apoyo\nEmail pendiente de confirmacion oficial",
+  locationText: "",
   navigationLabel: "Secciones",
-  navLinks: mainNavLinks,
+  navLinks: [
+    { label: "Inicio", href: "#hero" },
+    { label: "Mision", href: "#sobre-aina" },
+    { label: "Programas", href: "#services" },
+    { label: "Impacto", href: "#work" },
+    { label: "Prensa", href: "#prensa" },
+    { label: "Reconocimientos", href: "#reconocimientos" },
+    { label: "Únete", href: "#unete" },
+    { label: "Libros", href: "#libros" },
+  ],
   socialLabel: "Canales",
   socialLinks: [],
   tagline: "Hope is built every day.\nEvery gesture matters.",

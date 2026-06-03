@@ -17,10 +17,21 @@ export function Footer() {
   const footerRef = useRef<HTMLElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-
-  if (!footerConfig.logoText && !footerConfig.email && footerConfig.navLinks.length === 0) return null;
+  const hasContactInfo = Boolean(footerConfig.contactLabel || footerConfig.email || footerConfig.locationText);
+  const hasNavigation = footerConfig.navLinks.length > 0;
+  const hasSocialLinks = footerConfig.socialLinks.length > 0;
+  const hasSocialContent = hasSocialLinks || Boolean(footerConfig.tagline);
+  const visibleColumnCount = [hasContactInfo, hasNavigation, hasSocialContent].filter(Boolean).length;
+  const footerGridClassName = visibleColumnCount >= 3
+    ? 'md:grid-cols-3'
+    : visibleColumnCount === 2
+      ? 'md:grid-cols-2'
+      : 'md:grid-cols-1';
+  const hasFooterContent = Boolean(footerConfig.logoText || hasContactInfo || hasNavigation || hasSocialContent);
 
   useEffect(() => {
+    if (!hasFooterContent) return;
+
     const ctx = gsap.context(() => {
       // Logo — scale up + fade
       ScrollTrigger.create({
@@ -52,7 +63,16 @@ export function Footer() {
     }, footerRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [hasFooterContent]);
+
+  if (
+    !footerConfig.logoText &&
+    !hasContactInfo &&
+    !hasNavigation &&
+    !hasSocialContent
+  ) return null;
+
+  if (!footerConfig.logoText && !footerConfig.email && footerConfig.navLinks.length === 0) return null;
 
   return (
     <footer
@@ -88,31 +108,33 @@ export function Footer() {
 
         {/* Footer Content */}
         <div ref={contentRef} className="opacity-0">
-          <div className="grid md:grid-cols-3 gap-12 md:gap-8 mb-16">
+          <div className={`grid gap-12 md:gap-8 mb-16 ${footerGridClassName}`}>
             {/* Contact Info */}
-            <div>
-              {footerConfig.contactLabel && (
-                <p className="text-softblack/50 text-sm font-body uppercase tracking-widest mb-4">
-                  {footerConfig.contactLabel}
-                </p>
-              )}
-              {footerConfig.email && (
-                <a
-                  href={`mailto:${footerConfig.email}`}
-                  className="text-xl md:text-2xl font-sans font-semibold text-softblack hover:text-softblack/70 transition-colors duration-300"
-                >
-                  {footerConfig.email}
-                </a>
-              )}
-              {footerConfig.locationText && (
-                <p className="mt-4 text-softblack/60 font-body text-sm whitespace-pre-line">
-                  {footerConfig.locationText}
-                </p>
-              )}
-            </div>
+            {hasContactInfo && (
+              <div>
+                {footerConfig.contactLabel && (
+                  <p className="text-softblack/50 text-sm font-body uppercase tracking-widest mb-4">
+                    {footerConfig.contactLabel}
+                  </p>
+                )}
+                {footerConfig.email && (
+                  <a
+                    href={`mailto:${footerConfig.email}`}
+                    className="text-xl md:text-2xl font-sans font-semibold text-softblack hover:text-softblack/70 transition-colors duration-300"
+                  >
+                    {footerConfig.email}
+                  </a>
+                )}
+                {footerConfig.locationText && (
+                  <p className="mt-4 text-softblack/60 font-body text-sm whitespace-pre-line">
+                    {footerConfig.locationText}
+                  </p>
+                )}
+              </div>
+            )}
 
             {/* Navigation */}
-            {footerConfig.navLinks.length > 0 && (
+            {hasNavigation && (
               <div>
                 {footerConfig.navigationLabel && (
                   <p className="text-softblack/50 text-sm font-body uppercase tracking-widest mb-4">
@@ -134,35 +156,39 @@ export function Footer() {
             )}
 
             {/* Social Links */}
-            <div>
-              {footerConfig.socialLabel && (
-                <p className="text-softblack/50 text-sm font-body uppercase tracking-widest mb-4">
-                  {footerConfig.socialLabel}
-                </p>
-              )}
-              {footerConfig.socialLinks.length > 0 && (
-                <div className="flex items-center gap-4">
-                  {footerConfig.socialLinks.map((social) => {
-                    const Icon = iconMap[social.iconName] || Mail;
-                    return (
-                      <a
-                        key={social.label}
-                        href={social.href}
-                        aria-label={social.label}
-                        className="w-10 h-10 rounded-full bg-offwhite flex items-center justify-center text-softblack/70 hover:bg-forest-dark hover:text-white transition-all duration-300"
-                      >
-                        <Icon className="w-5 h-5" strokeWidth={1.5} />
-                      </a>
-                    );
-                  })}
-                </div>
-              )}
-              {footerConfig.tagline && (
-                <p className="mt-6 text-softblack/40 font-body text-sm whitespace-pre-line">
-                  {footerConfig.tagline}
-                </p>
-              )}
-            </div>
+            {hasSocialContent && (
+              <div>
+                {hasSocialLinks && footerConfig.socialLabel && (
+                  <p className="text-softblack/50 text-sm font-body uppercase tracking-widest mb-4">
+                    {footerConfig.socialLabel}
+                  </p>
+                )}
+                {hasSocialLinks && (
+                  <div className="flex items-center gap-4">
+                    {footerConfig.socialLinks.map((social) => {
+                      const Icon = iconMap[social.iconName] || Mail;
+                      return (
+                        <a
+                          key={social.label}
+                          href={social.href}
+                          aria-label={social.label}
+                          className="w-10 h-10 rounded-full bg-offwhite flex items-center justify-center text-softblack/70 hover:bg-forest-dark hover:text-white transition-all duration-300"
+                        >
+                          <Icon className="w-5 h-5" strokeWidth={1.5} />
+                        </a>
+                      );
+                    })}
+                  </div>
+                )}
+                {footerConfig.tagline && (
+                  <p
+                    className={`${hasSocialLinks ? 'mt-6 ' : ''}text-softblack/40 font-body text-sm whitespace-pre-line`}
+                  >
+                    {footerConfig.tagline}
+                  </p>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Bottom Bar */}

@@ -17,8 +17,6 @@ export function FAQ() {
   const accordionRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
 
-  if (!faqConfig.titleRegular && faqConfig.faqs.length === 0) return null;
-
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Header — slide up
@@ -75,6 +73,8 @@ export function FAQ() {
 
     return () => ctx.revert();
   }, []);
+
+  if (!faqConfig.titleRegular && faqConfig.faqs.length === 0) return null;
 
   return (
     <section
