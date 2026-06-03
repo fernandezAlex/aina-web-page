@@ -17,7 +17,6 @@ export function Footer() {
   const footerRef = useRef<HTMLElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-
   const hasContactInfo = Boolean(footerConfig.contactLabel || footerConfig.email || footerConfig.locationText);
   const hasNavigation = footerConfig.navLinks.length > 0;
   const hasSocialLinks = footerConfig.socialLinks.length > 0;
@@ -72,6 +71,8 @@ export function Footer() {
     !hasNavigation &&
     !hasSocialContent
   ) return null;
+
+  if (!footerConfig.logoText && !footerConfig.email && footerConfig.navLinks.length === 0) return null;
 
   return (
     <footer
