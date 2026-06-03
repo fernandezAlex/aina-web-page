@@ -6,6 +6,8 @@ import { Services } from './sections/Services';
 import { WhyChooseMe } from './sections/WhyChooseMe';
 import { FeaturedProjects } from './sections/FeaturedProjects';
 import { Testimonials } from './sections/Testimonials';
+import { Press } from './sections/Press';
+import { Recognitions } from './sections/Recognitions';
 import { FAQ } from './sections/FAQ';
 import { Footer } from './sections/Footer';
 import { siteConfig } from './config';
@@ -47,6 +49,12 @@ function App() {
 
       {/* Testimonials Carousel - White Section */}
       <Testimonials />
+
+      {/* Press - White Section */}
+      <Press />
+
+      {/* Recognitions - Dark Section */}
+      <Recognitions />
 
       {/* FAQ Accordion - Dark Section */}
       <FAQ />

@@ -31,6 +31,8 @@ export const heroConfig: HeroConfig = {
     { label: "Mision", href: "#about" },
     { label: "Programas", href: "#services" },
     { label: "Impacto", href: "#work" },
+    { label: "Prensa", href: "#prensa" },
+    { label: "Reconocimientos", href: "#reconocimientos" },
     { label: "Contacto", href: "#contact" },
   ],
 };
@@ -354,6 +356,8 @@ export const footerConfig: FooterConfig = {
     { label: "Mision", href: "#about" },
     { label: "Programas", href: "#services" },
     { label: "Impacto", href: "#work" },
+    { label: "Prensa", href: "#prensa" },
+    { label: "Reconocimientos", href: "#reconocimientos" },
   ],
   socialLabel: "Canales",
   socialLinks: [],
