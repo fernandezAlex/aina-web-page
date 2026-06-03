@@ -7,6 +7,8 @@ import { AboutAina } from './sections/AboutAina';
 import { WhyChooseMe } from './sections/WhyChooseMe';
 import { FeaturedProjects } from './sections/FeaturedProjects';
 import { Testimonials } from './sections/Testimonials';
+import { Press } from './sections/Press';
+import { Recognitions } from './sections/Recognitions';
 import { Books } from './sections/Books';
 import { FAQ } from './sections/FAQ';
 import { Join } from './sections/Join';
@@ -54,6 +56,11 @@ function App() {
       {/* Testimonials Carousel - White Section */}
       <Testimonials />
 
+      {/* Press - White Section */}
+      <Press />
+
+      {/* Recognitions - Dark Section */}
+      <Recognitions />
       {/* Books - White Section */}
       <Books />
 
