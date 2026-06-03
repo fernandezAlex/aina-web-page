@@ -1,39 +1,26 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Instagram, Twitter, Linkedin, Mail, type LucideIcon } from 'lucide-react';
 import { footerConfig } from '../config';
 
 gsap.registerPlugin(ScrollTrigger);
-
-const iconMap: Record<string, LucideIcon> = {
-  Instagram,
-  Twitter,
-  Linkedin,
-  Mail,
-};
 
 export function Footer() {
   const footerRef = useRef<HTMLElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const hasContactInfo = Boolean(footerConfig.contactLabel || footerConfig.email || footerConfig.locationText);
   const hasNavigation = footerConfig.navLinks.length > 0;
-  const hasSocialLinks = footerConfig.socialLinks.length > 0;
-  const hasSocialContent = hasSocialLinks || Boolean(footerConfig.tagline);
-  const visibleColumnCount = [hasContactInfo, hasNavigation, hasSocialContent].filter(Boolean).length;
-  const footerGridClassName = visibleColumnCount >= 3
-    ? 'md:grid-cols-3'
-    : visibleColumnCount === 2
-      ? 'md:grid-cols-2'
-      : 'md:grid-cols-1';
-  const hasFooterContent = Boolean(footerConfig.logoText || hasContactInfo || hasNavigation || hasSocialContent);
+  const closingText = footerConfig.closingText?.trim() ?? '';
+  const [closingHeadline, ...closingRestParts] = closingText.split('. ');
+  const closingBody = closingRestParts.join('. ');
+  const hasFooterContent = Boolean(
+    footerConfig.logoText || hasNavigation || closingText
+  );
 
   useEffect(() => {
     if (!hasFooterContent) return;
 
     const ctx = gsap.context(() => {
-      // Logo — scale up + fade
       ScrollTrigger.create({
         trigger: logoRef.current,
         start: 'top 88%',
@@ -47,7 +34,6 @@ export function Footer() {
         once: true,
       });
 
-      // Content — fade up
       ScrollTrigger.create({
         trigger: contentRef.current,
         start: 'top 88%',
@@ -65,29 +51,23 @@ export function Footer() {
     return () => ctx.revert();
   }, [hasFooterContent]);
 
-  if (
-    !footerConfig.logoText &&
-    !hasContactInfo &&
-    !hasNavigation &&
-    !hasSocialContent
-  ) return null;
-
-  if (!footerConfig.logoText && !footerConfig.email && footerConfig.navLinks.length === 0) return null;
+  if (!hasFooterContent) return null;
 
   return (
     <footer
       ref={footerRef}
-      id="unete"
-      className="relative w-full bg-white pt-24 md:pt-32 pb-8 overflow-hidden"
+      id="footer"
+      className="relative w-full overflow-hidden bg-primary pt-24 pb-8 md:pt-32"
     >
-      <span id="unete" className="absolute -top-24" aria-hidden="true" />
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        {/* Massive Logo */}
         {footerConfig.logoText && (
-          <div ref={logoRef} className="opacity-0 mb-16 md:mb-24">
+          <div
+            ref={logoRef}
+            className="-mx-6 mb-16 bg-primary px-6 py-12 opacity-0 md:-mx-12 md:mb-24 md:px-12 md:py-16"
+          >
             <svg
               viewBox="0 0 600 100"
-              className="w-full h-auto max-h-[25vh]"
+              className="h-auto max-h-[25vh] w-full"
               preserveAspectRatio="xMidYMid meet"
             >
               <text
@@ -95,7 +75,7 @@ export function Footer() {
                 y="50%"
                 dominantBaseline="middle"
                 textAnchor="middle"
-                className="fill-softblack font-sans font-extrabold"
+                className="fill-secondary font-sans font-extrabold"
                 style={{
                   fontSize: '90px',
                   letterSpacing: '-0.03em',
@@ -104,50 +84,35 @@ export function Footer() {
                 {footerConfig.logoText}
               </text>
             </svg>
-          </div>
-        )}
-
-        {/* Footer Content */}
-        <div ref={contentRef} className="opacity-0">
-          <div className={`grid gap-12 md:gap-8 mb-16 ${footerGridClassName}`}>
-            {/* Contact Info */}
-            {hasContactInfo && (
-              <div>
-                {footerConfig.contactLabel && (
-                  <p className="text-softblack/50 text-sm font-body uppercase tracking-widest mb-4">
-                    {footerConfig.contactLabel}
-                  </p>
-                )}
-                {footerConfig.email && (
-                  <a
-                    href={`mailto:${footerConfig.email}`}
-                    className="text-xl md:text-2xl font-sans font-semibold text-softblack hover:text-softblack/70 transition-colors duration-300"
-                  >
-                    {footerConfig.email}
-                  </a>
-                )}
-                {footerConfig.locationText && (
-                  <p className="mt-4 text-softblack/60 font-body text-sm whitespace-pre-line">
-                    {footerConfig.locationText}
+            {closingText && (
+              <div className="mx-auto mt-6 max-w-5xl text-center">
+                <p className="font-sans text-2xl font-semibold leading-none text-offwhite/90 md:text-3xl">
+                  {closingHeadline}
+                  {closingBody ? '.' : ''}
+                </p>
+                {closingBody && (
+                  <p className="mt-3 font-sans text-xl font-semibold leading-snug text-offwhite/82 md:text-2xl">
+                    {closingBody}
                   </p>
                 )}
               </div>
             )}
+          </div>
+        )}
 
-            {/* Navigation */}
+        <div ref={contentRef} className="opacity-0">
+          <div className="mb-16">
             {hasNavigation && (
               <div>
-                {footerConfig.navigationLabel && (
-                  <p className="text-softblack/50 text-sm font-body uppercase tracking-widest mb-4">
-                    {footerConfig.navigationLabel}
-                  </p>
-                )}
-                <nav className="space-y-3">
+                <p className="accent-kicker mb-4 text-sm font-body uppercase tracking-widest">
+                  {footerConfig.navigationLabel}
+                </p>
+                <nav className="flex flex-wrap items-center gap-x-6 gap-y-3">
                   {footerConfig.navLinks.map((link) => (
                     <a
                       key={link.label}
                       href={link.href}
-                      className="block text-softblack/80 hover:text-softblack font-body transition-colors duration-300"
+                      className="inline-flex font-body text-offwhite/84 transition-colors duration-300 hover:text-secondary"
                     >
                       {link.label}
                     </a>
@@ -155,63 +120,17 @@ export function Footer() {
                 </nav>
               </div>
             )}
-
-            {/* Social Links */}
-            {hasSocialContent && (
-              <div>
-                {hasSocialLinks && footerConfig.socialLabel && (
-                  <p className="text-softblack/50 text-sm font-body uppercase tracking-widest mb-4">
-                    {footerConfig.socialLabel}
-                  </p>
-                )}
-                {hasSocialLinks && (
-                  <div className="flex items-center gap-4">
-                    {footerConfig.socialLinks.map((social) => {
-                      const Icon = iconMap[social.iconName] || Mail;
-                      return (
-                        <a
-                          key={social.label}
-                          href={social.href}
-                          aria-label={social.label}
-                          className="w-10 h-10 rounded-full bg-offwhite flex items-center justify-center text-softblack/70 hover:bg-forest-dark hover:text-white transition-all duration-300"
-                        >
-                          <Icon className="w-5 h-5" strokeWidth={1.5} />
-                        </a>
-                      );
-                    })}
-                  </div>
-                )}
-                {footerConfig.tagline && (
-                  <p
-                    className={`${hasSocialLinks ? 'mt-6 ' : ''}text-softblack/40 font-body text-sm whitespace-pre-line`}
-                  >
-                    {footerConfig.tagline}
-                  </p>
-                )}
-              </div>
-            )}
           </div>
 
-          {/* Bottom Bar */}
-          <div className="pt-8 border-t border-softblack/10 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-softblack/40 font-body text-sm">
-              {footerConfig.copyright || `\u00A9 ${new Date().getFullYear()} All rights reserved.`}
+          <div className="flex flex-col items-center justify-between gap-4 border-t border-offwhite/18 pt-8 md:flex-row">
+            <p className="text-sm font-body text-offwhite/64">
+              {footerConfig.copyright}
             </p>
-            {footerConfig.bottomLinks.length > 0 && (
-              <div className="flex items-center gap-6 text-softblack/40 font-body text-sm">
-                {footerConfig.bottomLinks.map((link) => (
-                  <a key={link.label} href={link.href} className="hover:text-softblack transition-colors duration-300">
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-            )}
           </div>
         </div>
       </div>
 
-      {/* Decorative gradient */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-offwhite to-transparent pointer-events-none" />
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-forest-dark/30 to-transparent" />
     </footer>
   );
 }

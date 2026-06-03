@@ -1,17 +1,12 @@
 import { useEffect } from 'react';
 import { useLenis } from './hooks/useLenis';
 import { Hero } from './sections/Hero';
-import { IntroGrid } from './sections/IntroGrid';
-import { Services } from './sections/Services';
+import { IntroMission } from './sections/IntroMission';
 import { Vision } from './sections/Vision';
 import { AboutAina } from './sections/AboutAina';
-import { WhyChooseMe } from './sections/WhyChooseMe';
-import { FeaturedProjects } from './sections/FeaturedProjects';
-import { Testimonials } from './sections/Testimonials';
 import { Press } from './sections/Press';
 import { Recognitions } from './sections/Recognitions';
 import { Books } from './sections/Books';
-import { FAQ } from './sections/FAQ';
 import { Join } from './sections/Join';
 import { Footer } from './sections/Footer';
 import { siteConfig } from './config';
@@ -36,45 +31,14 @@ function App() {
 
   return (
     <main className="relative w-full overflow-x-hidden">
-      {/* Hero Section - Parallax Layering */}
       <Hero />
-
-      {/* Intro & Masonry Grid - White Section */}
-      <IntroGrid />
-
-      {/* About Aina - Narrative Section */}
+      <IntroMission />
       <AboutAina />
-
-      {/* Services - Dark Section */}
-      <Services />
-
-      {/* Vision Ecosystem - Light Section */}
       <Vision />
-
-      {/* Why Choose Me & Stats - White Section */}
-      <WhyChooseMe />
-
-      {/* Featured Projects - Dark Section */}
-      <FeaturedProjects />
-
-      {/* Testimonials Carousel - White Section */}
-      <Testimonials />
-
-      {/* Press - White Section */}
-      <Press />
-
-      {/* Recognitions - Dark Section */}
-      <Recognitions />
-      {/* Books - White Section */}
       <Books />
-
-      {/* FAQ Accordion - Dark Section */}
-      <FAQ />
-
-      {/* Join - Collaboration Section */}
+      <Press />
+      <Recognitions />
       <Join />
-
-      {/* Footer - Legal and Social Closing */}
       <Footer />
     </main>
   );

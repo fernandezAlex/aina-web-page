@@ -1,7 +1,15 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowUpRight } from 'lucide-react';
+import {
+  ArrowUpRight,
+  GraduationCap,
+  HandHeart,
+  Users,
+} from 'lucide-react';
+import { joinGalleryImages } from '../content/images';
+
+type JoinIcon = typeof HandHeart;
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,16 +19,21 @@ type JoinAction = {
 };
 
 type JoinBlock = {
+  eyebrow: string;
   title: string;
+  summary: string;
   description: string;
   actions: JoinAction[];
+  icon: JoinIcon;
 };
 
 const joinBlocks: JoinBlock[] = [
   {
-    title: 'Forma parte de este cambio',
+    eyebrow: 'Apoyo recurrente',
+    title: 'Sosten una escuela, abre futuros.',
+    summary: 'Tu ayuda mensual mantiene oportunidades reales en marcha.',
     description:
-      'Suma tu apoyo sostenido para que los programas educativos, terapéuticos y familiares puedan seguir creciendo.',
+      'Ayuda a que ninos y ninas en Nepal puedan seguir accediendo a educacion, inclusion y un futuro con mas oportunidades. Porque detras de cada escuela y cada nino que hoy puede aprender, hay personas que decidieron sostener esta mision con amor y compromiso.',
     actions: [
       {
         label: 'Hazte socio desde España',
@@ -35,28 +48,35 @@ const joinBlocks: JoinBlock[] = [
         href: 'https://siasha.org/hazte-socio/',
       },
     ],
+    icon: HandHeart,
   },
   {
-    title: 'Forma parte de esta misión sobre el terreno',
+    eyebrow: 'Voluntariado',
+    title: 'Vive la mision desde dentro.',
+    summary: 'Comparte el dia a dia con el equipo y acompana procesos reales.',
     description:
-      'Comparte tiempo, presencia y capacidades junto al equipo que acompaña cada día a niños, jóvenes y familias.',
+      'Comparte el dia a dia con las mujeres y equipos que trabajan cada dia para construir una sociedad mas inclusiva y humana en Nepal desde la educacion, la inclusion y el amor puesto en accion.',
     actions: [
       {
         label: 'Quiero ser voluntario',
         href: 'mailto:voluntariosfdh@gmail.com',
       },
     ],
+    icon: Users,
   },
   {
-    title: 'Fórmate para transformar vidas',
+    eyebrow: 'Aina Institute',
+    title: 'Convierte tu vocacion en impacto profesional.',
+    summary: 'Formacion practica para construir proyectos solidos y sostenibles.',
     description:
-      'Conversa con el equipo para encontrar la mejor forma de prepararte y aportar desde tu experiencia.',
+      'A traves de Aina Institute, personas de distintos paises aprenden a construir proyectos solidos, sostenibles y capaces de generar impacto real. Porque tener vocacion no siempre es suficiente. Tambien hacen falta herramientas, estrategia y una estructura capaz de sostener el cambio. Convierte tu vocacion en tu profesion.',
     actions: [
       {
         label: 'Habla con el equipo',
         href: 'https://wa.me/34610094664',
       },
     ],
+    icon: GraduationCap,
   },
 ];
 
@@ -115,12 +135,29 @@ export function Join() {
       <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-forest-dark/10 to-transparent pointer-events-none" />
       <div className="relative max-w-7xl mx-auto px-6 md:px-12">
         <div ref={headerRef} className="max-w-4xl mb-14 md:mb-20 opacity-0">
-          <p className="text-softblack/50 text-sm font-body uppercase tracking-widest mb-4">
+          <p className="accent-kicker text-sm font-body uppercase tracking-widest mb-4">
             Únete
           </p>
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-sans font-bold text-softblack tracking-tight leading-[0.98]">
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-sans font-bold text-primary tracking-tight leading-[0.98]">
             Hay muchas formas de poner el amor en acción.
           </h2>
+          <p className="mt-6 max-w-3xl text-base md:text-lg font-body leading-relaxed text-softblack/68">
+            A veces, las transformaciones mas grandes empiezan con gestos pequenos: una decision,
+            una ayuda, una persona que decide implicarse.
+          </p>
+        </div>
+
+        <div className="mb-8 grid grid-cols-2 gap-4 md:mb-12 md:grid-cols-4">
+          {joinGalleryImages.map((image) => (
+            <div key={image.src} className="overflow-hidden rounded-[1.75rem] border border-softblack/10 bg-white shadow-sm aspect-[4/5]">
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </div>
+          ))}
         </div>
 
         <div ref={blocksRef} className="grid lg:grid-cols-3 gap-5 md:gap-6">
@@ -128,13 +165,29 @@ export function Join() {
             <article
               key={block.title}
               data-join-block
-              className="opacity-0 flex min-h-[25rem] flex-col justify-between rounded-[2rem] bg-white p-6 md:p-8 shadow-sm border border-softblack/10"
+              className="accent-card opacity-0 flex min-h-[27rem] flex-col justify-between rounded-[2rem] border border-secondary/15 bg-white p-6 shadow-[0_20px_50px_rgba(103,17,39,0.08)] transition-transform duration-300 hover:-translate-y-1 md:p-8"
             >
               <div>
-                <h3 className="text-forest-dark/60 text-xs font-body uppercase tracking-[0.22em] mb-5">
-                  {block.title}
-                </h3>
-                <p className="text-softblack/70 font-body text-base md:text-lg leading-relaxed">
+                <div className="mb-6 flex items-start justify-between gap-4">
+                  <div className="space-y-3">
+                    <p className="accent-kicker text-xs font-body uppercase tracking-[0.22em]">
+                      {block.eyebrow}
+                    </p>
+                    <h3 className="max-w-[14ch] text-3xl font-sans font-bold leading-[0.98] tracking-tight text-primary md:text-[2.2rem]">
+                      {block.title}
+                    </h3>
+                  </div>
+
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-secondary/14 text-secondary">
+                    <block.icon className="h-5 w-5" strokeWidth={2} />
+                  </div>
+                </div>
+
+                <p className="mb-5 max-w-[28ch] text-base font-sans font-semibold leading-snug text-softblack md:text-lg">
+                  {block.summary}
+                </p>
+
+                <p className="text-base font-body leading-relaxed text-softblack/70 md:text-lg">
                   {block.description}
                 </p>
               </div>
@@ -149,10 +202,12 @@ export function Join() {
                       href={action.href}
                       target={opensInNewTab ? '_blank' : undefined}
                       rel={opensInNewTab ? 'noreferrer' : undefined}
-                      className="group flex w-full items-center justify-between gap-4 rounded-full bg-forest-dark px-5 py-4 text-left text-sm md:text-base font-sans font-semibold text-white transition-all duration-300 hover:bg-forest-mid hover:-translate-y-0.5"
+                      className="group flex w-full items-center justify-between gap-4 rounded-[1.4rem] border border-secondary/20 bg-secondary px-5 py-4 text-left text-sm font-sans font-semibold text-softblack shadow-[inset_0_1px_0_rgba(255,255,255,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#ff8b43] md:text-base"
                     >
                       <span>{action.label}</span>
-                      <ArrowUpRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={1.8} />
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/24 transition-colors duration-300 group-hover:bg-white/32">
+                        <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={1.8} />
+                      </span>
                     </a>
                   );
                 })}

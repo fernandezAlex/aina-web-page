@@ -77,14 +77,14 @@ export function StatsCard({
   return (
     <div className={className}>
       {label && (
-        <p className="text-softblack/50 text-sm font-body uppercase tracking-widest mb-8">
+        <p className="accent-kicker text-sm font-body uppercase tracking-widest mb-8">
           {label}
         </p>
       )}
       <div className="space-y-8">
         {stats.map((stat, index) => (
-          <div key={`${stat.label}-${index}`} className="border-b border-softblack/10 pb-6 last:border-0">
-            <p className={`${valueClassName} font-sans font-bold text-softblack tracking-tight`}>
+          <div key={`${stat.label}-${index}`} className="border-b border-secondary/15 pb-6 last:border-0">
+            <p className={`${valueClassName} font-sans font-bold text-primary tracking-tight`}>
               <Counter
                 end={stat.value}
                 prefix={stat.prefix}

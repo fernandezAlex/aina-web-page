@@ -72,7 +72,7 @@ export function Vision() {
     <section
       ref={sectionRef}
       id="vision"
-      className="relative w-full overflow-hidden bg-offwhite py-24 text-softblack md:py-32"
+      className="relative w-full overflow-hidden bg-offwhite pb-0 pt-24 text-softblack md:pb-0 md:pt-32"
     >
       <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white to-transparent pointer-events-none" />
       <div className="absolute -right-24 top-24 h-72 w-72 rounded-full bg-[#ffa952]/20 blur-3xl" />
@@ -85,10 +85,10 @@ export function Vision() {
               {visionConfig.eyebrow}
             </p>
           )}
-          <h2 className="text-4xl font-sans font-bold tracking-tight text-softblack md:text-6xl lg:text-7xl">
+          <h2 className="text-4xl font-sans font-bold tracking-tight text-primary md:text-6xl lg:text-7xl">
             {visionConfig.heading}
             <br />
-            <span className="font-serif italic font-normal text-forest-mid">
+            <span className="font-serif italic font-normal text-primary/75">
               {visionConfig.subheading}
             </span>
           </h2>
@@ -105,12 +105,22 @@ export function Vision() {
               key={card.title}
               className="vision-card group flex min-h-[360px] flex-col rounded-3xl border border-softblack/10 bg-white/80 p-6 opacity-0 shadow-[0_24px_80px_rgba(27,20,19,0.08)] backdrop-blur transition-all duration-500 hover:-translate-y-2 hover:border-forest-mid/25 hover:shadow-[0_30px_90px_rgba(103,17,39,0.14)]"
             >
-              <div className="mb-8 flex h-24 items-center justify-center rounded-2xl bg-offwhite/80 ring-1 ring-softblack/5">
+              <div
+                className={`mb-8 overflow-hidden rounded-2xl ring-1 ring-softblack/5 ${
+                  card.mediaMode === 'image'
+                    ? 'h-32 bg-softblack/5'
+                    : 'flex h-24 items-center justify-center bg-offwhite/80'
+                }`}
+              >
                 {card.logoSrc ? (
                   <img
                     src={card.logoSrc}
                     alt={card.logoAlt || `${card.title} logo`}
-                    className="max-h-16 max-w-[75%] object-contain"
+                    className={
+                      card.mediaMode === 'image'
+                        ? 'h-full w-full object-cover transition-transform duration-500 group-hover:scale-105'
+                        : 'max-h-16 max-w-[75%] object-contain'
+                    }
                     loading="lazy"
                   />
                 ) : (
@@ -124,7 +134,7 @@ export function Vision() {
                 <p className="mb-3 text-xs font-body uppercase tracking-[0.24em] text-forest-mid/70">
                   {card.subtitle}
                 </p>
-                <h3 className="text-xl font-sans font-bold leading-tight text-softblack">
+                <h3 className="text-xl font-sans font-bold leading-tight text-primary">
                   {card.title}
                 </h3>
                 <p className="mt-4 flex-1 text-sm font-body leading-relaxed text-softblack/60">
@@ -146,18 +156,43 @@ export function Vision() {
 
         <div
           ref={ctaRef}
-          className="mt-16 overflow-hidden rounded-[2rem] bg-forest-dark px-6 py-10 text-center opacity-0 shadow-[0_30px_90px_rgba(103,17,39,0.24)] md:mt-20 md:px-12 md:py-14"
+          className="relative left-1/2 right-1/2 mt-16 w-screen -translate-x-1/2 overflow-hidden bg-forest-dark opacity-0 shadow-[0_30px_90px_rgba(103,17,39,0.24)] md:mt-20"
         >
-          <p className="mx-auto max-w-3xl text-3xl font-sans font-bold tracking-tight text-white md:text-5xl">
-            {visionConfig.ctaTitle}
-          </p>
-          <a
-            href={visionConfig.ctaHref}
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-body font-bold uppercase tracking-[0.18em] text-forest-dark transition-all duration-300 hover:-translate-y-1 hover:bg-[#ffa952] hover:text-softblack"
-          >
-            {visionConfig.ctaButtonText}
-            <ArrowUpRight className="h-4 w-4" />
-          </a>
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url(${visionConfig.closingBackgroundImage})` }}
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(92,9,28,0.92)_0%,rgba(126,18,43,0.86)_45%,rgba(126,18,43,0.74)_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,170,82,0.18),transparent_34%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(45,3,13,0.18)_0%,rgba(45,3,13,0.5)_100%)]" />
+
+          <div className="relative mx-auto max-w-7xl px-6 py-16 md:px-12 md:py-24">
+            <div className="max-w-4xl text-center md:text-left">
+              <p className="mb-4 text-sm font-body uppercase tracking-[0.32em] text-white/70">
+                Una causa que se siente cerca
+              </p>
+              <p className="text-3xl font-sans font-bold tracking-tight text-white [text-shadow:0_10px_30px_rgba(0,0,0,0.28)] md:text-5xl lg:text-6xl">
+                {visionConfig.closingTitle}
+              </p>
+              <div className="mt-8 space-y-4">
+                {visionConfig.closingParagraphs.map((paragraph) => (
+                  <p
+                    key={paragraph}
+                    className="max-w-3xl text-base font-body leading-relaxed text-white/90 [text-shadow:0_6px_18px_rgba(0,0,0,0.25)] md:text-lg"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+              <a
+                href={visionConfig.ctaHref}
+                className="mt-10 inline-flex items-center gap-2 rounded-full bg-secondary px-7 py-3 text-sm font-body font-bold uppercase tracking-[0.18em] text-softblack transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:text-forest-dark"
+              >
+                {visionConfig.ctaButtonText}
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

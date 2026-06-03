@@ -119,6 +119,38 @@
 }
 
 @layer components {
+  .accent-kicker {
+    color: hsl(var(--secondary) / 0.82);
+  }
+
+  .accent-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .accent-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 1.5rem;
+    right: 1.5rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--secondary) / 0.55), transparent);
+    pointer-events: none;
+  }
+
+  .accent-card::after {
+    content: '';
+    position: absolute;
+    top: 1.1rem;
+    right: 1.1rem;
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 9999px;
+    background: hsl(var(--secondary) / 0.34);
+    pointer-events: none;
+  }
+
   .viewfinder {
     position: relative;
   }

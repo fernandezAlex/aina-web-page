@@ -14,7 +14,6 @@ export function Hero() {
   const hasHeroContent = Boolean(
     heroConfig.backgroundText ||
       heroConfig.heroImage ||
-      heroConfig.headline ||
       heroConfig.navLinks.length > 0
   );
 
@@ -83,7 +82,7 @@ export function Hero() {
   return (
     <section
       ref={sectionRef}
-      id="inicio"
+      id="hero"
       className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-forest-dark"
     >
       {/* Layer 1: Background gradient */}
@@ -102,7 +101,7 @@ export function Hero() {
         ref={textRef}
         className="absolute inset-0 flex items-center justify-center z-10 will-change-transform"
       >
-        <p aria-hidden="true" className="text-[12vw] md:text-[14vw] lg:text-[16vw] font-sans font-extrabold text-white/15 tracking-tighter leading-none select-none whitespace-nowrap">
+        <p aria-hidden="true" className="text-[12vw] md:text-[14vw] lg:text-[16vw] font-sans font-extrabold text-[#ffa952]/30 tracking-tighter leading-none select-none whitespace-nowrap">
           {heroConfig.backgroundText}
         </p>
       </div>
@@ -113,15 +112,13 @@ export function Hero() {
           ref={modelRef}
           className="absolute inset-0 flex items-end justify-center z-20 will-change-transform"
         >
-          <div className="relative w-[56vw] md:w-[34vw] lg:w-[26vw] max-w-[420px]">
+          <div className="relative w-[66vw] md:w-[44vw] lg:w-[34vw] max-w-[620px]">
             <img
               src={heroConfig.heroImage}
               alt={heroConfig.heroImageAlt}
               className="w-full h-auto object-contain"
               loading="eager"
             />
-            {/* Gradient fade at bottom for smooth transition */}
-            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-forest-dark to-transparent" />
           </div>
         </div>
       )}
@@ -129,32 +126,17 @@ export function Hero() {
       {/* Layer 4: Main content */}
       <div
         ref={overlayTextRef}
-        className="absolute inset-x-0 bottom-[12%] z-30 px-6 md:px-12 will-change-transform"
+        className="absolute inset-x-0 top-[14%] z-30 px-6 md:px-12 will-change-transform"
       >
-        <div className="mx-auto flex max-w-5xl flex-col items-start gap-5 text-white md:items-center md:text-center">
+        <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 text-white text-center">
           {heroConfig.brandName && (
-            <p className="font-body text-sm font-semibold uppercase tracking-[0.35em] text-sand-light/90 md:text-base">
+            <p className="font-body text-sm font-semibold uppercase tracking-[0.35em] text-secondary/85 md:text-base">
               {heroConfig.brandName}
             </p>
           )}
           {heroConfig.overlayText && (
-            <p className="font-serif italic text-xl tracking-wide text-white/90 md:text-2xl lg:text-3xl">
+            <p className="font-serif italic text-2xl tracking-wide text-secondary/92 md:text-3xl lg:text-4xl">
               {heroConfig.overlayText}
-            </p>
-          )}
-          {heroConfig.headline && (
-            <h1 className="max-w-4xl font-sans text-5xl font-extrabold leading-[0.95] tracking-tight md:text-7xl lg:text-8xl">
-              {heroConfig.headline}
-            </h1>
-          )}
-          {heroConfig.subtitle && (
-            <p className="max-w-3xl font-serif text-2xl italic leading-snug text-sand-light md:text-3xl">
-              {heroConfig.subtitle}
-            </p>
-          )}
-          {heroConfig.description && (
-            <p className="max-w-3xl font-body text-base leading-7 text-white/80 md:text-lg md:leading-8">
-              {heroConfig.description}
             </p>
           )}
         </div>
