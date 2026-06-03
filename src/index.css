@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'Calibri';
+    src:
+      url('/fonts/Calibri.woff2') format('woff2'),
+      url('/fonts/Calibri.woff') format('woff');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Calibri';
+    src:
+      url('/fonts/Calibri-Bold.woff2') format('woff2'),
+      url('/fonts/Calibri-Bold.woff') format('woff');
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Century Gothic';
+    src:
+      url('/fonts/CenturyGothic.woff2') format('woff2'),
+      url('/fonts/CenturyGothic.woff') format('woff');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Century Gothic';
+    src:
+      url('/fonts/CenturyGothic-Bold.woff2') format('woff2'),
+      url('/fonts/CenturyGothic-Bold.woff') format('woff');
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+  }
+
+  :root {
+    --background: 346 70% 18%;
+    --foreground: 34 40% 96%;
+    --card: 346 63% 23%;
+    --card-foreground: 34 40% 96%;
+    --popover: 346 70% 18%;
+    --popover-foreground: 34 40% 96%;
+    --primary: 347 92% 39%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 21 82% 55%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 346 47% 28%;
+    --muted-foreground: 35 27% 78%;
+    --accent: 35 100% 66%;
+    --accent-foreground: 16 35% 15%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 35 36% 76%;
+    --input: 34 53% 94%;
+    --ring: 347 92% 39%;
+    --radius: 0.75rem;
+
+    --forest-dark: #671127;
+    --forest-mid: #8d1f39;
+    --off-white: #f7f2ea;
+    --pure-white: #ffffff;
+    --soft-black: #1b1413;
+  }
+
+  .light-section {
+    --background: 0 0% 100%;
+    --foreground: 16 20% 10%;
+    --card: 34 53% 96%;
+    --card-foreground: 16 20% 10%;
+    --muted: 34 40% 94%;
+    --muted-foreground: 16 12% 35%;
+    --border: 35 36% 76%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Calibri', sans-serif;
+    overflow-x: hidden;
+    background:
+      radial-gradient(circle at top left, rgba(255, 169, 82, 0.14), transparent 28%),
+      linear-gradient(180deg, #671127 0%, #5a0f22 100%);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Century Gothic', sans-serif;
+  }
+
+  .font-serif {
+    font-family: 'Calibri', sans-serif;
+  }
+
+  .font-sans {
+    font-family: 'Century Gothic', sans-serif;
+  }
+
+  .font-body {
+    font-family: 'Calibri', sans-serif;
+  }
+}
+
+@layer components {
+  .viewfinder {
+    position: relative;
+  }
+
+  .viewfinder::before,
+  .viewfinder::after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    pointer-events: none;
+    z-index: 10;
+    transition: all 0.3s ease;
+  }
+
+  .viewfinder::before {
+    top: 16px;
+    left: 16px;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+  }
+
+  .viewfinder::after {
+    bottom: 16px;
+    right: 16px;
+    border-bottom: 2px solid white;
+    border-right: 2px solid white;
+  }
+
+  .viewfinder-corners {
+    position: relative;
+  }
+
+  .viewfinder-corners .corner-tr,
+  .viewfinder-corners .corner-bl {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .viewfinder-corners .corner-tr {
+    top: 16px;
+    right: 16px;
+    border-top: 2px solid white;
+    border-right: 2px solid white;
+  }
+
+  .viewfinder-corners .corner-bl {
+    bottom: 16px;
+    left: 16px;
+    border-bottom: 2px solid white;
+    border-left: 2px solid white;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .tracking-tight {
+    letter-spacing: -0.025em;
+  }
+
+  .tracking-tighter {
+    letter-spacing: -0.05em;
+  }
+}
