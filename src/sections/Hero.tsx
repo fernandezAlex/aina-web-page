@@ -10,9 +10,6 @@ export function Hero() {
   const textRef = useRef<HTMLDivElement>(null);
   const modelRef = useRef<HTMLDivElement>(null);
   const overlayTextRef = useRef<HTMLDivElement>(null);
-
-  if (!heroConfig.backgroundText && !heroConfig.heroImage && heroConfig.navLinks.length === 0) return null;
-
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Store ScrollTrigger instances for cleanup
@@ -68,6 +65,8 @@ export function Hero() {
 
     return () => ctx.revert();
   }, []);
+
+  if (!heroConfig.backgroundText && !heroConfig.heroImage && heroConfig.navLinks.length === 0) return null;
 
   return (
     <section
