@@ -9,6 +9,7 @@ import { FeaturedProjects } from './sections/FeaturedProjects';
 import { Testimonials } from './sections/Testimonials';
 import { Books } from './sections/Books';
 import { FAQ } from './sections/FAQ';
+import { Join } from './sections/Join';
 import { Footer } from './sections/Footer';
 import { siteConfig } from './config';
 import './App.css';
@@ -59,7 +60,10 @@ function App() {
       {/* FAQ Accordion - Dark Section */}
       <FAQ />
 
-      {/* Footer - White Section with Massive Typography */}
+      {/* Join - Collaboration Section */}
+      <Join />
+
+      {/* Footer - Legal and Social Closing */}
       <Footer />
     </main>
   );
