@@ -28,11 +28,13 @@ export const heroConfig: HeroConfig = {
   brandName: "Si Asha Foundation",
   navLinks: [
     { label: "Inicio", href: "#hero" },
-    { label: "Mision", href: "#about" },
+    { label: "Mision", href: "#sobre-aina" },
     { label: "Programas", href: "#services" },
     { label: "Impacto", href: "#work" },
     { label: "Prensa", href: "#prensa" },
     { label: "Reconocimientos", href: "#reconocimientos" },
+    { label: "Únete", href: "#unete" },
+    { label: "Libros", href: "#libros" },
     { label: "Contacto", href: "#contact" },
   ],
 };
@@ -89,7 +91,7 @@ export const featuredProjectsConfig: FeaturedProjectsConfig = {
   titleRegular: "Como se traduce",
   titleItalic: "el apoyo en accion",
   viewAllText: "Explorar la mision",
-  viewAllHref: "#contact",
+  viewAllHref: "#unete",
   viewProjectText: "Sumarte a esta linea de trabajo",
   projects: [
     {
@@ -181,9 +183,60 @@ export const servicesConfig: ServicesConfig = {
 
 export interface StatItem {
   value: number;
-  suffix: string;
   label: string;
+  prefix?: string;
+  suffix?: string;
+  useGrouping?: boolean;
 }
+
+export interface AboutAinaNarrativeBlock {
+  eyebrow: string;
+  title: string;
+  text: string;
+}
+
+export interface AboutAinaConfig {
+  subtitle: string;
+  titleRegular: string;
+  titleItalic: string;
+  statsLabel: string;
+  narrativeBlocks: AboutAinaNarrativeBlock[];
+  impactStats: StatItem[];
+}
+
+export const aboutAinaConfig: AboutAinaConfig = {
+  subtitle: "Sobre Aina",
+  titleRegular: "Una historia que empezo con un viaje y se convirtio en una red de",
+  titleItalic: "esperanza activa",
+  statsLabel: "Impacto acumulado",
+  narrativeBlocks: [
+    {
+      eyebrow: "El viaje",
+      title: "Nepal, 21 anos",
+      text: "Aina llego a Nepal con 21 anos en un viaje que iba a ser temporal, pero que termino cambiando su manera de mirar la infancia, la discapacidad y la responsabilidad compartida.",
+    },
+    {
+      eyebrow: "La realidad",
+      title: "Ninos y ninas fuera de todo",
+      text: "Alli se encontro con ninos y ninas con discapacidad intelectual excluidos de la escuela, de los espacios de juego y de muchas oportunidades basicas para crecer con dignidad.",
+    },
+    {
+      eyebrow: "La decision",
+      title: "Quedarse para escuchar y aprender",
+      text: "La respuesta no fue imponer soluciones rapidas: decidio quedarse, escuchar a las familias, aprender del contexto y empezar a construir escuelas junto a la comunidad local.",
+    },
+    {
+      eyebrow: "El camino",
+      title: "Una red que sigue creciendo",
+      text: "Aquel primer impulso evoluciono hacia escuelas de educacion especial, fisioterapia, acompanamiento a familias y una red de apoyo que sostiene procesos de inclusion a largo plazo.",
+    },
+  ],
+  impactStats: [
+    { value: 157, prefix: "+", label: "ninos y ninas escolarizados", useGrouping: true },
+    { value: 60, prefix: "+", label: "mujeres en el equipo profesional", useGrouping: true },
+    { value: 1000, prefix: "+", label: "familias acompanadas", useGrouping: true },
+  ],
+};
 
 export interface FeatureCard {
   image: string;
@@ -308,7 +361,7 @@ export const faqConfig: FAQConfig = {
   titleItalic: "antes de publicar",
   ctaText: "Esta demo ya incorpora la direccion visual y narrativa principal.",
   ctaButtonText: "Revisar siguiente paso",
-  ctaHref: "#contact",
+  ctaHref: "#unete",
   faqs: [
     {
       id: "faq-1",
@@ -347,17 +400,19 @@ export interface FooterConfig {
 
 export const footerConfig: FooterConfig = {
   logoText: "SI ASHA",
-  contactLabel: "Contacto",
+  contactLabel: "",
   email: "",
-  locationText: "Nepal y red internacional de apoyo\nEmail pendiente de confirmacion oficial",
+  locationText: "",
   navigationLabel: "Secciones",
   navLinks: [
     { label: "Inicio", href: "#hero" },
-    { label: "Mision", href: "#about" },
+    { label: "Mision", href: "#sobre-aina" },
     { label: "Programas", href: "#services" },
     { label: "Impacto", href: "#work" },
     { label: "Prensa", href: "#prensa" },
     { label: "Reconocimientos", href: "#reconocimientos" },
+    { label: "Únete", href: "#unete" },
+    { label: "Libros", href: "#libros" },
   ],
   socialLabel: "Canales",
   socialLinks: [],
@@ -365,6 +420,6 @@ export const footerConfig: FooterConfig = {
   copyright: "© Si Asha Foundation demo concept.",
   bottomLinks: [
     { label: "Transparencia", href: "#work" },
-    { label: "Colaborar", href: "#contact" },
+    { label: "Colaborar", href: "#unete" },
   ],
 };
