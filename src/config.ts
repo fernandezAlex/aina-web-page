@@ -31,6 +31,7 @@ export const heroConfig: HeroConfig = {
     { label: "Mision", href: "#about" },
     { label: "Programas", href: "#services" },
     { label: "Impacto", href: "#work" },
+    { label: "Libros", href: "#libros" },
     { label: "Contacto", href: "#contact" },
   ],
 };
@@ -354,6 +355,7 @@ export const footerConfig: FooterConfig = {
     { label: "Mision", href: "#about" },
     { label: "Programas", href: "#services" },
     { label: "Impacto", href: "#work" },
+    { label: "Libros", href: "#libros" },
   ],
   socialLabel: "Canales",
   socialLinks: [],
