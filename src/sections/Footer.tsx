@@ -80,6 +80,7 @@ export function Footer() {
       id="unete"
       className="relative w-full bg-white pt-24 md:pt-32 pb-8 overflow-hidden"
     >
+      <span id="unete" className="absolute -top-24" aria-hidden="true" />
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Massive Logo */}
         {footerConfig.logoText && (
