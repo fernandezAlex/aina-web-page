@@ -6,10 +6,20 @@ export interface SiteConfig {
 
 export const siteConfig: SiteConfig = {
   language: "es",
-  siteTitle: "Si Asha Foundation | Educación, terapia y cuidado en Nepal",
+  siteTitle: "Aina Barca | Educación, terapia y cuidado en Nepal",
   siteDescription:
-    "Landing inspirada en las guías de marca de Si Asha Foundation para presentar su misión, programas e impacto junto a una invitación clara a colaborar.",
+    "Landing inspirada en las guías de marca de Aina Barca para presentar su misión, programas e impacto junto a una invitación clara a colaborar.",
 };
+
+const mainNavLinks = [
+  { label: "Inicio", href: "#inicio" },
+  { label: "Sobre Aina", href: "#sobre-aina" },
+  { label: "La Visión", href: "#vision" },
+  { label: "Libros", href: "#libros" },
+  { label: "Prensa", href: "#prensa" },
+  { label: "Reconocimientos", href: "#reconocimientos" },
+  { label: "Únete", href: "#unete" },
+];
 
 export interface HeroConfig {
   backgroundText: string;
@@ -406,8 +416,8 @@ export interface FooterConfig {
 }
 
 export const footerConfig: FooterConfig = {
-  logoText: "SI ASHA",
-  contactLabel: "",
+  logoText: "AINA BARCA",
+  contactLabel: "Contacto",
   email: "",
   locationText: "",
   navigationLabel: "Secciones",
@@ -424,9 +434,9 @@ export const footerConfig: FooterConfig = {
   socialLabel: "Canales",
   socialLinks: [],
   tagline: "Hope is built every day.\nEvery gesture matters.",
-  copyright: "© Si Asha Foundation demo concept.",
+  copyright: "© Aina Barca demo concept.",
   bottomLinks: [
-    { label: "Transparencia", href: "#work" },
-    { label: "Colaborar", href: "#unete" },
+    { label: "Prensa", href: "#prensa" },
+    { label: "Únete", href: "#unete" },
   ],
 };

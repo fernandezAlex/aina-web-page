@@ -77,7 +77,7 @@ export function Footer() {
   return (
     <footer
       ref={footerRef}
-      id="footer"
+      id="unete"
       className="relative w-full bg-white pt-24 md:pt-32 pb-8 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12">
