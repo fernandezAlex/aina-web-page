@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import type { StatItem } from '../config';
+import type { Locale, StatItem } from '../config';
 
 interface CounterProps {
   end: number;
@@ -8,6 +8,7 @@ interface CounterProps {
   duration?: number;
   shouldAnimate: boolean;
   useGrouping?: boolean;
+  locale: Locale;
 }
 
 interface StatsCardProps {
@@ -16,6 +17,7 @@ interface StatsCardProps {
   label?: string;
   className?: string;
   valueClassName?: string;
+  locale?: Locale;
 }
 
 function Counter({
@@ -25,6 +27,7 @@ function Counter({
   duration = 2,
   shouldAnimate,
   useGrouping = false,
+  locale,
 }: CounterProps) {
   const [count, setCount] = useState(0);
   const countRef = useRef(0);
@@ -59,7 +62,7 @@ function Counter({
   return (
     <span>
       {prefix}
-      {count.toLocaleString('es-ES', { useGrouping })}
+      {count.toLocaleString(locale, { useGrouping })}
       {suffix}
     </span>
   );
@@ -71,6 +74,7 @@ export function StatsCard({
   label,
   className = '',
   valueClassName = 'text-4xl md:text-5xl',
+  locale = 'es',
 }: StatsCardProps) {
   if (stats.length === 0) return null;
 
@@ -91,6 +95,7 @@ export function StatsCard({
                 suffix={stat.suffix}
                 shouldAnimate={shouldAnimate}
                 useGrouping={stat.useGrouping}
+                locale={locale}
               />
             </p>
             <p className="text-softblack/60 font-body text-sm mt-1">

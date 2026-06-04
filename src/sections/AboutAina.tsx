@@ -2,12 +2,13 @@ import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { StatsCard } from '../components/StatsCard';
-import { aboutAinaConfig } from '../config';
-import { aboutAinaGallery } from '../content/images';
+import { useI18n, useSiteContent } from '../i18n';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export function AboutAina() {
+  const { locale } = useI18n();
+  const { aboutAina: aboutAinaConfig } = useSiteContent();
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const blocksRef = useRef<HTMLDivElement>(null);
@@ -140,13 +141,14 @@ export function AboutAina() {
             <div
               ref={statsRef}
               className="accent-card mb-10 opacity-0 rounded-lg border border-secondary/15 bg-white p-8 shadow-sm md:mb-12 md:p-10"
-              aria-label="Impacto de Aina Barca"
+              aria-label={aboutAinaConfig.impactAriaLabel}
             >
               <StatsCard
                 stats={aboutAinaConfig.impactStats}
                 label={aboutAinaConfig.impactLabel}
                 shouldAnimate={shouldAnimateStats}
                 valueClassName="text-5xl md:text-6xl"
+                locale={locale}
               />
             </div>
 
@@ -154,7 +156,7 @@ export function AboutAina() {
 
           <aside className="space-y-10 lg:sticky lg:top-10">
             <div className="grid grid-cols-2 gap-4">
-              {aboutAinaGallery.map((image, index) => (
+              {aboutAinaConfig.gallery.map((image, index) => (
                 <div
                   key={image.src}
                   className={`overflow-hidden rounded-[1.75rem] border border-softblack/10 bg-white shadow-sm ${

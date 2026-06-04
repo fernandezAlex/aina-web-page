@@ -1,7 +1,7 @@
 import { useEffect, useRef, type ReactNode } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { introMissionConfig } from '../config';
+import { useSiteContent } from '../i18n';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,6 +14,7 @@ const imageAnimConfigs = [
 ];
 
 export function IntroMission() {
+  const { introMission: introMissionConfig } = useSiteContent();
   const sectionRef = useRef<HTMLElement>(null);
   const titleLine1Ref = useRef<HTMLDivElement>(null);
   const titleLine2Ref = useRef<HTMLDivElement>(null);
