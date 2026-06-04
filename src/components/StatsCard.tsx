@@ -78,6 +78,8 @@ export function StatsCard({
 }: StatsCardProps) {
   if (stats.length === 0) return null;
 
+  const labelColors = ['text-primary', 'text-secondary', 'text-forest-dark'];
+
   return (
     <div className={className}>
       {label && (
@@ -87,7 +89,7 @@ export function StatsCard({
       )}
       <div className="space-y-8">
         {stats.map((stat, index) => (
-          <div key={`${stat.label}-${index}`} className="border-b border-secondary/15 pb-6 last:border-0">
+          <div key={`${stat.label}-${index}`} className="border-b border-secondary/15 pb-7 last:border-0">
             <p className={`${valueClassName} font-sans font-bold text-primary tracking-tight`}>
               <Counter
                 end={stat.value}
@@ -98,7 +100,7 @@ export function StatsCard({
                 locale={locale}
               />
             </p>
-            <p className="text-softblack/60 font-body text-sm mt-1">
+            <p className={`${labelColors[index % labelColors.length]} mt-2 max-w-2xl text-base font-body font-semibold leading-snug md:text-lg lg:text-xl`}>
               {stat.label}
             </p>
           </div>
