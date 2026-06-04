@@ -66,25 +66,25 @@ export function Join() {
     <section
       ref={sectionRef}
       id="unete"
-      className="relative w-full bg-offwhite py-24 md:py-32 overflow-hidden"
+      className="relative w-full overflow-hidden bg-offwhite py-14 md:py-32"
     >
-      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-forest-dark/10 to-transparent pointer-events-none" />
-      <div className="relative max-w-7xl mx-auto px-6 md:px-12">
-        <div ref={headerRef} className="max-w-4xl mb-14 md:mb-20 opacity-0">
-          <p className="accent-kicker text-sm font-body uppercase tracking-widest mb-4">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-forest-dark/10 to-transparent md:h-32" />
+      <div className="relative mx-auto max-w-7xl px-5 md:px-12">
+        <div ref={headerRef} className="mb-8 max-w-4xl opacity-0 md:mb-20">
+          <p className="accent-kicker mb-3 text-sm font-body uppercase tracking-widest md:mb-4">
             {join.eyebrow}
           </p>
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-sans font-bold text-primary tracking-tight leading-[0.98]">
+          <h2 className="text-[2.7rem] font-sans font-bold leading-[0.96] tracking-tight text-primary md:text-6xl lg:text-7xl">
             {join.title}
           </h2>
-          <p className="mt-6 max-w-3xl text-base md:text-lg font-body leading-relaxed text-softblack/68">
+          <p className="mt-4 max-w-3xl text-base font-body leading-relaxed text-softblack/68 md:mt-6 md:text-lg">
             {join.description}
           </p>
         </div>
 
-        <div className="mb-8 grid grid-cols-2 gap-4 md:mb-12 md:grid-cols-4">
+        <div className="mb-6 grid grid-cols-2 gap-3 md:mb-12 md:grid-cols-4 md:gap-4">
           {join.gallery.map((image) => (
-            <div key={image.src} className="overflow-hidden rounded-[1.75rem] border border-softblack/10 bg-white shadow-sm aspect-[4/5]">
+            <div key={image.src} className="aspect-[4/5] overflow-hidden rounded-[1.35rem] border border-softblack/10 bg-white shadow-sm md:rounded-[1.75rem]">
               <img
                 src={image.src}
                 alt={image.alt}
@@ -95,7 +95,7 @@ export function Join() {
           ))}
         </div>
 
-        <div ref={blocksRef} className="grid lg:grid-cols-3 gap-5 md:gap-6">
+        <div ref={blocksRef} className="grid gap-4 md:gap-6 lg:grid-cols-3">
           {join.blocks.map((block, index) => {
             const Icon = joinIcons[index];
 
@@ -103,25 +103,25 @@ export function Join() {
               <article
                 key={block.title}
                 data-join-block
-                className="accent-card opacity-0 flex min-h-[27rem] flex-col justify-between rounded-[2rem] border border-secondary/15 bg-white p-6 shadow-[0_20px_50px_rgba(103,17,39,0.08)] transition-transform duration-300 hover:-translate-y-1 md:p-8"
+                className="accent-card flex flex-col justify-between rounded-[1.5rem] border border-secondary/15 bg-white p-5 opacity-0 shadow-[0_20px_50px_rgba(103,17,39,0.08)] transition-transform duration-300 hover:-translate-y-1 md:min-h-[27rem] md:rounded-[2rem] md:p-8"
               >
                 <div>
-                  <div className="mb-6 flex items-start justify-between gap-4">
-                    <div className="space-y-3">
+                  <div className="mb-4 flex items-start justify-between gap-4 md:mb-6">
+                    <div className="space-y-2 md:space-y-3">
                       <p className="accent-kicker text-xs font-body uppercase tracking-[0.22em]">
                         {block.eyebrow}
                       </p>
-                      <h3 className="max-w-[14ch] text-3xl font-sans font-bold leading-[0.98] tracking-tight text-primary md:text-[2.2rem]">
+                      <h3 className="max-w-[14ch] text-2xl font-sans font-bold leading-[0.98] tracking-tight text-primary md:text-[2.2rem]">
                         {block.title}
                       </h3>
                     </div>
 
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-secondary/14 text-secondary">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-secondary/14 text-secondary md:h-12 md:w-12">
                       <Icon className="h-5 w-5" strokeWidth={2} />
                     </div>
                   </div>
 
-                  <p className="mb-5 max-w-[28ch] text-base font-sans font-semibold leading-snug text-softblack md:text-lg">
+                  <p className="mb-4 max-w-[28ch] text-base font-sans font-semibold leading-snug text-softblack md:mb-5 md:text-lg">
                     {block.summary}
                   </p>
 
@@ -130,7 +130,7 @@ export function Join() {
                   </p>
                 </div>
 
-                <div className="mt-10 space-y-3">
+                <div className="mt-6 space-y-3 md:mt-10">
                   {block.actions.map((action) => {
                     const opensInNewTab = action.href.startsWith('http');
 
@@ -140,7 +140,7 @@ export function Join() {
                         href={action.href}
                         target={opensInNewTab ? '_blank' : undefined}
                         rel={opensInNewTab ? 'noreferrer' : undefined}
-                        className="group flex w-full items-center justify-between gap-4 rounded-[1.4rem] border border-secondary/20 bg-secondary px-5 py-4 text-left text-sm font-sans font-semibold text-softblack shadow-[inset_0_1px_0_rgba(255,255,255,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#ff8b43] md:text-base"
+                        className="group flex w-full items-center justify-between gap-4 rounded-[1.2rem] border border-secondary/20 bg-secondary px-4 py-3.5 text-left text-sm font-sans font-semibold text-softblack shadow-[inset_0_1px_0_rgba(255,255,255,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#ff8b43] md:rounded-[1.4rem] md:px-5 md:py-4 md:text-base"
                       >
                         <span>{action.label}</span>
                         <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/24 transition-colors duration-300 group-hover:bg-white/32">
