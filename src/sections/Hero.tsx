@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { Menu, X } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { LanguageSwitcher } from '../components/LanguageSwitcher';
@@ -8,10 +9,37 @@ gsap.registerPlugin(ScrollTrigger);
 
 export function Hero() {
   const { hero: heroConfig } = useSiteContent();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const modelRef = useRef<HTMLDivElement>(null);
   const overlayTextRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function updateHeaderState() {
+      setHasScrolled(window.scrollY > 24);
+    }
+
+    updateHeaderState();
+    window.addEventListener('scroll', updateHeaderState, { passive: true });
+
+    return () => window.removeEventListener('scroll', updateHeaderState);
+  }, []);
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+
+    function closeOnResize() {
+      if (window.innerWidth >= 1024) {
+        setIsMobileMenuOpen(false);
+      }
+    }
+
+    window.addEventListener('resize', closeOnResize);
+
+    return () => window.removeEventListener('resize', closeOnResize);
+  }, [isMobileMenuOpen]);
 
   const hasHeroContent = Boolean(
     heroConfig.backgroundText ||
@@ -144,19 +172,78 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Navigation hint */}
-      <nav className="absolute top-0 left-0 right-0 z-40 px-6 md:px-12 py-6 flex items-center justify-between">
-        <div className="text-white font-sans font-bold text-lg tracking-tight">
-          {heroConfig.brandName}
+      {/* Sticky navigation */}
+      <nav
+        className={[
+          'fixed left-0 right-0 top-0 z-50 px-4 py-4 transition-all duration-300 md:px-8 lg:px-12',
+          hasScrolled || isMobileMenuOpen
+            ? 'bg-forest-dark/88 shadow-[0_12px_42px_rgba(0,0,0,0.22)] backdrop-blur-xl'
+            : 'bg-transparent',
+        ].join(' ')}
+      >
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3">
+          <a
+            href="#hero"
+            className="shrink-0 text-white font-sans font-bold text-lg tracking-tight transition-colors duration-300 hover:text-secondary md:text-xl"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            {heroConfig.brandName}
+          </a>
+
+          {heroConfig.navLinks.length > 0 && (
+            <div className="hidden items-center gap-4 text-white/82 text-sm font-body lg:gap-7 lg:flex">
+              {heroConfig.navLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="whitespace-nowrap hover:text-white transition-colors duration-300"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          )}
+
+          <div className="flex items-center gap-2">
+            <LanguageSwitcher label={heroConfig.languageLabel} />
+            {heroConfig.navLinks.length > 0 && (
+              <button
+                type="button"
+                onClick={() => setIsMobileMenuOpen((open) => !open)}
+                aria-expanded={isMobileMenuOpen}
+                aria-controls="mobile-main-menu"
+                aria-label={isMobileMenuOpen ? 'Cerrar menu' : 'Abrir menu'}
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white shadow-[0_14px_38px_rgba(0,0,0,0.18)] backdrop-blur-md transition-colors duration-300 hover:bg-white/16 lg:hidden"
+              >
+                {isMobileMenuOpen ? <X aria-hidden="true" className="h-5 w-5" /> : <Menu aria-hidden="true" className="h-5 w-5" />}
+              </button>
+            )}
+          </div>
         </div>
+
         {heroConfig.navLinks.length > 0 && (
-          <div className="hidden md:flex items-center gap-8 text-white/80 text-sm font-body">
-            {heroConfig.navLinks.map((link) => (
-              <a key={link.label} href={link.href} className="hover:text-white transition-colors duration-300">{link.label}</a>
-            ))}
+          <div
+            id="mobile-main-menu"
+            className={[
+              'mx-auto mt-4 max-w-7xl overflow-hidden rounded-3xl border border-white/15 bg-forest-dark/96 shadow-[0_24px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-all duration-300 lg:hidden',
+              isMobileMenuOpen ? 'max-h-[70vh] opacity-100' : 'max-h-0 border-transparent opacity-0',
+            ].join(' ')}
+            aria-hidden={!isMobileMenuOpen}
+          >
+            <div className="flex flex-col p-2">
+              {heroConfig.navLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="rounded-2xl px-4 py-3 font-body text-base text-white/86 transition-colors duration-300 hover:bg-white/12 hover:text-white"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
           </div>
         )}
-        <LanguageSwitcher label={heroConfig.languageLabel} />
       </nav>
     </section>
   );

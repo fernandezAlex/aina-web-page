@@ -185,10 +185,10 @@ export interface LocalizedSiteContent {
   footer: FooterConfig;
 }
 
-export const localeOptions: Array<{ value: Locale; label: string }> = [
-  { value: 'es', label: 'ES' },
-  { value: 'en', label: 'EN' },
-  { value: 'ca', label: 'CA' },
+export const localeOptions: Array<{ value: Locale; label: string; name: string; flag: string }> = [
+  { value: 'es', label: 'ES', name: 'Español', flag: '🇪🇸' },
+  { value: 'en', label: 'EN', name: 'English', flag: '🇬🇧' },
+  { value: 'ca', label: 'CA', name: 'Català', flag: '🇦🇩' },
 ];
 
 const asset = (path: string) =>
