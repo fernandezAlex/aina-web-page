@@ -215,24 +215,6 @@ export function Press() {
               ))}
             </div>
 
-            <div className="hidden items-center gap-2 lg:flex">
-              <button
-                type="button"
-                aria-label={press.previousLabel}
-                onClick={() => api?.scrollPrev()}
-                className="group inline-flex h-10 w-10 items-center justify-center rounded-full border border-secondary/20 bg-white text-primary transition duration-300 hover:border-secondary/40 hover:bg-secondary/10"
-              >
-                <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-0.5" />
-              </button>
-              <button
-                type="button"
-                aria-label={press.nextLabel}
-                onClick={() => api?.scrollNext()}
-                className="group inline-flex h-10 w-10 items-center justify-center rounded-full border border-secondary/20 bg-primary text-white transition duration-300 hover:bg-secondary"
-              >
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-              </button>
-            </div>
           </div>
         </div>
       </div>

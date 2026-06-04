@@ -82,19 +82,19 @@ export const principlesGalleryImages = [
   },
   {
     src: asset('/aina/main/aina-pink-jacket.jpg'),
-    alt: 'Aina Barca con chaqueta rosa durante una sesion fotografica',
+    alt: 'Aina Barca con chaqueta rosa durante una sesión fotográfica',
   },
   {
     src: asset('/aina/main/aina-child-balance-2.jpg'),
-    alt: 'Aina acompana a un nino en una actividad motriz de equilibrio',
+    alt: 'Aina acompaña a un niño en una actividad motriz de equilibrio',
   },
   {
     src: asset('/aina/main/aina-child-hug-2.jpg'),
-    alt: 'Aina abraza a un nino durante una actividad en el centro',
+    alt: 'Aina abraza a un niño durante una actividad en el centro',
   },
   {
     src: asset('/aina/main/aina-child-wall-2.jpg'),
-    alt: 'Aina junto a un nino en una escena de acompanamiento cotidiano',
+    alt: 'Aina junto a un niño en una escena de acompañamiento cotidiano',
   },
 ];
 
@@ -107,20 +107,20 @@ export type PressAppearance = {
 
 export const pressAppearances: PressAppearance[] = [
   { name: 'Radio Galega', category: 'Radio', imageSrc: asset('/aina/press-media/radio-galega.png') },
-  { name: 'National Gold', category: 'Television', imageSrc: asset('/aina/press-media/national-gold.png') },
-  { name: 'RTVE', category: 'Television', imageSrc: asset('/aina/press-media/rtve.png') },
+  { name: 'National Gold', category: 'Televisión', imageSrc: asset('/aina/press-media/national-gold.png') },
+  { name: 'RTVE', category: 'Televisión', imageSrc: asset('/aina/press-media/rtve.png') },
   { name: 'Radio Madrid SER', category: 'Radio', imageSrc: asset('/aina/press-media/radio-madrid-ser.png') },
   { name: 'News24', category: 'Digital', imageSrc: asset('/aina/press-media/news24.png') },
   { name: 'RAC1', category: 'Radio', imageSrc: asset('/aina/press-media/rac1.png') },
-  { name: 'Regio7', category: 'Prensa escrita', imageSrc: asset('/aina/press-media/regio7.png') },
-  { name: 'TV3', category: 'Television', imageSrc: asset('/aina/press-media/tv3.png') },
+  { name: 'Regió7', category: 'Prensa escrita', imageSrc: asset('/aina/press-media/regio7.png') },
+  { name: 'TV3', category: 'Televisión', imageSrc: asset('/aina/press-media/tv3.png') },
   { name: 'Radio Irun SER', category: 'Radio', imageSrc: asset('/aina/press-media/radio-irun-ser.png') },
-  { name: 'Nepal Television', category: 'Television', imageSrc: asset('/aina/press-media/nepal-television.png') },
+  { name: 'Nepal Television', category: 'Televisión', imageSrc: asset('/aina/press-media/nepal-television.png') },
   { name: 'Mujer Emprendedora', category: 'Digital', imageSrc: asset('/aina/press-media/mujer-emprendedora.png') },
-  { name: 'EITB', category: 'Television', imageSrc: asset('/aina/press-media/eitb.png') },
+  { name: 'EITB', category: 'Televisión', imageSrc: asset('/aina/press-media/eitb.png') },
   { name: 'RNE', category: 'Radio', imageSrc: asset('/aina/press-media/rne.png') },
   { name: 'Mundo Solidario', category: 'Prensa solidaria', imageSrc: asset('/aina/press-media/mundo-solidario.png') },
-  { name: 'Team TV', category: 'Television', imageSrc: asset('/aina/press-media/team-tv.png') },
+  { name: 'Team TV', category: 'Televisión', imageSrc: asset('/aina/press-media/team-tv.png') },
   { name: 'El Confidencial', category: 'Digital', imageSrc: asset('/aina/press-media/el-confidencial.png') },
   { name: 'El Diario Vasco', category: 'Prensa escrita', imageSrc: asset('/aina/press-media/el-diario-vasco.png') },
   { name: 'Confidenciales', category: 'Revista / portada', imageSrc: asset('/aina/press-media/confidenciales-cover.png') },
@@ -132,7 +132,7 @@ export const pressAppearances: PressAppearance[] = [
   { name: 'Eco Diario', category: 'Digital', imageSrc: asset('/aina/press-media/eco-diario.png') },
   { name: 'Online Khabar', category: 'Digital', imageSrc: asset('/aina/press-media/online-khabar.png') },
   { name: 'RPP', category: 'Radio / digital', imageSrc: asset('/aina/press-media/rpp.png') },
-  { name: 'UOC', category: 'Academico', imageSrc: asset('/aina/press-media/uoc.png') },
+  { name: 'UOC', category: 'Académico', imageSrc: asset('/aina/press-media/uoc.png') },
   { name: 'Onda Cero', category: 'Radio', imageSrc: asset('/aina/press-media/onda-cero.png') },
 ];
 
@@ -151,15 +151,15 @@ export const recognitionAwards: RecognitionAward[] = [
     year: '2024',
     imageSrc: asset('/aina/recognitions/social-welfare-1.jpg'),
     description:
-      'Premio entregado por el Primer Ministro de Nepal en reconocimiento al impacto educativo y social impulsado para la inclusion de personas con discapacidad intelectual en Nepal.',
+      'Premio entregado por el Primer Ministro de Nepal en reconocimiento al impacto educativo y social impulsado para la inclusión de personas con discapacidad intelectual en Nepal.',
   },
   {
     title: 'Premio RECLA a la Sostenibilidad',
-    location: 'Peru',
+    location: 'Perú',
     year: '2024',
     imageSrc: asset('/aina/recognitions/recla-prize-1.jpg'),
     description:
-      'Reconocimiento internacional otorgado al programa impulsado por Aina Institute por su innovacion en formacion con impacto social.',
+      'Reconocimiento internacional otorgado al programa impulsado por Aina Institute por su innovación en formación con impacto social.',
   },
   {
     title: 'Premio Joan Maria Malapeira i Gas',
@@ -167,7 +167,7 @@ export const recognitionAwards: RecognitionAward[] = [
     year: '2024',
     imageSrc: asset('/aina/recognitions/joan-maria-prize-1.jpg'),
     description:
-      'Premio a la innovacion educativa por el desarrollo de programas formativos impulsados desde Aina Institute en el ambito del emprendimiento social.',
+      'Premio a la innovación educativa por el desarrollo de programas formativos impulsados desde Aina Institute en el ámbito del emprendimiento social.',
   },
   {
     title: 'Reconocimiento Ayuntamiento de Hetauda (Saman Patra)',
@@ -175,7 +175,7 @@ export const recognitionAwards: RecognitionAward[] = [
     year: '2023',
     imageSrc: asset('/aina/recognitions/saman-patra-1.jpg'),
     description:
-      'Distincion otorgada a Aina Barca por su contribucion al desarrollo educativo y social de la comunidad de Hetauda, Nepal.',
+      'Distinción otorgada a Aina Barca por su contribución al desarrollo educativo y social de la comunidad de Hetauda, Nepal.',
   },
   {
     title: 'Premio TELVA Solidaridad',
@@ -183,7 +183,7 @@ export const recognitionAwards: RecognitionAward[] = [
     year: '2026',
     imageSrc: asset('/aina/recognitions/telva-prize-1.jpg'),
     description:
-      'Reconocimiento a la labor social desarrollada por Familia de Hetauda para impulsar educacion, inclusion y oportunidades para personas con discapacidad intelectual en Nepal.',
+      'Reconocimiento a la labor social desarrollada por Familia de Hetauda para impulsar educación, inclusión y oportunidades para personas con discapacidad intelectual en Nepal.',
   },
   {
     title: 'Premio Sociedad Inclusiva',
@@ -191,6 +191,6 @@ export const recognitionAwards: RecognitionAward[] = [
     year: '2026',
     imageSrc: asset('/aina/recognitions/telva-prize-2.jpg'),
     description:
-      'Premio otorgado por el compromiso con la inclusion y la creacion de oportunidades reales para personas con discapacidad intelectual y sus familias.',
+      'Premio otorgado por el compromiso con la inclusión y la creación de oportunidades reales para personas con discapacidad intelectual y sus familias.',
   },
 ];

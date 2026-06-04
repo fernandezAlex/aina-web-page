@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { LanguageSwitcher } from '../components/LanguageSwitcher';
 import { useSiteContent } from '../i18n';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -101,9 +100,12 @@ export function Hero() {
       {/* Layer 2: Big Text */}
       <div
         ref={textRef}
-        className="absolute inset-x-0 top-[48%] z-10 flex items-center justify-center will-change-transform sm:inset-0 sm:top-auto"
+        className="absolute inset-0 z-10 flex items-center justify-center overflow-hidden will-change-transform"
       >
-        <p aria-hidden="true" className="text-[18vw] font-sans font-extrabold text-secondary/58 tracking-tighter leading-none select-none whitespace-nowrap md:text-[14vw] lg:text-[16vw]">
+        <p
+          aria-hidden="true"
+          className="text-center text-[18vw] font-sans font-extrabold leading-none tracking-tighter text-secondary select-none whitespace-nowrap md:text-[14vw] lg:text-[16vw]"
+        >
           {heroConfig.backgroundText}
         </p>
       </div>
@@ -144,20 +146,6 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Navigation hint */}
-      <nav className="absolute left-0 right-0 top-0 z-40 flex items-center justify-between px-5 py-5 md:px-12 md:py-6">
-        <div className="text-base font-sans font-bold tracking-tight text-white md:text-lg">
-          {heroConfig.brandName}
-        </div>
-        {heroConfig.navLinks.length > 0 && (
-          <div className="hidden md:flex items-center gap-8 text-white/80 text-sm font-body">
-            {heroConfig.navLinks.map((link) => (
-              <a key={link.label} href={link.href} className="hover:text-white transition-colors duration-300">{link.label}</a>
-            ))}
-          </div>
-        )}
-        <LanguageSwitcher label={heroConfig.languageLabel} />
-      </nav>
     </section>
   );
 }
