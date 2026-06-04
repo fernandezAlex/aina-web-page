@@ -314,8 +314,8 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
           alt: 'Aina Barca durante una conversación pública',
         },
         {
-          src: asset('/siasha/aina-with-children.webp'),
-          alt: 'Aina Barca comparte un momento con varios niños',
+          src: asset('/aina/main/aina-yellow-wall-2.jpg'),
+          alt: 'Aina Barca frente a un mural amarillo en Nepal',
         },
         {
           src: asset('/aina/main/aina-child-floor-portrait.jpg'),
@@ -735,7 +735,7 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
       images: [
         { src: asset('/aina/main/aina-outdoor-smile.jpg'), alt: 'Aina Barca smiling outdoors' },
         { src: asset('/aina/main/aina-talk.jpg'), alt: 'Aina Barca during a public talk' },
-        { src: asset('/siasha/aina-with-children.webp'), alt: 'Aina Barca sharing a moment with several children' },
+        { src: asset('/aina/main/aina-yellow-wall-2.jpg'), alt: 'Aina Barca in front of a yellow mural in Nepal' },
         { src: asset('/aina/main/aina-child-floor-portrait.jpg'), alt: 'Aina Barca closely accompanying a child in a vertical portrait' },
         { src: asset('/aina/main/aina-studio-portrait-2.jpg'), alt: 'Studio portrait of Aina Barca smiling' },
       ],
@@ -1080,7 +1080,7 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
       images: [
         { src: asset('/aina/main/aina-outdoor-smile.jpg'), alt: "Aina Barca somriu a l'aire lliure" },
         { src: asset('/aina/main/aina-talk.jpg'), alt: 'Aina Barca durant una conversa pública' },
-        { src: asset('/siasha/aina-with-children.webp'), alt: 'Aina Barca comparteix un moment amb diversos infants' },
+        { src: asset('/aina/main/aina-yellow-wall-2.jpg'), alt: 'Aina Barca davant d’un mural groc al Nepal' },
         { src: asset('/aina/main/aina-child-floor-portrait.jpg'), alt: 'Aina Barca acompanya de prop un infant en un retrat vertical' },
         { src: asset('/aina/main/aina-studio-portrait-2.jpg'), alt: "Retrat d'estudi d'Aina Barca somrient" },
       ],

@@ -221,7 +221,7 @@ export function IntroMission() {
                   src={image.src}
                   alt={image.alt}
                   className={`w-full h-full object-cover will-change-transform ${
-                    index === 2 ? 'object-top' : ''
+                    index === 2 ? 'object-center' : ''
                   }`}
                   loading="lazy"
                 />
