@@ -116,7 +116,6 @@ export interface PressConfig {
   subtitle: string;
   description: string;
   selectionLabel: string;
-  selectionHint: string;
   previousLabel: string;
   nextLabel: string;
   mediaAriaLabel: string;
@@ -483,7 +482,6 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
       description:
         'El trabajo de Aina Barca y sus proyectos en Nepal ha sido compartido por medios nacionales e internacionales que han dado voz a la importancia de la inclusion, la educacion especial y la dignidad de las personas con discapacidad intelectual.',
       selectionLabel: 'Seleccion de medios',
-      selectionHint: 'Una sola fila de logos para recorrer de forma horizontal.',
       previousLabel: 'Ver medio anterior',
       nextLabel: 'Ver siguiente medio',
       mediaAriaLabel: 'Ver aparicion en prensa',
@@ -854,7 +852,6 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
       description:
         'The work of Aina Barca and her projects in Nepal has been shared by national and international media that have highlighted the importance of inclusion, special education, and the dignity of people with intellectual disabilities.',
       selectionLabel: 'Media selection',
-      selectionHint: 'A single row of logos to browse horizontally.',
       previousLabel: 'View previous outlet',
       nextLabel: 'View next outlet',
       mediaAriaLabel: 'View press feature',
@@ -1194,7 +1191,6 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
       description:
         'La feina d Aina Barca i els seus projectes al Nepal ha estat compartida per mitjans nacionals i internacionals que han donat veu a la importancia de la inclusio, l educacio especial i la dignitat de les persones amb discapacitat intel·lectual.',
       selectionLabel: 'Seleccio de mitjans',
-      selectionHint: 'Una sola fila de logos per recorrer-la en horitzontal.',
       previousLabel: 'Veure el mitja anterior',
       nextLabel: 'Veure el mitja seguent',
       mediaAriaLabel: 'Veure aparicio a la premsa',
