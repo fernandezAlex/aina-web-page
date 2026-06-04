@@ -1,11 +1,12 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { footerConfig } from '../config';
+import { useSiteContent } from '../i18n';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export function Footer() {
+  const { footer: footerConfig } = useSiteContent();
   const footerRef = useRef<HTMLElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -57,13 +58,13 @@ export function Footer() {
     <footer
       ref={footerRef}
       id="footer"
-      className="relative w-full overflow-hidden bg-primary pt-24 pb-8 md:pt-32"
+      className="relative w-full overflow-hidden bg-forest-dark pt-24 pb-8 md:pt-32"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {footerConfig.logoText && (
           <div
             ref={logoRef}
-            className="-mx-6 mb-16 bg-primary px-6 py-12 opacity-0 md:-mx-12 md:mb-24 md:px-12 md:py-16"
+            className="-mx-6 mb-16 bg-forest-dark px-6 py-12 opacity-0 md:-mx-12 md:mb-24 md:px-12 md:py-16"
           >
             <svg
               viewBox="0 0 600 100"

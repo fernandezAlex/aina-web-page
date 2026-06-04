@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
+import { I18nProvider } from './i18n.tsx'
 
 // Mark lazy images as loaded once they finish loading
 document.addEventListener('load', (e) => {
@@ -13,6 +14,8 @@ document.addEventListener('load', (e) => {
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <I18nProvider>
+      <App />
+    </I18nProvider>
   </StrictMode>,
 )

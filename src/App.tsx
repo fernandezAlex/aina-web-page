@@ -9,12 +9,13 @@ import { Recognitions } from './sections/Recognitions';
 import { Books } from './sections/Books';
 import { Join } from './sections/Join';
 import { Footer } from './sections/Footer';
-import { siteConfig } from './config';
+import { useSiteContent } from './i18n';
 import './App.css';
 
 function App() {
   // Initialize Lenis smooth scroll
   useLenis();
+  const { siteConfig } = useSiteContent();
 
   useEffect(() => {
     if (siteConfig.siteTitle) {
@@ -27,7 +28,7 @@ function App() {
     if (siteConfig.language) {
       document.documentElement.lang = siteConfig.language;
     }
-  }, []);
+  }, [siteConfig]);
 
   return (
     <main className="relative w-full overflow-x-hidden">

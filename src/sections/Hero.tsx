@@ -1,11 +1,13 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { heroConfig } from '../config';
+import { LanguageSwitcher } from '../components/LanguageSwitcher';
+import { useSiteContent } from '../i18n';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export function Hero() {
+  const { hero: heroConfig } = useSiteContent();
   const sectionRef = useRef<HTMLElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const modelRef = useRef<HTMLDivElement>(null);
@@ -101,7 +103,7 @@ export function Hero() {
         ref={textRef}
         className="absolute inset-0 flex items-center justify-center z-10 will-change-transform"
       >
-        <p aria-hidden="true" className="text-[12vw] md:text-[14vw] lg:text-[16vw] font-sans font-extrabold text-[#ffa952]/30 tracking-tighter leading-none select-none whitespace-nowrap">
+        <p aria-hidden="true" className="text-[12vw] md:text-[14vw] lg:text-[16vw] font-sans font-extrabold text-secondary/58 tracking-tighter leading-none select-none whitespace-nowrap">
           {heroConfig.backgroundText}
         </p>
       </div>
@@ -154,11 +156,7 @@ export function Hero() {
             ))}
           </div>
         )}
-        <button className="md:hidden text-white">
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
+        <LanguageSwitcher label={heroConfig.languageLabel} />
       </nav>
     </section>
   );

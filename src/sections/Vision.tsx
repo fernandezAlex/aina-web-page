@@ -2,11 +2,12 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight } from 'lucide-react';
-import { visionConfig } from '../config';
+import { useSiteContent } from '../i18n';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export function Vision() {
+  const { vision: visionConfig } = useSiteContent();
   const sectionRef = useRef<HTMLElement>(null);
   const introRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
@@ -169,7 +170,7 @@ export function Vision() {
           <div className="relative mx-auto max-w-7xl px-6 py-16 md:px-12 md:py-24">
             <div className="max-w-4xl text-center md:text-left">
               <p className="mb-4 text-sm font-body uppercase tracking-[0.32em] text-white/70">
-                Una causa que se siente cerca
+                {visionConfig.closingEyebrow}
               </p>
               <p className="text-3xl font-sans font-bold tracking-tight text-white [text-shadow:0_10px_30px_rgba(0,0,0,0.28)] md:text-5xl lg:text-6xl">
                 {visionConfig.closingTitle}
