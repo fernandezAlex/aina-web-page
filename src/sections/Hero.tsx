@@ -85,7 +85,7 @@ export function Hero() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-forest-dark"
+      className="relative min-h-[82svh] w-full flex items-center justify-center overflow-hidden bg-forest-dark sm:min-h-screen"
     >
       {/* Layer 1: Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-forest-dark via-forest-dark to-forest-mid opacity-95" />
@@ -101,9 +101,9 @@ export function Hero() {
       {/* Layer 2: Big Text */}
       <div
         ref={textRef}
-        className="absolute inset-0 flex items-center justify-center z-10 will-change-transform"
+        className="absolute inset-x-0 top-[48%] z-10 flex items-center justify-center will-change-transform sm:inset-0 sm:top-auto"
       >
-        <p aria-hidden="true" className="text-[12vw] md:text-[14vw] lg:text-[16vw] font-sans font-extrabold text-secondary/58 tracking-tighter leading-none select-none whitespace-nowrap">
+        <p aria-hidden="true" className="text-[18vw] font-sans font-extrabold text-secondary/58 tracking-tighter leading-none select-none whitespace-nowrap md:text-[14vw] lg:text-[16vw]">
           {heroConfig.backgroundText}
         </p>
       </div>
@@ -114,7 +114,7 @@ export function Hero() {
           ref={modelRef}
           className="absolute inset-0 flex items-end justify-center z-20 will-change-transform"
         >
-          <div className="relative w-[66vw] md:w-[44vw] lg:w-[34vw] max-w-[620px]">
+          <div className="relative w-[72vw] max-w-[430px] md:w-[44vw] md:max-w-[620px] lg:w-[34vw]">
             <img
               src={heroConfig.heroImage}
               alt={heroConfig.heroImageAlt}
@@ -128,16 +128,16 @@ export function Hero() {
       {/* Layer 4: Main content */}
       <div
         ref={overlayTextRef}
-        className="absolute inset-x-0 top-[14%] z-30 px-6 md:px-12 will-change-transform"
+        className="absolute inset-x-0 top-[18%] z-30 px-5 will-change-transform md:top-[14%] md:px-12"
       >
-        <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 text-white text-center">
+        <div className="mx-auto flex max-w-5xl flex-col items-center gap-3 text-center text-white md:gap-4">
           {heroConfig.brandName && (
-            <p className="font-body text-sm font-semibold uppercase tracking-[0.35em] text-secondary/85 md:text-base">
+            <p className="font-body text-xs font-semibold uppercase tracking-[0.32em] text-secondary/85 md:text-base md:tracking-[0.35em]">
               {heroConfig.brandName}
             </p>
           )}
           {heroConfig.overlayText && (
-            <p className="font-serif italic text-2xl tracking-wide text-secondary/92 md:text-3xl lg:text-4xl">
+            <p className="font-serif text-xl italic tracking-wide text-secondary/92 md:text-3xl lg:text-4xl">
               {heroConfig.overlayText}
             </p>
           )}
@@ -145,8 +145,8 @@ export function Hero() {
       </div>
 
       {/* Navigation hint */}
-      <nav className="absolute top-0 left-0 right-0 z-40 px-6 md:px-12 py-6 flex items-center justify-between">
-        <div className="text-white font-sans font-bold text-lg tracking-tight">
+      <nav className="absolute left-0 right-0 top-0 z-40 flex items-center justify-between px-5 py-5 md:px-12 md:py-6">
+        <div className="text-base font-sans font-bold tracking-tight text-white md:text-lg">
           {heroConfig.brandName}
         </div>
         {heroConfig.navLinks.length > 0 && (
