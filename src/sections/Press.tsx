@@ -104,9 +104,6 @@ export function Press() {
               <p className="font-body text-base font-semibold uppercase tracking-[0.26em] text-primary md:text-xl">
                 {press.selectionLabel}
               </p>
-              <p className="mt-3 max-w-3xl text-base font-body font-semibold leading-relaxed text-secondary md:text-lg">
-                {press.selectionHint}
-              </p>
             </div>
           </div>
 
