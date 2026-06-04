@@ -2,9 +2,11 @@ import path from "path"
 import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
 
+const base = process.env.VITE_PUBLIC_BASE ?? "/aina-web-page/"
+
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/aina-web-page/',
+  base,
   plugins: [react()],
   resolve: {
     alias: {
