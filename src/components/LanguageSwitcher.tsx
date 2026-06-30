@@ -20,8 +20,8 @@ export function LanguageSwitcher({ label, dark = false }: LanguageSwitcherProps)
     ? 'border-white/12 bg-forest-dark text-white shadow-[0_10px_30px_rgba(103,17,39,0.24)]'
     : 'border-white/20 bg-white/10 text-white shadow-none';
   const menuClasses = dark
-    ? 'border-secondary/45 bg-secondary text-softblack shadow-[0_18px_45px_rgba(255,140,67,0.28)]'
-    : 'border-secondary/45 bg-secondary text-softblack shadow-[0_18px_45px_rgba(255,140,67,0.28)]';
+    ? 'border-secondary/45 bg-secondary text-white shadow-[0_18px_45px_rgba(188,5,49,0.24)]'
+    : 'border-secondary/45 bg-secondary text-white shadow-[0_18px_45px_rgba(188,5,49,0.24)]';
 
   const renderFlag = (option: typeof activeLocale, sizeClass: string) => {
     if (option.flagSrc) {

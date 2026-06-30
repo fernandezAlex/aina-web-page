@@ -42,7 +42,7 @@ const joinPrimaryActionThemes = [
     shell: 'border-secondary/20 bg-[linear-gradient(180deg,#fff8f3_0%,#fff1e7_100%)]',
     halo: 'from-[#f97316]/22 via-[#ffae7a]/12 to-transparent',
     accent: 'bg-[linear-gradient(160deg,#f97316_0%,#ff8f4a_100%)]',
-    arrow: 'border-secondary/25 bg-secondary text-softblack group-hover:bg-[#ff8b43]',
+    arrow: 'border-secondary/25 bg-secondary text-white group-hover:bg-[#9f0429]',
     imageRing: 'border-secondary/20',
   },
   {
@@ -62,9 +62,9 @@ const joinPrimaryActionThemes = [
 ] as const;
 const joinSecondaryActionTheme = {
   shell: 'border-secondary/20 bg-[linear-gradient(180deg,#fff8f3_0%,#fff1e8_100%)]',
-  halo: 'from-secondary/18 via-[#ffb98d]/10 to-transparent',
+  halo: 'from-secondary/18 via-[#d94b6d]/10 to-transparent',
   accent: 'bg-[linear-gradient(160deg,#f97316_0%,#ff8f4a_100%)]',
-  arrow: 'border-secondary/25 bg-secondary text-softblack group-hover:bg-[#ff8b43]',
+  arrow: 'border-secondary/25 bg-secondary text-white group-hover:bg-[#9f0429]',
   imageRing: 'border-secondary/20',
 } as const;
 const joinActionImages = [
@@ -158,7 +158,7 @@ export function Join() {
           <h2 className="text-[2.7rem] font-sans font-bold leading-[0.96] tracking-tight text-primary md:text-6xl lg:text-7xl">
             {join.title}
           </h2>
-          <p className="mt-4 max-w-3xl text-base font-body leading-relaxed text-black md:mt-6 md:text-lg">
+          <p className="mt-4 max-w-3xl text-lg font-body leading-relaxed text-black md:mt-6 md:text-xl">
             {join.description}
           </p>
         </div>
@@ -218,7 +218,7 @@ export function Join() {
                           {block.summary}
                         </p>
 
-                        <p className="w-full max-w-[64ch] text-base font-body leading-relaxed text-softblack md:text-lg">
+                        <p className="w-full max-w-[64ch] text-lg font-body leading-relaxed text-softblack md:text-xl">
                           {block.description}
                         </p>
                       </div>
@@ -324,7 +324,7 @@ export function Join() {
                         {block.summary}
                       </p>
 
-                      <p className="mt-4 max-w-[40ch] text-base font-body leading-relaxed text-softblack md:max-w-none md:text-lg">
+                      <p className="mt-4 max-w-[40ch] text-lg font-body leading-relaxed text-softblack md:max-w-none md:text-xl">
                         {block.description}
                       </p>
 

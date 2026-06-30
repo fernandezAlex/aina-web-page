@@ -16,9 +16,9 @@ module.exports = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         forest: {
-          dark: "#671127",
-          mid: "#8d1f39",
-          light: "#b53d58",
+          dark: "#FDA850",
+          mid: "#FFB96F",
+          light: "#FFD3A3",
         },
         offwhite: "#f7f2ea",
         softblack: "#1b1413",

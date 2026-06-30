@@ -145,7 +145,7 @@ export function Vision() {
             </span>
           </h2>
           {visionConfig.description && (
-            <p className="mx-auto mt-8 max-w-3xl text-base font-body leading-relaxed text-softblack/65 md:text-xl">
+            <p className="mx-auto mt-8 max-w-3xl text-lg font-body leading-relaxed text-softblack/65 md:text-2xl">
               {visionConfig.description}
             </p>
           )}
@@ -176,7 +176,7 @@ export function Vision() {
                   <div
                     className="vision-planet-shell relative aspect-square overflow-hidden rounded-full border border-white/65 bg-[radial-gradient(circle_at_28%_20%,rgba(255,255,255,0.92)_0%,rgba(255,214,168,0.72)_14%,rgba(244,159,83,0.6)_28%,rgba(173,42,72,0.62)_48%,rgba(113,16,41,0.9)_76%,rgba(78,9,28,1)_100%)] p-5 shadow-[0_44px_110px_rgba(103,17,39,0.22)] transition-transform duration-500 group-hover:-translate-y-2"
                   >
-                    <div className="vision-planet-atmosphere absolute inset-[3%] rounded-full border border-white/20 bg-[radial-gradient(circle_at_22%_18%,rgba(255,255,255,0.46),rgba(255,255,255,0)_32%),radial-gradient(circle_at_70%_72%,rgba(255,169,82,0.22),rgba(255,169,82,0)_28%),radial-gradient(circle_at_48%_58%,rgba(113,16,41,0),rgba(113,16,41,0.26)_68%,rgba(52,6,19,0.38)_100%)]" />
+                    <div className="vision-planet-atmosphere absolute inset-[3%] rounded-full border border-white/20 bg-[radial-gradient(circle_at_22%_18%,rgba(255,255,255,0.46),rgba(255,255,255,0)_32%),radial-gradient(circle_at_70%_72%,rgba(188,5,49,0.22),rgba(188,5,49,0)_28%),radial-gradient(circle_at_48%_58%,rgba(113,16,41,0),rgba(113,16,41,0.26)_68%,rgba(52,6,19,0.38)_100%)]" />
                     <div className="absolute inset-[6.5%] rounded-full border border-white/18" />
                     <div className="absolute inset-x-[8%] top-[8%] h-[41%] overflow-hidden rounded-[999px_999px_40%_40%] ring-1 ring-white/30 shadow-[0_14px_34px_rgba(55,8,21,0.14)]">
                       {card.logoSrc ? (
@@ -222,7 +222,7 @@ export function Vision() {
                     <div
                       className="vision-planet-ring absolute inset-[-4%] rounded-full border border-forest-mid/18"
                     >
-                      <div className="absolute left-[8%] top-1/2 h-3 w-3 -translate-y-1/2 rounded-full bg-secondary/75 shadow-[0_0_0_8px_rgba(255,169,82,0.08)]" />
+                      <div className="absolute left-[8%] top-1/2 h-3 w-3 -translate-y-1/2 rounded-full bg-secondary/75 shadow-[0_0_0_8px_rgba(188,5,49,0.08)]" />
                       <div className="absolute right-[12%] top-[20%] h-2.5 w-2.5 rounded-full bg-primary/65" />
                     </div>
                   </div>
@@ -242,23 +242,23 @@ export function Vision() {
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url(${visionConfig.closingBackgroundImage})` }}
           />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(92,9,28,0.92)_0%,rgba(126,18,43,0.86)_45%,rgba(126,18,43,0.74)_100%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,170,82,0.18),transparent_34%)]" />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(45,3,13,0.18)_0%,rgba(45,3,13,0.5)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(253,168,80,0.94)_0%,rgba(253,168,80,0.86)_45%,rgba(253,168,80,0.74)_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,211,163,0.3),transparent_36%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04)_0%,rgba(27,20,19,0.12)_100%)]" />
 
           <div className="relative mx-auto max-w-7xl px-6 py-16 md:px-12 md:py-24">
             <div className="max-w-4xl text-center md:text-left">
-              <p className="mb-4 text-sm font-body uppercase tracking-[0.32em] text-white/70">
+              <p className="mb-4 text-sm font-body uppercase tracking-[0.32em] text-primary/80">
                 {visionConfig.closingEyebrow}
               </p>
-              <p className="text-3xl font-sans font-bold tracking-tight text-white [text-shadow:0_10px_30px_rgba(0,0,0,0.28)] md:text-5xl lg:text-6xl">
+              <p className="text-3xl font-sans font-bold tracking-tight text-primary md:text-5xl lg:text-6xl">
                 {visionConfig.closingTitle}
               </p>
               <div className="mt-8 space-y-4">
                 {visionConfig.closingParagraphs.map((paragraph) => (
                   <p
                     key={paragraph}
-                    className="max-w-3xl text-base font-body leading-relaxed text-white/90 [text-shadow:0_6px_18px_rgba(0,0,0,0.25)] md:text-lg"
+                    className="max-w-3xl text-lg font-body leading-relaxed text-softblack md:text-xl"
                   >
                     {paragraph}
                   </p>
@@ -266,7 +266,7 @@ export function Vision() {
               </div>
               <a
                 href={visionConfig.ctaHref}
-                className="mt-10 inline-flex items-center gap-2 rounded-full bg-secondary px-7 py-3 text-sm font-body font-bold uppercase tracking-[0.18em] text-softblack transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:text-forest-dark"
+                className="mt-10 inline-flex items-center gap-2 rounded-full bg-secondary px-7 py-3 text-sm font-body font-bold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:text-primary"
               >
                 {visionConfig.ctaButtonText}
                 <ArrowUpRight className="h-4 w-4" />
