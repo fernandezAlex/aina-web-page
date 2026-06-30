@@ -22,7 +22,10 @@ export function ImpactGalleryCard({
   locale,
   shouldAnimate,
 }: ImpactGalleryCardProps) {
-  if (images.length === 0 && stats.length === 0) return null;
+  const hasImages = images.length > 0;
+  const hasStats = stats.length > 0;
+
+  if (!hasImages && !hasStats) return null;
 
   const [mainImage, lowerLeftImage, lowerRightImage] = images;
 
@@ -32,8 +35,12 @@ export function ImpactGalleryCard({
       aria-label={ariaLabel}
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_8%_10%,rgba(253,168,80,0.10),transparent_32%),radial-gradient(circle_at_96%_92%,rgba(188,5,49,0.06),transparent_30%)]" />
-      <div className="relative grid xl:grid-cols-[0.92fr_1.08fr]">
-        {images.length > 0 && (
+      <div
+        className={`relative grid ${
+          hasImages && hasStats ? 'xl:grid-cols-[0.92fr_1.08fr]' : ''
+        }`}
+      >
+        {hasImages && (
           <div className="relative min-h-[390px] overflow-hidden sm:min-h-[500px] xl:min-h-[760px]">
             {mainImage && (
               <div className="absolute inset-x-0 top-0 h-[68%] overflow-hidden rounded-br-[42%]">
@@ -74,7 +81,7 @@ export function ImpactGalleryCard({
           </div>
         )}
 
-        {stats.length > 0 && (
+        {hasStats && (
           <div className="relative px-6 pb-8 pt-9 sm:px-9 sm:pb-10 xl:px-8 xl:py-12">
             {label && (
               <div className="mb-5">
