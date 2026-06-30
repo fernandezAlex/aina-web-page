@@ -134,13 +134,7 @@ export function ImpactGalleryCard({
 													locale={locale}
 												/>
 											</p>
-											<p
-												className={`mt-3 font-body text-base font-semibold leading-snug xl:text-lg ${
-													isLast ? "text-forest-dark" : "text-softblack"
-												}`}
-											>
-												{stat.label}
-											</p>
+											<h3 className={`mt-4`}>{stat.label}</h3>
 										</div>
 									</div>
 								);

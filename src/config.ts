@@ -271,7 +271,7 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
         'Retrato de Aina Barca sonriendo en un estudio, imagen principal para compartir la web',
     },
     hero: {
-      backgroundText: 'AINA BARCA',
+      backgroundText: 'Aina Barca',
       heroImage: asset('/aina-con-nino.png'),
       heroImageAlt: 'Aina Barca sosteniendo y abrazando a un niño',
       overlayText: 'El amor puesto en acción',
@@ -680,7 +680,7 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
       ],
     },
     footer: {
-      logoText: 'AINA BARCA',
+      logoText: 'Aina Barca',
       navigationLabel: 'Secciones',
       navLinks: [
         { label: 'Inicio', href: navHrefs[0] },
@@ -710,7 +710,7 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
         'Studio portrait of Aina Barca smiling, used as the main social sharing image',
     },
     hero: {
-      backgroundText: 'AINA BARCA',
+      backgroundText: 'Aina Barca',
       heroImage: asset('/aina-con-nino.png'),
       heroImageAlt: 'Aina Barca holding and embracing a child',
       overlayText: 'Love put into action',
@@ -1026,7 +1026,7 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
       ],
     },
     footer: {
-      logoText: 'AINA BARCA',
+      logoText: 'Aina Barca',
       navigationLabel: 'Sections',
       navLinks: [
         { label: 'Home', href: navHrefs[0] },
@@ -1056,7 +1056,7 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
         "Retrat d'estudi de l'Aina Barca somrient, imatge principal per compartir el web",
     },
     hero: {
-      backgroundText: 'AINA BARCA',
+      backgroundText: 'Aina Barca',
       heroImage: asset('/aina-con-nino.png'),
       heroImageAlt: "Aina Barca sostenint i abraçant un nen",
       overlayText: "L'amor posat en acció",
@@ -1372,7 +1372,7 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
       ],
     },
     footer: {
-      logoText: 'AINA BARCA',
+      logoText: 'Aina Barca',
       navigationLabel: 'Seccions',
       navLinks: [
         { label: 'Inici', href: navHrefs[0] },

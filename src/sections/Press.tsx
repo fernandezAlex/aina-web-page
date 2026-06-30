@@ -67,7 +67,7 @@ export function Press() {
           <h2 className="text-4xl font-sans font-bold tracking-tight leading-tight text-primary md:text-5xl lg:text-6xl">
             {press.title}
           </h2>
-          <p className="mt-5 text-xl font-serif italic text-forest-mid md:text-2xl">
+          <p className="mt-5 text-xl font-serif font-bold italic text-forest-mid md:text-2xl">
             {press.subtitle}
           </p>
           <p className="mt-7 max-w-5xl text-xl font-body leading-relaxed text-softblack/70 md:text-2xl">

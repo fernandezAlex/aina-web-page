@@ -95,8 +95,8 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Calibri', sans-serif;
-    font-size: 1.0625rem;
-    line-height: 1.65;
+    font-size: 1.125rem;
+    line-height: 1.68;
     overflow-x: hidden;
     background:
       radial-gradient(circle at top left, rgba(188, 5, 49, 0.12), transparent 28%),

@@ -91,8 +91,14 @@ export function Hero() {
 			id="hero"
 			className="relative min-h-[82svh] w-full flex items-center justify-center overflow-hidden bg-forest-dark sm:min-h-screen"
 		>
-			{/* Layer 1: Background gradient */}
-			<div className="absolute inset-0 bg-gradient-to-b from-forest-dark via-forest-dark to-forest-mid opacity-95" />
+			{/* Layer 1: Background image */}
+			<div
+				className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+				style={{ backgroundImage: 'url(/bg-img-header.jpeg)' }}
+			/>
+
+			{/* Layer 2: Brand color veil */}
+			<div className="absolute inset-0 bg-gradient-to-b from-forest-dark/82 via-forest-dark/84 to-forest-mid/86" />
 
 			{/* Subtle texture overlay */}
 			<div
@@ -102,7 +108,7 @@ export function Hero() {
 				}}
 			/>
 
-			{/* Layer 2: Big Text */}
+			{/* Layer 3: Big Text */}
 			<div
 				ref={textRef}
 				className="absolute inset-x-0 top-[27%] z-10 flex justify-center px-3 will-change-transform md:top-[22%] lg:top-[20%]"
@@ -115,7 +121,7 @@ export function Hero() {
 				</p>
 			</div>
 
-			{/* Layer 3: Hero Model Image (Cutout) */}
+			{/* Layer 4: Hero Model Image (Cutout) */}
 			{heroConfig.heroImage && (
 				<div
 					ref={modelRef}
@@ -132,14 +138,14 @@ export function Hero() {
 				</div>
 			)}
 
-			{/* Layer 4: Main content */}
+			{/* Layer 5: Main content */}
 			<div
 				ref={overlayTextRef}
 				className="absolute inset-x-0 top-[18%] z-30 px-5 will-change-transform md:top-[14%] md:px-12"
 			>
 				<div className="mx-auto flex max-w-5xl flex-col items-center gap-3 text-center text-white md:gap-4">
 					{heroConfig.overlayText && (
-						<p className="font-serif text-xl italic tracking-wide text-secondary/92 md:text-3xl lg:text-4xl">
+						<p className="font-sans text-[1.45rem] font-bold tracking-tight text-secondary/96 md:text-[2.3rem] lg:text-[3rem]">
 							{heroConfig.overlayText}
 						</p>
 					)}

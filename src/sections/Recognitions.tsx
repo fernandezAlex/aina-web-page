@@ -2,29 +2,6 @@ import { useSiteContent } from '../i18n';
 
 export function Recognitions() {
   const { recognitions } = useSiteContent();
-  const getAwardImagePosition = (title: string) => {
-    if (
-      title.includes('RECLA') ||
-      title.includes('Sostenibilidad') ||
-      title.includes('Sostenibilitat')
-    ) {
-      return 'object-center object-[center_18%]';
-    }
-
-    if (title.includes('TELVA') || title.includes('Solidarity') || title.includes('Solidaritat')) {
-      return 'object-center object-[center_12%]';
-    }
-
-    if (title.includes('Social Welfare')) {
-      return 'object-center object-[center_16%]';
-    }
-
-    if (title.includes('Joan Maria Malapeira')) {
-      return 'object-center object-[center_20%]';
-    }
-
-    return 'object-center object-top';
-  };
 
   return (
     <section id="reconocimientos" className="relative w-full bg-forest-dark py-24 md:py-32 overflow-hidden">
@@ -40,7 +17,7 @@ export function Recognitions() {
           <p className="mt-5 text-xl md:text-2xl font-serif italic text-secondary/90">
             {recognitions.subtitle}
           </p>
-          <p className="mt-7 text-xl md:text-2xl text-white/65 font-body leading-relaxed">
+          <p className="mt-7 text-xl font-body font-bold leading-relaxed text-white md:text-2xl">
             {recognitions.description}
           </p>
         </div>
@@ -51,14 +28,13 @@ export function Recognitions() {
               key={`${award.title}-${award.year}-${award.imageSrc}`}
               className="group relative overflow-hidden rounded-[1.8rem] border border-[#f4d7b6] bg-white p-5 shadow-[0_20px_60px_rgba(141,31,57,0.14)] transition-all duration-500 hover:-translate-y-1.5 hover:border-[#f0c896] hover:shadow-[0_30px_90px_rgba(141,31,57,0.18)] md:p-6"
             >
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-[linear-gradient(180deg,rgba(255,255,255,0.72),rgba(255,255,255,0))]" />
               <div className="pointer-events-none absolute right-5 top-5 h-14 w-14 rounded-full bg-[#fff2e0] blur-2xl transition-transform duration-500 group-hover:scale-125" />
 
               <div className="aspect-[4/3] overflow-hidden rounded-[1.35rem] border border-[#f3d4b4] bg-[#fff9f3] shadow-[inset_0_1px_0_rgba(255,255,255,0.95)] flex items-center justify-center">
                 <img
                   src={award.imageSrc}
                   alt={`${award.title} - ${award.location} · ${award.year}`}
-                  className={`h-full w-full object-cover transition duration-500 group-hover:scale-105 ${getAwardImagePosition(award.title)}`}
+                  className="h-full w-full object-cover object-top transition duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
               </div>

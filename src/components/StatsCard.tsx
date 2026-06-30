@@ -86,7 +86,7 @@ export function StatsCard({
   return (
     <div className={className}>
       {label && (
-        <p className="accent-kicker text-sm font-body uppercase tracking-widest mb-8">
+        <p className="accent-kicker mb-8 text-base font-body uppercase tracking-widest md:text-lg">
           {label}
         </p>
       )}
@@ -103,7 +103,7 @@ export function StatsCard({
                 locale={locale}
               />
             </p>
-            <p className={`${labelColors[index % labelColors.length]} mt-2 max-w-2xl text-lg font-body font-semibold leading-snug md:text-xl lg:text-2xl`}>
+            <p className={`${labelColors[index % labelColors.length]} mt-2 max-w-2xl text-xl font-body font-semibold leading-snug md:text-2xl lg:text-[1.7rem]`}>
               {stat.label}
             </p>
           </div>

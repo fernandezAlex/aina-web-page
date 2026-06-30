@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Heart } from 'lucide-react';
 import { ImpactGalleryCard } from '../components/ImpactGalleryCard';
 import { useI18n, useSiteContent } from '../i18n';
 
@@ -141,10 +142,21 @@ export function AboutAina() {
         </div>
 
         {closingParagraph && (
-          <div className="mx-auto mt-16 max-w-5xl text-center md:mt-20">
-            <p className="text-2xl font-sans font-semibold leading-tight tracking-tight text-primary md:text-3xl lg:text-4xl">
-              {closingParagraph}
-            </p>
+          <div className="mx-auto mt-16 max-w-5xl md:mt-20">
+            <div className="relative overflow-hidden rounded-[2rem] border border-[#f6c27f]/65 bg-[linear-gradient(180deg,#FDA850_0%,#ffb766_100%)] px-8 py-10 text-center shadow-[0_26px_80px_rgba(141,31,57,0.14)] md:px-12 md:py-12">
+              <div className="pointer-events-none absolute inset-[14px] rounded-[1.5rem] border border-white/22" />
+              <div className="pointer-events-none absolute inset-x-14 top-0 h-px bg-gradient-to-r from-transparent via-white/70 to-transparent" />
+              <div className="pointer-events-none absolute -left-4 top-8 h-20 w-20 rounded-full border border-white/24 bg-white/8 blur-[1px]" />
+              <div className="pointer-events-none absolute -right-6 bottom-5 h-24 w-24 rounded-full border border-[#ffe2b8]/28 bg-white/10 blur-sm" />
+              <div className="pointer-events-none absolute left-1/2 top-5 h-9 w-9 -translate-x-1/2 rotate-45 rounded-[0.9rem] border border-white/28 bg-white/12" />
+              <div className="pointer-events-none absolute left-8 top-8 flex h-14 w-14 items-center justify-center rounded-full border border-white/28 bg-white/12 shadow-[0_10px_24px_rgba(255,255,255,0.08)]">
+                <Heart className="h-6 w-6 text-white" fill="currentColor" strokeWidth={1.8} />
+              </div>
+
+              <p className="relative text-2xl font-sans font-semibold leading-tight tracking-tight text-primary md:text-3xl lg:text-4xl">
+                {closingParagraph}
+              </p>
+            </div>
           </div>
         )}
       </div>

@@ -48,8 +48,7 @@ export function SiteHeader({ heroConfig }: SiteHeaderProps) {
         <a
           href="#hero"
           className={[
-            'text-lg font-sans font-bold tracking-tight transition-colors duration-300 md:text-xl',
-            'text-primary md:text-white',
+            'text-[1.05rem] font-sans font-bold tracking-tight text-primary transition-colors duration-300 md:text-[1.28rem]',
           ].join(' ')}
         >
           {heroConfig.brandName}
@@ -59,8 +58,8 @@ export function SiteHeader({ heroConfig }: SiteHeaderProps) {
           <nav
             aria-label="Primary"
             className={[
-              'hidden items-center gap-8 text-base font-body font-bold transition-colors duration-300 md:flex md:text-lg',
-              isSticky ? 'text-white/92' : 'text-white/84',
+              'hidden items-center gap-8 text-[1.04rem] font-body font-bold transition-colors duration-300 md:flex md:text-[1.12rem]',
+              isSticky ? 'text-primary' : 'text-primary/94',
             ].join(' ')}
           >
             {heroConfig.navLinks.map((link) => (
@@ -69,7 +68,7 @@ export function SiteHeader({ heroConfig }: SiteHeaderProps) {
                 href={link.href}
                 className={[
                   'transition-colors duration-300',
-                  isSticky ? 'hover:text-secondary' : 'hover:text-white',
+                  'hover:text-white/92',
                 ].join(' ')}
               >
                 {link.label}
@@ -104,7 +103,7 @@ export function SiteHeader({ heroConfig }: SiteHeaderProps) {
                 className="border-l border-black/10 bg-[#f7f2ea] px-0 text-softblack"
               >
                 <SheetHeader className="border-b border-black/8 px-6 pb-5 pt-6">
-                  <SheetTitle className="font-sans text-base tracking-[0.08em] uppercase">
+                  <SheetTitle className="font-sans text-base tracking-[0.08em]">
                     {heroConfig.brandName}
                   </SheetTitle>
                 </SheetHeader>
@@ -124,7 +123,7 @@ export function SiteHeader({ heroConfig }: SiteHeaderProps) {
                   </nav>
 
                   <div className="mt-6 border-t border-black/8 pt-6">
-                    <p className="mb-3 font-sans text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-softblack/65">
+                    <p className="mb-3 font-sans text-[0.72rem] font-semibold tracking-[0.18em] text-softblack/65">
                       {heroConfig.languageLabel}
                     </p>
                     <LanguageSwitcher label={heroConfig.languageLabel} dark />

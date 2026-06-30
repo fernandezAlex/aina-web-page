@@ -105,7 +105,7 @@ export function Footer() {
           <div className="mb-16">
             {hasNavigation && (
               <div>
-                <p className="accent-kicker mb-4 text-sm font-body uppercase tracking-widest">
+                <p className="accent-kicker mb-4 text-sm font-body tracking-widest">
                   {footerConfig.navigationLabel}
                 </p>
                 <nav className="flex flex-wrap items-center gap-x-6 gap-y-3">
