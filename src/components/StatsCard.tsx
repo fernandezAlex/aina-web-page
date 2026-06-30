@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { Locale, StatItem } from '../config';
 
-interface CounterProps {
+export interface AnimatedCounterProps {
   end: number;
   prefix?: string;
   suffix?: string;
@@ -20,7 +20,7 @@ interface StatsCardProps {
   locale?: Locale;
 }
 
-function Counter({
+export function AnimatedCounter({
   end,
   prefix = '',
   suffix = '',
@@ -28,7 +28,7 @@ function Counter({
   shouldAnimate,
   useGrouping = false,
   locale,
-}: CounterProps) {
+}: AnimatedCounterProps) {
   const [count, setCount] = useState(0);
   const countRef = useRef(0);
 
@@ -37,6 +37,7 @@ function Counter({
 
     const startTime = Date.now();
     const endTime = startTime + duration * 1000;
+    let animationFrameId: number;
 
     const updateCount = () => {
       const now = Date.now();
@@ -50,13 +51,15 @@ function Counter({
       }
 
       if (now < endTime) {
-        requestAnimationFrame(updateCount);
+        animationFrameId = requestAnimationFrame(updateCount);
       } else {
         setCount(end);
       }
     };
 
-    requestAnimationFrame(updateCount);
+    animationFrameId = requestAnimationFrame(updateCount);
+
+    return () => cancelAnimationFrame(animationFrameId);
   }, [end, duration, shouldAnimate]);
 
   return (
@@ -91,7 +94,7 @@ export function StatsCard({
         {stats.map((stat, index) => (
           <div key={`${stat.label}-${index}`} className="border-b border-secondary/15 pb-7 last:border-0">
             <p className={`${valueClassName} font-sans font-bold text-primary tracking-tight`}>
-              <Counter
+              <AnimatedCounter
                 end={stat.value}
                 prefix={stat.prefix}
                 suffix={stat.suffix}

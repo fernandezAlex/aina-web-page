@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { StatsCard } from '../components/StatsCard';
+import { ImpactGalleryCard } from '../components/ImpactGalleryCard';
 import { useI18n, useSiteContent } from '../i18n';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -12,10 +12,12 @@ export function AboutAina() {
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const leadBlocksRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
+  const statsRef = useRef<HTMLElement>(null);
   const [shouldAnimateStats, setShouldAnimateStats] = useState(false);
   const closingParagraph = aboutAinaConfig.paragraphs[aboutAinaConfig.paragraphs.length - 1];
   const bodyParagraphs = aboutAinaConfig.paragraphs.slice(0, -1);
+  const hasImpactCardContent =
+    aboutAinaConfig.gallery.length > 0 || aboutAinaConfig.impactStats.length > 0;
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -32,19 +34,21 @@ export function AboutAina() {
         once: true,
       });
 
-      ScrollTrigger.create({
-        trigger: statsRef.current,
-        start: 'top 78%',
-        onEnter: () => {
-          setShouldAnimateStats(true);
-          gsap.fromTo(
-            statsRef.current,
-            { y: 60, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }
-          );
-        },
-        once: true,
-      });
+      if (statsRef.current) {
+        ScrollTrigger.create({
+          trigger: statsRef.current,
+          start: 'top 78%',
+          onEnter: () => {
+            setShouldAnimateStats(true);
+            gsap.fromTo(
+              statsRef.current,
+              { y: 60, opacity: 0 },
+              { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }
+            );
+          },
+          once: true,
+        });
+      }
 
       const leadBlocks = leadBlocksRef.current?.querySelectorAll('.about-aina-block');
       if (leadBlocks) {
@@ -73,7 +77,7 @@ export function AboutAina() {
   if (
     !aboutAinaConfig.title &&
     aboutAinaConfig.paragraphs.length === 0 &&
-    aboutAinaConfig.impactStats.length === 0
+    !hasImpactCardContent
   ) {
     return null;
   }
@@ -86,7 +90,13 @@ export function AboutAina() {
     >
       <div className="absolute inset-x-0 top-0 h-px bg-softblack/10" />
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid lg:grid-cols-[minmax(0,0.95fr)_minmax(320px,0.55fr)] gap-12 md:gap-16 items-start">
+        <div
+          className={`grid items-start gap-12 ${
+            hasImpactCardContent
+              ? 'lg:grid-cols-[minmax(0,0.8fr)_minmax(560px,1.2fr)] lg:gap-14'
+              : ''
+          }`}
+        >
           <div>
             <div ref={headerRef} className="mb-3 opacity-0">
               {aboutAinaConfig.subtitle && (
@@ -114,49 +124,20 @@ export function AboutAina() {
                 ))}
               </div>
             )}
-
-            <div
-              ref={statsRef}
-              className="accent-card mb-10 opacity-0 rounded-lg border border-secondary/15 bg-white p-8 shadow-sm md:mb-12 md:p-10"
-              aria-label={aboutAinaConfig.impactAriaLabel}
-            >
-              <StatsCard
-                stats={aboutAinaConfig.impactStats}
-                label={aboutAinaConfig.impactLabel}
-                shouldAnimate={shouldAnimateStats}
-                valueClassName="text-5xl md:text-6xl"
-                locale={locale}
-              />
-            </div>
-
           </div>
 
-          <aside className="space-y-10 lg:sticky lg:top-10">
-            <div className="grid grid-cols-2 gap-4">
-              {aboutAinaConfig.gallery.map((image, index) => (
-                <div
-                  key={image.src}
-                  className={`overflow-hidden rounded-[1.75rem] border border-softblack/10 bg-white shadow-sm ${
-                    index === 0 ? 'col-span-2 aspect-[4/3]' : 'aspect-[4/5]'
-                  }`}
-                >
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className={`h-full w-full object-cover ${
-                      index === 0
-                        ? 'object-top'
-                        : index === 2
-                          ? 'object-[18%_center]'
-                          : 'object-center'
-                    }`}
-                    loading="lazy"
-                  />
-                </div>
-              ))}
-            </div>
-
-          </aside>
+          {hasImpactCardContent && (
+            <aside ref={statsRef} className="opacity-0 lg:sticky lg:top-8">
+              <ImpactGalleryCard
+                images={aboutAinaConfig.gallery}
+                stats={aboutAinaConfig.impactStats}
+                label={aboutAinaConfig.impactLabel}
+                ariaLabel={aboutAinaConfig.impactAriaLabel}
+                locale={locale}
+                shouldAnimate={shouldAnimateStats}
+              />
+            </aside>
+          )}
         </div>
 
         {closingParagraph && (

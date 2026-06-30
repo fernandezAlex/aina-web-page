@@ -29,8 +29,6 @@ export function Recognitions() {
   return (
     <section id="reconocimientos" className="relative w-full bg-forest-dark py-24 md:py-32 overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(188,5,49,0.14),transparent_34%)]" />
-      <div className="absolute left-[-6rem] top-24 h-72 w-72 rounded-full bg-white/14 blur-3xl" />
-      <div className="absolute right-[-5rem] bottom-20 h-80 w-80 rounded-full bg-[#ffd8a8]/18 blur-3xl" />
       <div className="relative max-w-7xl mx-auto px-6 md:px-12">
         <div className="max-w-4xl mb-14 md:mb-20">
           <p className="text-secondary/80 text-sm font-body uppercase tracking-widest mb-4">
@@ -72,7 +70,7 @@ export function Recognitions() {
                 <h3 className="mt-3 text-xl md:text-2xl font-sans font-semibold text-primary leading-snug">
                   {award.title}
                 </h3>
-                <p className="mt-4 text-base md:text-lg font-body leading-relaxed text-primary/78">
+                <p className="mt-4 text-base md:text-lg font-body leading-relaxed text-white/68">
                   {award.description}
                 </p>
               </div>
