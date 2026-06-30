@@ -57,7 +57,7 @@ export function ImpactGalleryCard({
               </div>
             )}
             {lowerRightImage && (
-              <div className="absolute bottom-[2%] right-[-4%] z-10 aspect-square w-[54%] overflow-hidden rounded-full border-[8px] border-[#fffdf9] shadow-[0_18px_40px_rgba(73,32,24,0.16)]">
+              <div className="absolute bottom-[2%] right-[2%] z-10 aspect-square w-[54%] overflow-hidden rounded-full border-[8px] border-[#fffdf9] shadow-[0_18px_40px_rgba(73,32,24,0.16)]">
                 <img
                   src={lowerRightImage.src}
                   alt={lowerRightImage.alt}
