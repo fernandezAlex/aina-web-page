@@ -3,41 +3,29 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
   ArrowUpRight,
+  Globe,
   GraduationCap,
   HandHeart,
+  Heart,
   Users,
 } from 'lucide-react';
 import { useSiteContent } from '../i18n';
 
-type JoinIcon = typeof HandHeart;
-
 gsap.registerPlugin(ScrollTrigger);
 
-const joinIcons: JoinIcon[] = [HandHeart, Users, GraduationCap];
-const joinBlockVisuals = [
-  {
-    mainImage: `${import.meta.env.BASE_URL}aina/main/aina-classroom-support.jpg`,
-    mainAlt: 'Sesión de apoyo educativo en Nepal',
-    supportImage: `${import.meta.env.BASE_URL}aina/main/aina-child-close-smile.jpg`,
-    supportAlt: 'Niño sonriendo junto a Aina',
-    chip: '3 formas de sumar',
-  },
-  {
-    mainImage: `${import.meta.env.BASE_URL}aina/main/aina-girl-conversation.jpg`,
-    mainAlt: 'Aina en conversación cercana durante una actividad',
-    supportImage: `${import.meta.env.BASE_URL}aina/main/aina-child-floor-portrait.jpg`,
-    supportAlt: 'Actividad compartida en el suelo',
-    chip: 'Presencia real',
-  },
-  {
-    mainImage: `${import.meta.env.BASE_URL}aina/main/aina-child-embrace.jpg`,
-    mainAlt: 'Aina con un niño en una escena cercana y visible',
-    supportImage: `${import.meta.env.BASE_URL}aina/main/aina-library-portrait.jpg`,
-    supportAlt: 'Aina en un entorno de aprendizaje',
-    chip: 'Formación con impacto',
-  },
+const heroImage = `${import.meta.env.BASE_URL}aina/main/aina-child-embrace.jpg`;
+const membershipImages = [
+  `${import.meta.env.BASE_URL}aina/join/join-gallery-2.jpg`,
+  `${import.meta.env.BASE_URL}aina/join/join-gallery-1.jpg`,
+  `${import.meta.env.BASE_URL}aina/main/aina-child-embrace.jpg`,
 ] as const;
-const joinPrimaryActionThemes = [
+const secondaryImages = [
+  `${import.meta.env.BASE_URL}aina/main/aina-girl-conversation.jpg`,
+  `${import.meta.env.BASE_URL}aina/main/aina-library-portrait.jpg`,
+] as const;
+
+const membershipIcons = [Users, HandHeart, Globe] as const;
+const membershipTones = [
   {
     shell: 'border-secondary/20 bg-[linear-gradient(180deg,#fff8f3_0%,#fff1e7_100%)]',
     halo: 'from-[#f97316]/22 via-[#ffae7a]/12 to-transparent',
@@ -46,18 +34,14 @@ const joinPrimaryActionThemes = [
     imageRing: 'border-secondary/20',
   },
   {
-    shell: 'border-primary/18 bg-[linear-gradient(180deg,#fff4f6_0%,#ffe8ed_100%)]',
-    halo: 'from-primary/20 via-[#df3359]/10 to-transparent',
-    accent: 'bg-[linear-gradient(160deg,#c4143b_0%,#df3359_100%)]',
-    arrow: 'border-primary/20 bg-primary text-white group-hover:bg-[#df3359]',
-    imageRing: 'border-primary/18',
+    iconShell: 'bg-[#ff8b14] text-white',
+    title: 'text-[#f47d0c]',
+    button: 'bg-[#ff8b14] text-white hover:bg-[#f47d0c]',
   },
   {
-    shell: 'border-[#d89b11]/22 bg-[linear-gradient(180deg,#fff9e8_0%,#fff2c7_100%)]',
-    halo: 'from-[#efb11f]/24 via-[#f7cb4e]/12 to-transparent',
-    accent: 'bg-[linear-gradient(160deg,#efb11f_0%,#f7cb4e_100%)]',
-    arrow: 'border-[#d89b11]/22 bg-[#efb11f] text-softblack group-hover:bg-[#f7cb4e]',
-    imageRing: 'border-[#d89b11]/22',
+    iconShell: 'bg-[#efa513] text-white',
+    title: 'text-[#e99e06]',
+    button: 'bg-[#efa513] text-white hover:bg-[#db9308]',
   },
 ] as const;
 const joinSecondaryActionTheme = {
@@ -99,55 +83,46 @@ const joinActionImages = [
 export function Join() {
   const { join } = useSiteContent();
   const sectionRef = useRef<HTMLElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
-  const blocksRef = useRef<HTMLDivElement>(null);
+  const animatedRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      ScrollTrigger.create({
-        trigger: headerRef.current,
-        start: 'top 85%',
-        onEnter: () => {
-          gsap.fromTo(
-            headerRef.current,
-            { y: 60, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }
-          );
-        },
-        once: true,
-      });
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;
 
-      ScrollTrigger.create({
-        trigger: blocksRef.current,
-        start: 'top 82%',
-        onEnter: () => {
-          const blocks = blocksRef.current?.querySelectorAll('[data-join-block]');
-          if (blocks) {
-            gsap.fromTo(
-              blocks,
-              { y: 44, opacity: 0 },
-              {
-                y: 0,
-                opacity: 1,
-                duration: 0.8,
-                ease: 'power3.out',
-                stagger: 0.12,
-              }
-            );
+    const ctx = gsap.context(() => {
+      const items = gsap.utils.toArray<HTMLElement>('.join-fade-item');
+      if (items.length) {
+        gsap.fromTo(
+          items,
+          { y: 42, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.95,
+            ease: 'power3.out',
+            stagger: 0.1,
+            scrollTrigger: {
+              trigger: animatedRef.current,
+              start: 'top 82%',
+              once: true,
+            },
           }
-        },
-        once: true,
-      });
+        );
+      }
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
+  const supportBlock = join.blocks[0];
+  const volunteerBlock = join.blocks[1];
+  const instituteBlock = join.blocks[2];
+
   return (
     <section
       ref={sectionRef}
       id="unete"
-      className="relative w-full overflow-hidden bg-offwhite py-14 md:py-32"
+      className="relative overflow-hidden bg-offwhite py-16 md:py-24"
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-forest-dark/10 to-transparent md:h-32" />
       <div className="relative mx-auto max-w-7xl px-5 md:px-12">
@@ -163,51 +138,27 @@ export function Join() {
           </p>
         </div>
 
-        <div className="mb-6 grid grid-cols-2 gap-3 md:mb-12 md:grid-cols-4 md:gap-4">
-          {join.gallery.map((image) => (
-            <div key={image.src} className="aspect-[4/5] overflow-hidden rounded-[1.35rem] border border-softblack/10 bg-white shadow-sm md:rounded-[1.75rem]">
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="h-full w-full object-cover"
-                loading="lazy"
-              />
+      <div ref={animatedRef} className="relative mx-auto flex max-w-[122rem] flex-col gap-6 px-5 md:px-10 xl:px-16">
+        <div className="grid items-stretch gap-8 lg:grid-cols-[minmax(0,1.04fr)_minmax(22rem,0.9fr)] lg:gap-10">
+          <div className="join-fade-item flex flex-col justify-center pt-2 lg:pr-6">
+            <div className="flex items-center gap-4 text-[#f27f14]">
+              <p className="text-[3rem] font-serif italic leading-none md:text-[4rem]">
+                {join.eyebrow}
+              </p>
+              <div className="flex flex-1 items-center gap-3">
+                <div className="h-px flex-1 bg-current/65" />
+                <Heart className="h-8 w-8" strokeWidth={1.8} />
+              </div>
             </div>
-          ))}
-        </div>
 
-        <div ref={blocksRef} className="grid gap-4 md:gap-6 lg:grid-cols-2">
-          {join.blocks.map((block, index) => {
-            const Icon = joinIcons[index];
-            const isPrimaryBlock = index === 0;
-            const visual = joinBlockVisuals[index];
-
-            return (
-              <article
-                key={block.title}
-                data-join-block
-                className={[
-                  'accent-card relative overflow-hidden rounded-[1.5rem] border border-secondary/15 bg-white p-5 opacity-0 shadow-[0_20px_50px_rgba(103,17,39,0.08)] transition-transform duration-300 hover:-translate-y-1 md:rounded-[2rem] md:p-8',
-                  isPrimaryBlock
-                    ? 'md:min-h-[27rem] lg:col-span-2 lg:min-h-[26rem]'
-                    : 'md:min-h-[27rem] lg:min-h-[26rem]',
-                ].join(' ')}
-              >
-                <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-secondary/10 to-transparent md:h-28" />
-
-                {isPrimaryBlock ? (
-                  <div className="relative">
-                    <div className="grid gap-8 lg:grid-cols-[minmax(0,1.28fr)_minmax(18rem,0.72fr)] lg:items-start">
-                      <div>
-                        <div className="mb-4 flex items-start justify-between gap-4 md:mb-6">
-                          <div className="space-y-2 md:space-y-3">
-                            <p className="accent-kicker text-xs font-body uppercase tracking-[0.22em]">
-                              {block.eyebrow}
-                            </p>
-                            <h3 className="max-w-[16ch] text-2xl font-sans font-bold leading-[0.98] tracking-tight text-primary md:text-[2.75rem]">
-                              {block.title}
-                            </h3>
-                          </div>
+            <h2 className="mt-3 max-w-[10ch] text-[3.6rem] font-serif font-bold leading-[0.92] tracking-tight text-primary md:text-[5.2rem] xl:text-[6.2rem]">
+              {join.title}
+            </h2>
+            <div className="mt-6 h-px w-16 bg-[#f09838]" />
+            <p className="mt-6 max-w-[21ch] text-xl leading-relaxed text-softblack md:text-[2rem]">
+              {join.description}
+            </p>
+          </div>
 
                           <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-secondary/14 text-secondary md:h-12 md:w-12">
                             <Icon className="h-5 w-5" strokeWidth={2} />
@@ -240,133 +191,117 @@ export function Join() {
                             </div>
                           </div>
 
-                          <div className="grid gap-4 xl:grid-cols-3">
-                            {block.actions.map((action, actionIndex) => {
-                              const opensInNewTab = action.href.startsWith('http');
-                              const actionImage = joinActionImages[index]?.[actionIndex];
-                              const theme = joinPrimaryActionThemes[actionIndex];
+        <article className="join-fade-item rounded-[2rem] border border-[#efd7c2] bg-[linear-gradient(180deg,rgba(255,255,255,0.9)_0%,rgba(255,250,246,0.92)_100%)] p-4 shadow-[0_20px_50px_rgba(138,80,31,0.08)] md:rounded-[2.5rem] md:p-8 xl:p-10">
+          <div className="mx-auto max-w-5xl text-center">
+            <div className="flex items-center justify-center gap-4">
+              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary text-white shadow-[0_16px_34px_rgba(169,17,47,0.18)]">
+                <Users className="h-7 w-7" strokeWidth={1.8} />
+              </div>
+              <h3 className="text-[2.2rem] font-serif font-bold leading-none text-primary md:text-[3.4rem]">
+                {supportBlock.title}
+              </h3>
+            </div>
+            <div className="mx-auto mt-4 h-px w-16 bg-[#f09838]" />
+            <div className="mx-auto mt-5 max-w-5xl space-y-4 text-lg leading-relaxed text-softblack md:text-[1.9rem] md:leading-[1.45]">
+              <p>{supportBlock.summary}</p>
+              <p>{supportBlock.description}</p>
+            </div>
+          </div>
 
-                              return (
-                                <a
-                                  key={action.href}
-                                  href={action.href}
-                                  target={opensInNewTab ? '_blank' : undefined}
-                                  rel={opensInNewTab ? 'noreferrer' : undefined}
-                                  className="group relative overflow-hidden rounded-[1.7rem] shadow-[0_20px_40px_rgba(103,17,39,0.12)] transition-all duration-300 hover:-translate-y-1"
-                                >
-                                  <img
-                                    src={actionImage?.src ?? visual.supportImage}
-                                    alt={actionImage?.alt ?? action.label}
-                                    className="h-[15rem] w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                    loading="lazy"
-                                  />
-                                  <span className={['absolute inset-0 opacity-95', theme.accent].join(' ')} />
-                                  <span className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(0,0,0,0.10)_28%,rgba(0,0,0,0.42)_100%)]" />
-                                  <span className="absolute inset-x-0 bottom-0 p-5">
-                                    <span className="flex items-end justify-between gap-3">
-                                      <span className="block text-left text-[1.45rem] font-sans font-semibold leading-tight text-white">
-                                        {action.label}
-                                      </span>
-                                      <span className={['flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/35 bg-white/16 text-white backdrop-blur-sm transition-all duration-300 group-hover:scale-[1.06]', theme.arrow].join(' ')}>
-                                        <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={1.8} />
-                                      </span>
-                                    </span>
-                                  </span>
-                                </a>
-                              );
-                            })}
-                          </div>
+          <div className="mt-8 grid gap-4 lg:grid-cols-3 xl:gap-5">
+            {supportBlock.actions.map((action, index) => {
+              const Icon = membershipIcons[index];
+              const tone = membershipTones[index];
 
-                        </div>
-                      </div>
+              return (
+                <article
+                  key={action.href}
+                  className="overflow-hidden rounded-[1.6rem] border border-[#ecd5c0] bg-white shadow-[0_16px_40px_rgba(138,80,31,0.08)]"
+                >
+                  <div className="aspect-[1.24/1] overflow-hidden">
+                    <img
+                      src={membershipImages[index] ?? membershipImages[0]}
+                      alt={action.label}
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <div className="relative px-5 pb-5 pt-10 text-center md:px-6 md:pb-6">
+                    <div className={`absolute left-1/2 top-0 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-[4px] border-white shadow-[0_14px_28px_rgba(138,80,31,0.12)] ${tone.iconShell}`}>
+                      <Icon className="h-7 w-7" strokeWidth={1.8} />
+                    </div>
+
+                    <h4 className={`mx-auto max-w-[12ch] text-[2rem] font-serif font-bold leading-[1] ${tone.title}`}>
+                      {action.label}
+                    </h4>
+                    <p className="mx-auto mt-4 max-w-[20ch] text-lg leading-relaxed text-softblack md:text-[1.26rem]">
+                      {action.description}
+                    </p>
+
+                    <div className="mt-6">
+                      <JoinButton href={action.href} label={action.label} className={`${tone.button} w-full text-center`} />
                     </div>
                   </div>
-                ) : (
-                  <div className="relative flex h-full flex-col">
-                    <div className="relative mb-6 overflow-hidden rounded-[1.6rem] bg-[#f8eee8] shadow-[0_18px_35px_rgba(103,17,39,0.08)]">
-                      <img
-                        src={visual.mainImage}
-                        alt={visual.mainAlt}
-                        className="h-56 w-full object-cover md:h-64"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-x-0 top-0 flex items-start justify-between p-4 md:p-5">
-                        <p className="rounded-full bg-white/88 px-3 py-1 text-[0.68rem] font-body uppercase tracking-[0.22em] text-secondary shadow-sm backdrop-blur">
-                          {block.eyebrow}
-                        </p>
-
-                        <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white/88 text-secondary shadow-sm backdrop-blur">
-                          <Icon className="h-5 w-5" strokeWidth={2} />
-                        </div>
-                      </div>
-
-                      <div className="absolute left-5 bottom-[-2.25rem] flex items-end gap-3">
-                        <div className="relative h-24 w-24 overflow-hidden rounded-full border-[4px] border-white shadow-[0_18px_30px_rgba(103,17,39,0.16)] md:h-28 md:w-28">
-                          <img
-                            src={visual.supportImage}
-                            alt={visual.supportAlt}
-                            className="h-full w-full object-cover"
-                            loading="lazy"
-                          />
-                        </div>
-                        <div className="mb-3 rounded-full bg-white/92 px-4 py-2 text-sm font-semibold text-softblack shadow-[0_12px_24px_rgba(103,17,39,0.10)] backdrop-blur">
-                          {visual.chip}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="pt-10">
-                      <h3 className="max-w-[16ch] text-2xl font-sans font-bold leading-[0.98] tracking-tight text-primary md:max-w-none md:text-[2.2rem]">
-                        {block.title}
-                      </h3>
-
-                      <p className="mt-4 max-w-[34ch] text-base font-sans font-semibold leading-snug text-softblack md:max-w-none md:text-lg">
-                        {block.summary}
-                      </p>
+                </article>
+              );
+            })}
+          </div>
+        </article>
 
                       <p className="mt-4 max-w-[40ch] text-lg font-body leading-relaxed text-softblack md:max-w-none md:text-xl">
                         {block.description}
                       </p>
 
-                      <div className="mt-7 grid gap-3">
-                        {block.actions.map((action) => {
-                          const opensInNewTab = action.href.startsWith('http');
-                          const theme = joinSecondaryActionTheme;
+            <div className="min-h-[20rem] lg:min-h-full">
+              <img
+                src={secondaryImages[0]}
+                alt="Aina comparte un momento cercano con un niño en Nepal"
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </article>
 
-                          return (
-                            <a
-                              key={action.href}
-                              href={action.href}
-                              target={opensInNewTab ? '_blank' : undefined}
-                              rel={opensInNewTab ? 'noreferrer' : undefined}
-                              className={[
-                                'group relative overflow-hidden rounded-[1.5rem] border p-3 shadow-[0_16px_32px_rgba(103,17,39,0.10)] transition-all duration-300 hover:-translate-y-1 md:p-4',
-                                theme.shell,
-                              ].join(' ')}
-                            >
-                              <span className={['pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b opacity-90', theme.halo].join(' ')} />
-                              <span className="relative flex items-center justify-between gap-4">
-                                <span className="min-w-0 flex-1 text-left">
-                                  <span className="block text-lg font-semibold leading-snug text-softblack">
-                                    {action.label}
-                                  </span>
-                                </span>
+        <article className="join-fade-item overflow-hidden rounded-[2rem] border border-[#efd7c2] bg-[linear-gradient(90deg,rgba(255,255,255,0.94)_0%,rgba(255,248,242,0.96)_52%,rgba(255,236,208,0.72)_100%)] shadow-[0_20px_50px_rgba(138,80,31,0.08)]">
+          <div className="grid items-stretch gap-6 lg:grid-cols-[minmax(0,0.98fr)_minmax(20rem,0.92fr)]">
+            <div className="flex flex-col justify-center px-6 py-7 md:px-8 md:py-10 xl:px-10">
+              <JoinSectionHeading
+                icon={GraduationCap}
+                title={instituteBlock.title}
+                titleClassName="text-[#f27f14]"
+              />
+              <p className="mt-5 max-w-[34ch] text-lg leading-relaxed text-softblack md:text-[1.34rem]">
+                {instituteBlock.summary}
+              </p>
+              <p className="mt-5 max-w-[34ch] text-lg leading-relaxed text-softblack md:text-[1.34rem]">
+                {instituteBlock.description}
+              </p>
+              {instituteBlock.note ? (
+                <p className="mt-5 text-xl font-sans font-bold text-[#f27f14] md:text-[1.45rem]">
+                  {instituteBlock.note}
+                </p>
+              ) : null}
+              <div className="mt-7">
+                <JoinButton
+                  href={instituteBlock.actions[0]?.href ?? '#'}
+                  label={instituteBlock.actions[0]?.label ?? ''}
+                  className="bg-[#ff8b14] text-white hover:bg-[#f27f14]"
+                />
+              </div>
+            </div>
 
-                                <span className={['flex h-11 w-11 shrink-0 items-center justify-center rounded-full border shadow-[0_10px_18px_rgba(103,17,39,0.10)] transition-all duration-300 group-hover:scale-[1.06]', theme.arrow].join(' ')}>
-                                  <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={1.8} />
-                                </span>
-                              </span>
-                            </a>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </article>
-            );
-          })}
-        </div>
+            <div className="min-h-[20rem] lg:min-h-full">
+              <img
+                src={secondaryImages[1]}
+                alt="Espacio de aprendizaje vinculado a Aina Institute"
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </article>
       </div>
     </section>
   );

@@ -146,6 +146,7 @@ export interface RecognitionsConfig {
 export interface JoinAction {
   label: string;
   href: string;
+  description?: string;
 }
 
 export interface JoinBlock {
@@ -153,6 +154,7 @@ export interface JoinBlock {
   title: string;
   summary: string;
   description: string;
+  note?: string;
   actions: JoinAction[];
 }
 
@@ -588,7 +590,7 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
           title: 'Premio Sociedad Inclusiva',
           location: 'Madrid',
           year: '2026',
-          imageSrc: asset('/aina/recognitions/telva-prize-2.jpg'),
+          imageSrc: asset('/aina/recognitions/inclusive-society.jpg'),
           description:
             'Premio otorgado por el compromiso con la inclusión y la creación de oportunidades reales para personas con discapacidad intelectual y sus familias.',
         },
@@ -601,12 +603,12 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
         'A veces, las transformaciones más grandes empiezan con gestos pequeños: una decisión, una ayuda, una persona que decide implicarse.',
       gallery: [
         {
-          src: asset('/aina/main/aina-child-close-smile.jpg'),
-          alt: 'Aina abraza a un niño sonriendo junto a un mural',
+          src: asset('/aina/join/join-gallery-1.jpg'),
+          alt: 'Aina sostiene a una niña con camiseta amarilla en Nepal',
         },
         {
-          src: asset('/aina/main/aina-child-blue-shirt.jpg'),
-          alt: 'Aina acompaña a un niño con camiseta amarilla frente a un mural',
+          src: asset('/aina/join/join-gallery-2.jpg'),
+          alt: 'Aina acompaña a un niño frente a una escuela en Nepal',
         },
         {
           src: asset('/aina/main/aina-child-floor-portrait.jpg'),
@@ -619,32 +621,40 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
       ],
       blocks: [
         {
-          eyebrow: 'Apoyo recurrente',
-          title: 'Sostén una escuela, abre futuros.',
-          summary: 'Tu ayuda mensual mantiene oportunidades reales en marcha.',
+          eyebrow: 'Hazte socio',
+          title: 'Forma parte de este cambio',
+          summary:
+            'Ayuda a que niños y niñas en Nepal puedan seguir accediendo a educación, inclusión y un futuro con más oportunidades.',
           description:
-            'Ayuda a que niños y niñas en Nepal puedan seguir accediendo a educación, inclusión y un futuro con más oportunidades. Porque detrás de cada escuela y cada niño que hoy puede aprender, hay personas que decidieron sostener esta misión con amor y compromiso.',
+            'Porque detrás de cada escuela y cada niño que hoy puede aprender, hay personas que decidieron sostener esta misión con amor y compromiso.',
           actions: [
             {
               label: 'Hazte socio desde España',
               href: 'https://familiadehetauda.org/hazte-socio/',
+              description:
+                'Tu apoyo mensual hace posible que sigamos acompañando a cientos de niños y familias.',
             },
             {
               label: 'Hazte socio desde Nepal',
               href: 'https://www.siashafoundation.org/get-involved/',
+              description:
+                'Si estás en Nepal, tu apoyo local fortalece directamente nuestros proyectos sobre el terreno.',
             },
             {
               label: 'Hazte socio desde otras partes del mundo',
               href: 'https://siasha.org/hazte-socio/',
+              description:
+                'Desde cualquier lugar del mundo, puedes formar parte de este cambio y transformar vidas.',
             },
           ],
         },
         {
           eyebrow: 'Voluntariado',
-          title: 'Vive la misión desde dentro.',
-          summary: 'Comparte el día a día con el equipo y acompaña procesos reales.',
-          description:
+          title: 'Forma parte de esta misión sobre el terreno',
+          summary:
             'Comparte el día a día con las mujeres y equipos que trabajan cada día para construir una sociedad más inclusiva y humana en Nepal desde la educación, la inclusión y el amor puesto en acción.',
+          description:
+            '',
           actions: [
             {
               label: 'Quiero ser voluntario',
@@ -654,10 +664,12 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
         },
         {
           eyebrow: 'Aina Institute',
-          title: 'Convierte tu vocación en impacto profesional.',
-          summary: 'Formación práctica para construir proyectos sólidos y sostenibles.',
+          title: 'Fórmate para transformar vidas',
+          summary:
+            'A través de Aina Institute, personas de distintos países aprenden a construir proyectos sólidos, sostenibles y capaces de generar impacto real.',
           description:
-            'A través de Aina Institute, personas de distintos países aprenden a construir proyectos sólidos, sostenibles y capaces de generar impacto real. Porque tener vocación no siempre es suficiente. También hacen falta herramientas, estrategia y una estructura capaz de sostener el cambio. Convierte tu vocación en tu profesión.',
+            'Porque tener vocación no siempre es suficiente. También hacen falta herramientas, estrategia y una estructura capaz de sostener el cambio.',
+          note: 'Convierte tu vocación en tu profesión.',
           actions: [
             {
               label: 'Habla con el equipo',
@@ -965,7 +977,7 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
           title: 'Inclusive Society Award',
           location: 'Madrid',
           year: '2026',
-          imageSrc: asset('/aina/recognitions/telva-prize-2.jpg'),
+          imageSrc: asset('/aina/recognitions/inclusive-society.jpg'),
           description:
             'Award granted for a commitment to inclusion and the creation of real opportunities for people with intellectual disabilities and their families.',
         },
@@ -977,8 +989,8 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
       description:
         'Sometimes the biggest transformations begin with small gestures: a decision, a helping hand, one person choosing to get involved.',
       gallery: [
-        { src: asset('/aina/main/aina-child-close-smile.jpg'), alt: 'Aina hugging a smiling child beside a mural' },
-        { src: asset('/aina/main/aina-child-blue-shirt.jpg'), alt: 'Aina accompanying a child in front of a mural' },
+        { src: asset('/aina/join/join-gallery-1.jpg'), alt: 'Aina holding a girl in a yellow shirt in Nepal' },
+        { src: asset('/aina/join/join-gallery-2.jpg'), alt: 'Aina supporting a child outside a school in Nepal' },
         { src: asset('/aina/main/aina-child-floor-portrait.jpg'), alt: 'Aina on the floor beside a child during an activity' },
         { src: asset('/aina/main/aina-child-embrace.jpg'), alt: 'Aina and a child hugging in a moment of closeness' },
       ],
@@ -1311,7 +1323,7 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
           title: 'Premi Societat Inclusiva',
           location: 'Madrid',
           year: '2026',
-          imageSrc: asset('/aina/recognitions/telva-prize-2.jpg'),
+          imageSrc: asset('/aina/recognitions/inclusive-society.jpg'),
           description:
             "Premi atorgat pel compromís amb la inclusió i la creació d'oportunitats reals per a persones amb discapacitat intel·lectual i les seves famílies.",
         },
@@ -1323,8 +1335,8 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
       description:
         "De vegades, les transformacions més grans comencen amb gestos petits: una decisió, una ajuda, una persona que decideix implicar-s'hi.",
       gallery: [
-        { src: asset('/aina/main/aina-child-close-smile.jpg'), alt: "Aina abraça un infant somrient al costat d'un mural" },
-        { src: asset('/aina/main/aina-child-blue-shirt.jpg'), alt: "Aina acompanya un infant davant d'un mural" },
+        { src: asset('/aina/join/join-gallery-1.jpg'), alt: "Aina sosté una nena amb samarreta groga al Nepal" },
+        { src: asset('/aina/join/join-gallery-2.jpg'), alt: "Aina acompanya un infant davant d'una escola al Nepal" },
         { src: asset('/aina/main/aina-child-floor-portrait.jpg'), alt: "Aina a terra al costat d'un infant durant una activitat" },
         { src: asset('/aina/main/aina-child-embrace.jpg'), alt: "Aina i un infant s'abracen en un moment de complicitat" },
       ],

@@ -48,8 +48,8 @@ export function SiteHeader({ heroConfig }: SiteHeaderProps) {
         <a
           href="#hero"
           className={[
-            'text-base font-sans font-bold tracking-tight transition-colors duration-300 md:text-lg',
-            'text-white',
+            'text-lg font-sans font-bold tracking-tight transition-colors duration-300 md:text-xl',
+            'text-primary md:text-white',
           ].join(' ')}
         >
           {heroConfig.brandName}
@@ -59,7 +59,7 @@ export function SiteHeader({ heroConfig }: SiteHeaderProps) {
           <nav
             aria-label="Primary"
             className={[
-              'hidden items-center gap-8 text-sm font-body font-bold transition-colors duration-300 md:flex',
+              'hidden items-center gap-8 text-base font-body font-bold transition-colors duration-300 md:flex md:text-lg',
               isSticky ? 'text-white/92' : 'text-white/84',
             ].join(' ')}
           >
@@ -92,8 +92,8 @@ export function SiteHeader({ heroConfig }: SiteHeaderProps) {
                   className={[
                     'inline-flex size-11 items-center justify-center rounded-full border backdrop-blur transition-colors duration-300',
                     isSticky
-                      ? 'border-white/12 bg-forest-dark text-white shadow-[0_10px_30px_rgba(103,17,39,0.24)]'
-                      : 'border-white/20 bg-white/10 text-white',
+                      ? 'border-primary/70 bg-primary text-white shadow-[0_10px_30px_rgba(188,5,49,0.24)]'
+                      : 'border-primary/70 bg-primary text-white shadow-[0_10px_26px_rgba(188,5,49,0.2)]',
                   ].join(' ')}
                 >
                   <Menu className="size-5" />

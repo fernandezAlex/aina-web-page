@@ -1,14 +1,112 @@
-import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowUpRight } from 'lucide-react';
-import { useSiteContent } from '../i18n';
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ArrowUpRight } from "lucide-react";
+import { useSiteContent } from "../i18n";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const DESKTOP_ORBIT_OFFSETS = [-10, 12, -18, 8, -12];
-const PLANET_DIAMETERS = [25, 25, 27, 25, 25];
-const PLANET_STACK_CLASSES = ['lg:z-[1]', 'lg:z-[2]', 'lg:z-[5]', 'lg:z-[3]', 'lg:z-[4]'];
+type VisionCard = {
+	title: string;
+	subtitle: string;
+	description: string;
+	ctaLabel: string;
+	href: string;
+	initials: string;
+	logoSrc?: string;
+	logoAlt?: string;
+	mediaMode?: "image" | "logo";
+};
+
+type VisionBubbleProps = {
+	card: VisionCard;
+	className?: string;
+	imageClassName?: string;
+};
+
+function splitVisionDescription(description: string) {
+	const [lead, emphasis] = description.split(/:\s*/);
+
+	if (!emphasis) {
+		return { lead: description, emphasis: "" };
+	}
+
+	return { lead: `${lead}:`, emphasis };
+}
+
+function VisionBubble({
+	card,
+	className = "",
+	imageClassName = "",
+}: VisionBubbleProps) {
+	return (
+		<div
+			className={`vision-node relative flex aspect-square items-center justify-center rounded-full border border-[#f7c28f]/70 bg-[radial-gradient(circle_at_30%_28%,rgba(255,255,255,0.98)_0%,rgba(255,249,243,0.95)_46%,rgba(251,229,209,0.94)_100%)] p-6 shadow-[0_18px_48px_rgba(182,92,32,0.18)] ${className}`}
+		>
+			<div className="absolute inset-[8%] rounded-full border border-white/70" />
+			<div className="absolute -inset-2 rounded-full bg-[radial-gradient(circle,rgba(247,165,126,0.22)_0%,rgba(247,165,126,0)_68%)] blur-xl" />
+			{card.logoSrc ? (
+				<img
+					src={card.logoSrc}
+					alt={card.logoAlt || `${card.title} logo`}
+					className={`relative z-10 h-full w-full object-contain ${card.mediaMode === "image" ? "rounded-full object-cover p-0" : "p-5"} ${imageClassName}`}
+					loading="lazy"
+				/>
+			) : (
+				<div className="relative z-10 flex h-full w-full items-center justify-center rounded-full bg-white text-center text-3xl font-sans font-bold text-primary">
+					{card.initials}
+				</div>
+			)}
+		</div>
+	);
+}
+
+function VisionCopyBlock({
+	card,
+	align = "left",
+	compact = false,
+	className = "",
+}: {
+	card: VisionCard;
+	align?: "left" | "center" | "right";
+	compact?: boolean;
+	className?: string;
+}) {
+	const alignmentClasses =
+		align === "center"
+			? "text-center items-center"
+			: align === "right"
+				? "items-center text-center lg:items-start lg:text-left"
+				: "items-center text-center lg:items-start lg:text-left";
+
+	return (
+		<article className={`flex flex-col ${alignmentClasses} ${className}`}>
+			<h3 className="max-w-[14ch] text-3xl font-sans font-bold leading-[1.05] text-primary lg:text-[2.35rem]">
+				{card.title}
+			</h3>
+			<div className="mt-4 h-px w-14 bg-[#f29a38]" />
+			<p className="mt-4 max-w-[26ch] text-xl font-sans font-bold leading-snug text-[#f08d2d] lg:text-[1.75rem]">
+				{card.subtitle}
+			</p>
+			<div
+				className={`mt-5 space-y-5 text-[1.1rem] leading-relaxed text-softblack/88 lg:text-[1.24rem] ${compact ? "max-w-[33ch]" : "max-w-[37ch]"}`}
+			>
+				{card.description.split(/(?<=\.)\s+/).map((paragraph) => (
+					<p key={`${card.title}-${paragraph.slice(0, 24)}`}>{paragraph}</p>
+				))}
+			</div>
+			<a
+				href={card.href}
+				target="_blank"
+				rel="noreferrer"
+				className="mt-7 inline-flex items-center gap-3 rounded-full bg-primary px-7 py-3 text-base font-sans font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#9f112f]"
+			>
+				{card.ctaLabel}
+				<ArrowUpRight className="h-4 w-4" />
+			</a>
+		</article>
+	);
+}
 
 export function Vision() {
   const { vision: visionConfig } = useSiteContent();
