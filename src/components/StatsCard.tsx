@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { Locale, StatItem } from '../config';
 
-interface CounterProps {
+export interface AnimatedCounterProps {
   end: number;
   prefix?: string;
   suffix?: string;
@@ -20,7 +20,7 @@ interface StatsCardProps {
   locale?: Locale;
 }
 
-function Counter({
+export function AnimatedCounter({
   end,
   prefix = '',
   suffix = '',
@@ -28,7 +28,7 @@ function Counter({
   shouldAnimate,
   useGrouping = false,
   locale,
-}: CounterProps) {
+}: AnimatedCounterProps) {
   const [count, setCount] = useState(0);
   const countRef = useRef(0);
 
@@ -91,7 +91,7 @@ export function StatsCard({
         {stats.map((stat, index) => (
           <div key={`${stat.label}-${index}`} className="border-b border-secondary/15 pb-7 last:border-0">
             <p className={`${valueClassName} font-sans font-bold text-primary tracking-tight`}>
-              <Counter
+              <AnimatedCounter
                 end={stat.value}
                 prefix={stat.prefix}
                 suffix={stat.suffix}
@@ -100,7 +100,7 @@ export function StatsCard({
                 locale={locale}
               />
             </p>
-            <p className={`${labelColors[index % labelColors.length]} mt-2 max-w-2xl text-base font-body font-semibold leading-snug md:text-lg lg:text-xl`}>
+            <p className={`${labelColors[index % labelColors.length]} mt-2 max-w-2xl text-lg font-body font-semibold leading-snug md:text-xl lg:text-2xl`}>
               {stat.label}
             </p>
           </div>
