@@ -139,8 +139,9 @@ export function Join() {
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,214,168,0.35),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(244,155,64,0.16),transparent_26%)]" />
 
-      <div ref={animatedRef} className="relative mx-auto flex max-w-[122rem] flex-col gap-6 px-5 md:px-10 xl:px-16">
-        <div className="grid items-stretch gap-8 lg:grid-cols-[minmax(0,1.04fr)_minmax(22rem,0.9fr)] lg:gap-10">
+      <div className="relative mx-auto max-w-7xl px-6 md:px-12">
+        <div ref={animatedRef} className="flex flex-col gap-6">
+          <div className="grid items-stretch gap-8 lg:grid-cols-[minmax(0,1.04fr)_minmax(22rem,0.9fr)] lg:gap-10">
           <div className="join-fade-item flex flex-col justify-center pt-2 lg:pr-6">
             <div className="flex items-center gap-4 text-[#f27f14]">
               <p className="text-[3rem] font-serif italic leading-none md:text-[4rem]">
@@ -174,7 +175,7 @@ export function Join() {
           </div>
         </div>
 
-        <article className="join-fade-item rounded-[2rem] border border-[#efd7c2] bg-[linear-gradient(180deg,rgba(255,255,255,0.9)_0%,rgba(255,250,246,0.92)_100%)] p-4 shadow-[0_20px_50px_rgba(138,80,31,0.08)] md:rounded-[2.5rem] md:p-8 xl:p-10">
+          <article className="join-fade-item rounded-[2rem] border border-[#efd7c2] bg-[linear-gradient(180deg,rgba(255,255,255,0.9)_0%,rgba(255,250,246,0.92)_100%)] p-4 shadow-[0_20px_50px_rgba(138,80,31,0.08)] md:rounded-[2.5rem] md:p-8 xl:p-10">
           <div className="mx-auto max-w-5xl text-center">
             <div className="flex items-center justify-center gap-4">
               <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary text-white shadow-[0_16px_34px_rgba(169,17,47,0.18)]">
@@ -230,9 +231,9 @@ export function Join() {
               );
             })}
           </div>
-        </article>
+          </article>
 
-        <article className="join-fade-item overflow-hidden rounded-[2rem] border border-[#efd7c2] bg-[linear-gradient(90deg,rgba(255,255,255,0.94)_0%,rgba(255,248,242,0.96)_52%,rgba(255,230,196,0.68)_100%)] shadow-[0_20px_50px_rgba(138,80,31,0.08)]">
+          <article className="join-fade-item overflow-hidden rounded-[2rem] border border-[#efd7c2] bg-[linear-gradient(90deg,rgba(255,255,255,0.94)_0%,rgba(255,248,242,0.96)_52%,rgba(255,230,196,0.68)_100%)] shadow-[0_20px_50px_rgba(138,80,31,0.08)]">
           <div className="grid items-stretch gap-6 lg:grid-cols-[minmax(0,0.98fr)_minmax(20rem,0.92fr)]">
             <div className="flex flex-col justify-center px-6 py-7 md:px-8 md:py-10 xl:px-10">
               <JoinSectionHeading icon={HandHeart} title={volunteerBlock.title} />
@@ -257,9 +258,9 @@ export function Join() {
               />
             </div>
           </div>
-        </article>
+          </article>
 
-        <article className="join-fade-item overflow-hidden rounded-[2rem] border border-[#efd7c2] bg-[linear-gradient(90deg,rgba(255,255,255,0.94)_0%,rgba(255,248,242,0.96)_52%,rgba(255,236,208,0.72)_100%)] shadow-[0_20px_50px_rgba(138,80,31,0.08)]">
+          <article className="join-fade-item overflow-hidden rounded-[2rem] border border-[#efd7c2] bg-[linear-gradient(90deg,rgba(255,255,255,0.94)_0%,rgba(255,248,242,0.96)_52%,rgba(255,236,208,0.72)_100%)] shadow-[0_20px_50px_rgba(138,80,31,0.08)]">
           <div className="grid items-stretch gap-6 lg:grid-cols-[minmax(0,0.98fr)_minmax(20rem,0.92fr)]">
             <div className="flex flex-col justify-center px-6 py-7 md:px-8 md:py-10 xl:px-10">
               <JoinSectionHeading
@@ -296,7 +297,8 @@ export function Join() {
               />
             </div>
           </div>
-        </article>
+          </article>
+        </div>
       </div>
     </section>
   );

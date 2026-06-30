@@ -5,6 +5,8 @@ import { useSiteContent } from '../i18n';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const footerBackgroundImage = `${import.meta.env.BASE_URL}bg-img-header.jpeg`;
+
 export function Footer() {
   const { footer: footerConfig } = useSiteContent();
   const footerRef = useRef<HTMLElement>(null);
@@ -60,11 +62,17 @@ export function Footer() {
       id="footer"
       className="relative w-full overflow-hidden bg-forest-dark pt-24 pb-8 md:pt-32"
     >
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${footerBackgroundImage})`, opacity: 0.18 }}
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(253,168,80,0.92)_0%,rgba(253,168,80,0.94)_50%,rgba(255,185,111,0.92)_100%)]" />
+
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {footerConfig.logoText && (
           <div
             ref={logoRef}
-            className="-mx-6 mb-16 bg-forest-dark px-6 py-12 opacity-0 md:-mx-12 md:mb-24 md:px-12 md:py-16"
+            className="-mx-6 mb-16 px-6 py-12 opacity-0 md:-mx-12 md:mb-24 md:px-12 md:py-16"
           >
             <svg
               viewBox="0 0 600 100"
@@ -101,7 +109,7 @@ export function Footer() {
           </div>
         )}
 
-        <div ref={contentRef} className="opacity-0">
+        <div ref={contentRef} className="relative opacity-0">
           <div className="mb-16">
             {hasNavigation && (
               <div>
@@ -131,7 +139,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-forest-dark/30 to-transparent" />
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#f3a34d]/35 to-transparent" />
     </footer>
   );
 }
