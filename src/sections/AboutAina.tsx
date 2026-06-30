@@ -11,14 +11,11 @@ export function AboutAina() {
   const { aboutAina: aboutAinaConfig } = useSiteContent();
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
-  const blocksRef = useRef<HTMLDivElement>(null);
   const leadBlocksRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
   const [shouldAnimateStats, setShouldAnimateStats] = useState(false);
   const closingParagraph = aboutAinaConfig.paragraphs[aboutAinaConfig.paragraphs.length - 1];
   const bodyParagraphs = aboutAinaConfig.paragraphs.slice(0, -1);
-  const leadParagraphs = bodyParagraphs.slice(0, 2);
-  const sideParagraphs = bodyParagraphs.slice(2);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -48,26 +45,6 @@ export function AboutAina() {
         },
         once: true,
       });
-
-      const blocks = blocksRef.current?.querySelectorAll('.about-aina-block');
-      if (blocks) {
-        gsap.fromTo(
-          blocks,
-          { y: 28, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: 'power3.out',
-            stagger: 0.1,
-            scrollTrigger: {
-              trigger: blocksRef.current,
-              start: 'top 85%',
-              once: true,
-            },
-          }
-        );
-      }
 
       const leadBlocks = leadBlocksRef.current?.querySelectorAll('.about-aina-block');
       if (leadBlocks) {
@@ -111,7 +88,7 @@ export function AboutAina() {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid lg:grid-cols-[minmax(0,0.95fr)_minmax(320px,0.55fr)] gap-12 md:gap-16 items-start">
           <div>
-            <div ref={headerRef} className="opacity-0 mb-12 md:mb-16">
+            <div ref={headerRef} className="mb-3 opacity-0">
               {aboutAinaConfig.subtitle && (
                 <p className="accent-kicker text-sm font-body uppercase tracking-widest mb-4">
                   {aboutAinaConfig.subtitle}
@@ -120,17 +97,17 @@ export function AboutAina() {
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-sans font-bold text-primary tracking-tight max-w-3xl">
                 {aboutAinaConfig.title}
               </h2>
-              <p className="mt-6 max-w-3xl text-base md:text-lg font-body leading-relaxed text-softblack/70">
+              <p className="mt-6 max-w-3xl text-lg font-body leading-relaxed text-softblack md:text-xl">
                 {aboutAinaConfig.intro}
               </p>
             </div>
 
-            {leadParagraphs.length > 0 && (
-              <div ref={leadBlocksRef} className="mb-10 space-y-5 md:mb-12">
-                {leadParagraphs.map((paragraph) => (
+            {bodyParagraphs.length > 0 && (
+              <div ref={leadBlocksRef} className="mb-10 space-y-2 md:mb-12">
+                {bodyParagraphs.map((paragraph) => (
                   <p
                     key={paragraph}
-                    className="about-aina-block max-w-3xl text-base leading-relaxed text-softblack opacity-0 md:text-lg"
+                    className="about-aina-block max-w-3xl text-lg leading-relaxed text-softblack opacity-0 md:text-xl"
                   >
                     {paragraph}
                   </p>
@@ -166,25 +143,19 @@ export function AboutAina() {
                   <img
                     src={image.src}
                     alt={image.alt}
-                    className={`h-full w-full object-cover ${index === 0 ? 'object-top' : ''}`}
+                    className={`h-full w-full object-cover ${
+                      index === 0
+                        ? 'object-top'
+                        : index === 2
+                          ? 'object-[18%_center]'
+                          : 'object-center'
+                    }`}
                     loading="lazy"
                   />
                 </div>
               ))}
             </div>
 
-            {sideParagraphs.length > 0 && (
-              <div ref={blocksRef} className="space-y-5">
-                {sideParagraphs.map((paragraph) => (
-                  <p
-                    key={paragraph}
-                    className="about-aina-block text-base leading-relaxed text-softblack opacity-0 md:text-lg"
-                  >
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
-            )}
           </aside>
         </div>
 

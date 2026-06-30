@@ -17,11 +17,11 @@ export function LanguageSwitcher({ label, dark = false }: LanguageSwitcherProps)
   const { locale, setLocale } = useI18n();
   const activeLocale = localeOptions.find((option) => option.value === locale) ?? localeOptions[0];
   const triggerClasses = dark
-    ? 'border-white/12 bg-forest-dark text-white shadow-[0_10px_30px_rgba(103,17,39,0.24)]'
-    : 'border-white/20 bg-white/10 text-white shadow-none';
+    ? 'border-primary/70 bg-primary text-white shadow-[0_12px_30px_rgba(188,5,49,0.28)]'
+    : 'border-primary/70 bg-primary text-white shadow-[0_12px_30px_rgba(188,5,49,0.24)]';
   const menuClasses = dark
-    ? 'border-secondary/45 bg-secondary text-softblack shadow-[0_18px_45px_rgba(255,140,67,0.28)]'
-    : 'border-secondary/45 bg-secondary text-softblack shadow-[0_18px_45px_rgba(255,140,67,0.28)]';
+    ? 'border-secondary/45 bg-secondary text-white shadow-[0_18px_45px_rgba(188,5,49,0.24)]'
+    : 'border-secondary/45 bg-secondary text-white shadow-[0_18px_45px_rgba(188,5,49,0.24)]';
 
   const renderFlag = (option: typeof activeLocale, sizeClass: string) => {
     if (option.flagSrc) {
@@ -48,7 +48,7 @@ export function LanguageSwitcher({ label, dark = false }: LanguageSwitcherProps)
         <button
           type="button"
           className={[
-            'inline-flex items-center gap-2 rounded-full border px-3 py-2 font-sans text-[0.72rem] font-semibold tracking-[0.16em] backdrop-blur transition-colors duration-300 md:px-4 md:py-2.5 md:text-xs',
+            'inline-flex items-center gap-2 rounded-full border px-3.5 py-2.5 font-sans text-[0.82rem] font-semibold tracking-[0.16em] backdrop-blur transition-colors duration-300 md:px-4.5 md:py-3 md:text-sm',
             triggerClasses,
           ].join(' ')}
           aria-label={label}

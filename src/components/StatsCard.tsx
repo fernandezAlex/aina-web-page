@@ -100,7 +100,7 @@ export function StatsCard({
                 locale={locale}
               />
             </p>
-            <p className={`${labelColors[index % labelColors.length]} mt-2 max-w-2xl text-base font-body font-semibold leading-snug md:text-lg lg:text-xl`}>
+            <p className={`${labelColors[index % labelColors.length]} mt-2 max-w-2xl text-lg font-body font-semibold leading-snug md:text-xl lg:text-2xl`}>
               {stat.label}
             </p>
           </div>

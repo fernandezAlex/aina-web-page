@@ -44,29 +44,29 @@
   }
 
   :root {
-    --background: 346 70% 18%;
-    --foreground: 34 40% 96%;
-    --card: 346 63% 23%;
-    --card-foreground: 34 40% 96%;
-    --popover: 346 70% 18%;
-    --popover-foreground: 34 40% 96%;
-    --primary: 347 92% 39%;
+    --background: 30.52 97.74% 65.29%;
+    --foreground: 345.57 94.82% 37.84%;
+    --card: 30.52 97.74% 65.29%;
+    --card-foreground: 345.57 94.82% 37.84%;
+    --popover: 30.52 97.74% 65.29%;
+    --popover-foreground: 345.57 94.82% 37.84%;
+    --primary: 345.57 94.82% 37.84%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 21 82% 55%;
+    --secondary: 345.57 94.82% 37.84%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 346 47% 28%;
-    --muted-foreground: 35 27% 78%;
-    --accent: 35 100% 66%;
-    --accent-foreground: 16 35% 15%;
+    --muted: 30 100% 74%;
+    --muted-foreground: 345.57 70% 30%;
+    --accent: 345.57 94.82% 37.84%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 35 36% 76%;
-    --input: 34 53% 94%;
-    --ring: 347 92% 39%;
+    --border: 345.57 62% 52%;
+    --input: 30 100% 88%;
+    --ring: 345.57 94.82% 37.84%;
     --radius: 0.75rem;
 
-    --forest-dark: #671127;
-    --forest-mid: #8d1f39;
+    --forest-dark: #FDA850;
+    --forest-mid: #FFB96F;
     --off-white: #f7f2ea;
     --pure-white: #ffffff;
     --soft-black: #1b1413;
@@ -95,10 +95,12 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Calibri', sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.65;
     overflow-x: hidden;
     background:
-      radial-gradient(circle at top left, rgba(255, 169, 82, 0.14), transparent 28%),
-      linear-gradient(180deg, #671127 0%, #5a0f22 100%);
+      radial-gradient(circle at top left, rgba(188, 5, 49, 0.12), transparent 28%),
+      linear-gradient(180deg, #FDA850 0%, #FFB96F 100%);
   }
 
   h1, h2, h3, h4, h5, h6 {
