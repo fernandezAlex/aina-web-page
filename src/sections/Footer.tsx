@@ -113,7 +113,7 @@ export function Footer() {
                     <a
                       key={link.label}
                       href={link.href}
-                      className="inline-flex font-body text-offwhite/84 transition-colors duration-300 hover:text-secondary"
+                      className="inline-flex text-base font-body text-offwhite/84 transition-colors duration-300 hover:text-secondary md:text-lg"
                     >
                       {link.label}
                     </a>
@@ -124,7 +124,7 @@ export function Footer() {
           </div>
 
           <div className="flex flex-col items-center justify-between gap-4 border-t border-offwhite/18 pt-8 md:flex-row">
-            <p className="text-sm font-body text-offwhite/64">
+            <p className="text-base font-body text-offwhite/64 md:text-lg">
               {footerConfig.copyright}
             </p>
           </div>

@@ -146,6 +146,7 @@ export interface RecognitionsConfig {
 export interface JoinAction {
   label: string;
   href: string;
+  description?: string;
 }
 
 export interface JoinBlock {
@@ -153,6 +154,7 @@ export interface JoinBlock {
   title: string;
   summary: string;
   description: string;
+  note?: string;
   actions: JoinAction[];
 }
 
@@ -270,8 +272,8 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
     },
     hero: {
       backgroundText: 'AINA BARCA',
-      heroImage: asset('/aina-transparente.png'),
-      heroImageAlt: 'Silueta recortada de Aina Barca',
+      heroImage: asset('/aina-con-nino.png'),
+      heroImageAlt: 'Aina Barca sosteniendo y abrazando a un niño',
       overlayText: 'El amor puesto en acción',
       brandName: 'Aina Barca',
       languageLabel: 'Idioma',
@@ -293,37 +295,35 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
           text: 'Desde hace más de una década, Aina Barca trabaja para construir educación, inclusión y dignidad para personas con discapacidad intelectual en Nepal, mientras impulsa la formación de nuevas generaciones de líderes sociales capaces de generar impacto real en el mundo.',
         },
         {
-          text: 'Fundadora de Familia de Hetauda, Fundación Si Asha y Aina Institute, su trabajo conecta acción social, liderazgo humano y transformación estructural desde una misma visión: crear oportunidades donde antes no existían.',
+          text: 'Fundadora de Familia de Hetauda, Fundación Si Asha, Si Asha Foundation y Aina Institute, su trabajo conecta acción social, liderazgo humano y transformación estructural desde una misma visión: crear oportunidades donde antes no existían.',
           links: [
             { label: 'Familia de Hetauda', href: 'https://familiadehetauda.org/' },
             { label: 'Fundación Si Asha', href: 'https://siasha.org/es/' },
-            {
-              label: 'Aina Institute',
-              href: 'https://ainainstitute.es/?utm_source=chatgpt.com',
-            },
+            { label: 'Si Asha Foundation', href: 'https://www.siashafoundation.org/' },
+            { label: 'Aina Institute', href: 'https://ainainstitute.es/' },
           ],
         },
       ],
       images: [
         {
-          src: asset('/aina/main/aina-outdoor-smile.jpg'),
-          alt: 'Aina Barca sonríe al aire libre',
+          src: asset('/aina/intro/aina-closeup.jpg'),
+          alt: 'Primer plano de Aina Barca junto a un niño',
         },
         {
-          src: asset('/aina/main/aina-talk.jpg'),
-          alt: 'Aina Barca durante una conversación pública',
+          src: asset('/aina/intro/aina-book.jpg'),
+          alt: 'Aina Barca sonríe junto a un niño en una escuela',
         },
         {
-          src: asset('/siasha/aina-with-children.webp'),
-          alt: 'Aina Barca comparte un momento con varios niños',
+          src: asset('/aina/intro/aina-orange-shirt-child.jpg'),
+          alt: 'Aina Barca sentada al aire libre escribiendo en un cuaderno',
         },
         {
-          src: asset('/aina/main/aina-child-floor-portrait.jpg'),
-          alt: 'Aina Barca acompaña de cerca a un niño en un retrato vertical',
+          src: asset('/aina/intro/aina-with-girl.jpg'),
+          alt: 'Aina Barca interviene en un escenario durante una entrega de premios',
         },
         {
-          src: asset('/aina/main/aina-studio-portrait-2.jpg'),
-          alt: 'Retrato de estudio de Aina Barca sonriendo',
+          src: asset('/aina/intro/aina-black-background.jpg'),
+          alt: 'Aina Barca acompañada por dos niños en una escuela',
         },
       ],
     },
@@ -364,16 +364,16 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
       ],
       gallery: [
         {
-          src: asset('/aina/main/aina-nepal-rooftop.jpg'),
-          alt: 'Aina Barca sentada en una azotea en Nepal durante uno de sus primeros viajes',
+          src: asset('/aina/about/aina-with-girl.jpg'),
+          alt: 'Aina Barca comparte un momento cercano con una niña',
         },
         {
-          src: asset('/aina/main/aina-sunlight-portrait.jpg'),
-          alt: 'Retrato de Aina Barca a contraluz durante una visita de campo',
+          src: asset('/aina/about/aina-child-closeup.jpg'),
+          alt: 'Aina Barca sonríe junto a un niño en Nepal',
         },
         {
-          src: asset('/aina/main/aina-hands-detail.jpg'),
-          alt: 'Detalle de las manos de Aina Barca sobre la tierra durante un recorrido en Nepal',
+          src: asset('/aina/about/aina-temple-selfie.jpg'),
+          alt: 'Autorretrato de Aina Barca con un templo de Nepal al fondo',
         },
       ],
     },
@@ -590,7 +590,7 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
           title: 'Premio Sociedad Inclusiva',
           location: 'Madrid',
           year: '2026',
-          imageSrc: asset('/aina/recognitions/telva-prize-2.jpg'),
+          imageSrc: asset('/aina/recognitions/inclusive-society.jpg'),
           description:
             'Premio otorgado por el compromiso con la inclusión y la creación de oportunidades reales para personas con discapacidad intelectual y sus familias.',
         },
@@ -603,12 +603,12 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
         'A veces, las transformaciones más grandes empiezan con gestos pequeños: una decisión, una ayuda, una persona que decide implicarse.',
       gallery: [
         {
-          src: asset('/aina/main/aina-child-close-smile.jpg'),
-          alt: 'Aina abraza a un niño sonriendo junto a un mural',
+          src: asset('/aina/join/join-gallery-1.jpg'),
+          alt: 'Aina sostiene a una niña con camiseta amarilla en Nepal',
         },
         {
-          src: asset('/aina/main/aina-child-blue-shirt.jpg'),
-          alt: 'Aina acompaña a un niño con camiseta amarilla frente a un mural',
+          src: asset('/aina/join/join-gallery-2.jpg'),
+          alt: 'Aina acompaña a un niño frente a una escuela en Nepal',
         },
         {
           src: asset('/aina/main/aina-child-floor-portrait.jpg'),
@@ -621,32 +621,40 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
       ],
       blocks: [
         {
-          eyebrow: 'Apoyo recurrente',
-          title: 'Sostén una escuela, abre futuros.',
-          summary: 'Tu ayuda mensual mantiene oportunidades reales en marcha.',
+          eyebrow: 'Hazte socio',
+          title: 'Forma parte de este cambio',
+          summary:
+            'Ayuda a que niños y niñas en Nepal puedan seguir accediendo a educación, inclusión y un futuro con más oportunidades.',
           description:
-            'Ayuda a que niños y niñas en Nepal puedan seguir accediendo a educación, inclusión y un futuro con más oportunidades. Porque detrás de cada escuela y cada niño que hoy puede aprender, hay personas que decidieron sostener esta misión con amor y compromiso.',
+            'Porque detrás de cada escuela y cada niño que hoy puede aprender, hay personas que decidieron sostener esta misión con amor y compromiso.',
           actions: [
             {
               label: 'Hazte socio desde España',
               href: 'https://familiadehetauda.org/hazte-socio/',
+              description:
+                'Tu apoyo mensual hace posible que sigamos acompañando a cientos de niños y familias.',
             },
             {
               label: 'Hazte socio desde Nepal',
               href: 'https://www.siashafoundation.org/get-involved/',
+              description:
+                'Si estás en Nepal, tu apoyo local fortalece directamente nuestros proyectos sobre el terreno.',
             },
             {
               label: 'Hazte socio desde otras partes del mundo',
               href: 'https://siasha.org/hazte-socio/',
+              description:
+                'Desde cualquier lugar del mundo, puedes formar parte de este cambio y transformar vidas.',
             },
           ],
         },
         {
           eyebrow: 'Voluntariado',
-          title: 'Vive la misión desde dentro.',
-          summary: 'Comparte el día a día con el equipo y acompaña procesos reales.',
-          description:
+          title: 'Forma parte de esta misión sobre el terreno',
+          summary:
             'Comparte el día a día con las mujeres y equipos que trabajan cada día para construir una sociedad más inclusiva y humana en Nepal desde la educación, la inclusión y el amor puesto en acción.',
+          description:
+            '',
           actions: [
             {
               label: 'Quiero ser voluntario',
@@ -656,10 +664,12 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
         },
         {
           eyebrow: 'Aina Institute',
-          title: 'Convierte tu vocación en impacto profesional.',
-          summary: 'Formación práctica para construir proyectos sólidos y sostenibles.',
+          title: 'Fórmate para transformar vidas',
+          summary:
+            'A través de Aina Institute, personas de distintos países aprenden a construir proyectos sólidos, sostenibles y capaces de generar impacto real.',
           description:
-            'A través de Aina Institute, personas de distintos países aprenden a construir proyectos sólidos, sostenibles y capaces de generar impacto real. Porque tener vocación no siempre es suficiente. También hacen falta herramientas, estrategia y una estructura capaz de sostener el cambio. Convierte tu vocación en tu profesión.',
+            'Porque tener vocación no siempre es suficiente. También hacen falta herramientas, estrategia y una estructura capaz de sostener el cambio.',
+          note: 'Convierte tu vocación en tu profesión.',
           actions: [
             {
               label: 'Habla con el equipo',
@@ -701,8 +711,8 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
     },
     hero: {
       backgroundText: 'AINA BARCA',
-      heroImage: asset('/aina-transparente.png'),
-      heroImageAlt: 'Cutout silhouette of Aina Barca',
+      heroImage: asset('/aina-con-nino.png'),
+      heroImageAlt: 'Aina Barca holding and embracing a child',
       overlayText: 'Love put into action',
       brandName: 'Aina Barca',
       languageLabel: 'Language',
@@ -724,20 +734,21 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
           text: 'For more than a decade, Aina Barca has worked to build education, inclusion, and dignity for people with intellectual disabilities in Nepal, while also training a new generation of social leaders capable of creating real impact in the world.',
         },
         {
-          text: 'Founder of Familia de Hetauda, Fundación Si Asha, and Aina Institute, her work connects social action, human leadership, and structural transformation through one shared vision: creating opportunities where they did not exist before.',
+          text: 'Founder of Familia de Hetauda, Fundación Si Asha, Si Asha Foundation, and Aina Institute, her work connects social action, human leadership, and structural transformation through one shared vision: creating opportunities where they did not exist before.',
           links: [
             { label: 'Familia de Hetauda', href: 'https://familiadehetauda.org/' },
             { label: 'Fundación Si Asha', href: 'https://siasha.org/es/' },
-            { label: 'Aina Institute', href: 'https://ainainstitute.es/?utm_source=chatgpt.com' },
+            { label: 'Si Asha Foundation', href: 'https://www.siashafoundation.org/' },
+            { label: 'Aina Institute', href: 'https://ainainstitute.es/' },
           ],
         },
       ],
       images: [
-        { src: asset('/aina/main/aina-outdoor-smile.jpg'), alt: 'Aina Barca smiling outdoors' },
-        { src: asset('/aina/main/aina-talk.jpg'), alt: 'Aina Barca during a public talk' },
-        { src: asset('/siasha/aina-with-children.webp'), alt: 'Aina Barca sharing a moment with several children' },
-        { src: asset('/aina/main/aina-child-floor-portrait.jpg'), alt: 'Aina Barca closely accompanying a child in a vertical portrait' },
-        { src: asset('/aina/main/aina-studio-portrait-2.jpg'), alt: 'Studio portrait of Aina Barca smiling' },
+        { src: asset('/aina/intro/aina-closeup.jpg'), alt: 'Close-up of Aina Barca with a child' },
+        { src: asset('/aina/intro/aina-book.jpg'), alt: 'Aina Barca smiling beside a child at school' },
+        { src: asset('/aina/intro/aina-orange-shirt-child.jpg'), alt: 'Aina Barca sitting outdoors and writing in a notebook' },
+        { src: asset('/aina/intro/aina-with-girl.jpg'), alt: 'Aina Barca speaking on stage at an awards ceremony' },
+        { src: asset('/aina/intro/aina-black-background.jpg'), alt: 'Aina Barca with two children at school' },
       ],
     },
     aboutAina: {
@@ -760,9 +771,9 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
         { value: 1000, prefix: '+', label: 'families have found support, community, and hope', useGrouping: true },
       ],
       gallery: [
-        { src: asset('/aina/main/aina-nepal-rooftop.jpg'), alt: 'Aina Barca sitting on a rooftop in Nepal during one of her first trips' },
-        { src: asset('/aina/main/aina-sunlight-portrait.jpg'), alt: 'Backlit portrait of Aina Barca during a field visit' },
-        { src: asset('/aina/main/aina-hands-detail.jpg'), alt: 'Close-up of Aina Barca hands touching the ground during a walk in Nepal' },
+        { src: asset('/aina/about/aina-with-girl.jpg'), alt: 'Aina Barca sharing a close moment with a girl' },
+        { src: asset('/aina/about/aina-child-closeup.jpg'), alt: 'Aina Barca smiling beside a child in Nepal' },
+        { src: asset('/aina/about/aina-temple-selfie.jpg'), alt: 'Self-portrait of Aina Barca with a Nepalese temple in the background' },
       ],
     },
     vision: {
@@ -966,7 +977,7 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
           title: 'Inclusive Society Award',
           location: 'Madrid',
           year: '2026',
-          imageSrc: asset('/aina/recognitions/telva-prize-2.jpg'),
+          imageSrc: asset('/aina/recognitions/inclusive-society.jpg'),
           description:
             'Award granted for a commitment to inclusion and the creation of real opportunities for people with intellectual disabilities and their families.',
         },
@@ -978,8 +989,8 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
       description:
         'Sometimes the biggest transformations begin with small gestures: a decision, a helping hand, one person choosing to get involved.',
       gallery: [
-        { src: asset('/aina/main/aina-child-close-smile.jpg'), alt: 'Aina hugging a smiling child beside a mural' },
-        { src: asset('/aina/main/aina-child-blue-shirt.jpg'), alt: 'Aina accompanying a child in front of a mural' },
+        { src: asset('/aina/join/join-gallery-1.jpg'), alt: 'Aina holding a girl in a yellow shirt in Nepal' },
+        { src: asset('/aina/join/join-gallery-2.jpg'), alt: 'Aina supporting a child outside a school in Nepal' },
         { src: asset('/aina/main/aina-child-floor-portrait.jpg'), alt: 'Aina on the floor beside a child during an activity' },
         { src: asset('/aina/main/aina-child-embrace.jpg'), alt: 'Aina and a child hugging in a moment of closeness' },
       ],
@@ -1046,8 +1057,8 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
     },
     hero: {
       backgroundText: 'AINA BARCA',
-      heroImage: asset('/aina-transparente.png'),
-      heroImageAlt: "Silueta retallada d'Aina Barca",
+      heroImage: asset('/aina-con-nino.png'),
+      heroImageAlt: "Aina Barca sostenint i abraçant un nen",
       overlayText: "L'amor posat en acció",
       brandName: 'Aina Barca',
       languageLabel: 'Idioma',
@@ -1069,20 +1080,21 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
           text: "Des de fa més d'una dècada, Aina Barca treballa per construir educació, inclusió i dignitat per a persones amb discapacitat intel·lectual al Nepal, mentre impulsa la formació de noves generacions de líders socials capaces de generar un impacte real al món.",
         },
         {
-          text: "Fundadora de Familia de Hetauda, Fundació Si Asha i Aina Institute, la seva feina connecta acció social, lideratge humà i transformació estructural des d'una mateixa visió: crear oportunitats on abans no existien.",
+          text: "Fundadora de Familia de Hetauda, Fundació Si Asha, Si Asha Foundation i Aina Institute, la seva feina connecta acció social, lideratge humà i transformació estructural des d'una mateixa visió: crear oportunitats on abans no existien.",
           links: [
             { label: 'Familia de Hetauda', href: 'https://familiadehetauda.org/' },
             { label: 'Fundació Si Asha', href: 'https://siasha.org/es/' },
-            { label: 'Aina Institute', href: 'https://ainainstitute.es/?utm_source=chatgpt.com' },
+            { label: 'Si Asha Foundation', href: 'https://www.siashafoundation.org/' },
+            { label: 'Aina Institute', href: 'https://ainainstitute.es/' },
           ],
         },
       ],
       images: [
-        { src: asset('/aina/main/aina-outdoor-smile.jpg'), alt: "Aina Barca somriu a l'aire lliure" },
-        { src: asset('/aina/main/aina-talk.jpg'), alt: 'Aina Barca durant una conversa pública' },
-        { src: asset('/siasha/aina-with-children.webp'), alt: 'Aina Barca comparteix un moment amb diversos infants' },
-        { src: asset('/aina/main/aina-child-floor-portrait.jpg'), alt: 'Aina Barca acompanya de prop un infant en un retrat vertical' },
-        { src: asset('/aina/main/aina-studio-portrait-2.jpg'), alt: "Retrat d'estudi d'Aina Barca somrient" },
+        { src: asset('/aina/intro/aina-closeup.jpg'), alt: "Primer pla d'Aina Barca amb un infant" },
+        { src: asset('/aina/intro/aina-book.jpg'), alt: "Aina Barca somriu al costat d'un infant a l'escola" },
+        { src: asset('/aina/intro/aina-orange-shirt-child.jpg'), alt: "Aina Barca asseguda a l'aire lliure escrivint en una llibreta" },
+        { src: asset('/aina/intro/aina-with-girl.jpg'), alt: "Aina Barca intervé en un escenari durant una entrega de premis" },
+        { src: asset('/aina/intro/aina-black-background.jpg'), alt: "Aina Barca acompanyada de dos infants a l'escola" },
       ],
     },
     aboutAina: {
@@ -1105,9 +1117,9 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
         { value: 1000, prefix: '+', label: 'famílies han trobat suport, comunitat i esperança', useGrouping: true },
       ],
       gallery: [
-        { src: asset('/aina/main/aina-nepal-rooftop.jpg'), alt: 'Aina Barca asseguda en un terrat al Nepal durant un dels seus primers viatges' },
-        { src: asset('/aina/main/aina-sunlight-portrait.jpg'), alt: "Retrat a contrallum d'Aina Barca durant una visita de camp" },
-        { src: asset('/aina/main/aina-hands-detail.jpg'), alt: "Detall de les mans d'Aina Barca tocant la terra durant un recorregut al Nepal" },
+        { src: asset('/aina/about/aina-with-girl.jpg'), alt: "Aina Barca comparteix un moment proper amb una nena" },
+        { src: asset('/aina/about/aina-child-closeup.jpg'), alt: "Aina Barca somriu al costat d'un infant al Nepal" },
+        { src: asset('/aina/about/aina-temple-selfie.jpg'), alt: "Autoretrat d'Aina Barca amb un temple del Nepal al fons" },
       ],
     },
     vision: {
@@ -1311,7 +1323,7 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
           title: 'Premi Societat Inclusiva',
           location: 'Madrid',
           year: '2026',
-          imageSrc: asset('/aina/recognitions/telva-prize-2.jpg'),
+          imageSrc: asset('/aina/recognitions/inclusive-society.jpg'),
           description:
             "Premi atorgat pel compromís amb la inclusió i la creació d'oportunitats reals per a persones amb discapacitat intel·lectual i les seves famílies.",
         },
@@ -1323,8 +1335,8 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
       description:
         "De vegades, les transformacions més grans comencen amb gestos petits: una decisió, una ajuda, una persona que decideix implicar-s'hi.",
       gallery: [
-        { src: asset('/aina/main/aina-child-close-smile.jpg'), alt: "Aina abraça un infant somrient al costat d'un mural" },
-        { src: asset('/aina/main/aina-child-blue-shirt.jpg'), alt: "Aina acompanya un infant davant d'un mural" },
+        { src: asset('/aina/join/join-gallery-1.jpg'), alt: "Aina sosté una nena amb samarreta groga al Nepal" },
+        { src: asset('/aina/join/join-gallery-2.jpg'), alt: "Aina acompanya un infant davant d'una escola al Nepal" },
         { src: asset('/aina/main/aina-child-floor-portrait.jpg'), alt: "Aina a terra al costat d'un infant durant una activitat" },
         { src: asset('/aina/main/aina-child-embrace.jpg'), alt: "Aina i un infant s'abracen en un moment de complicitat" },
       ],

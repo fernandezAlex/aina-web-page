@@ -2,100 +2,123 @@
 
 /* Remove default root constraints */
 #root {
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 0;
-  text-align: left;
+	width: 100%;
+	max-width: none;
+	margin: 0;
+	padding: 0;
+	text-align: left;
 }
 
 /* Smooth scroll behavior for Lenis */
-html.lenis, html.lenis body {
-  height: auto;
+html.lenis,
+html.lenis body {
+	height: auto;
 }
 
 .lenis.lenis-smooth {
-  scroll-behavior: auto !important;
+	scroll-behavior: auto !important;
 }
 
 .lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
+	overscroll-behavior: contain;
 }
 
 .lenis.lenis-stopped {
-  overflow: hidden;
+	overflow: hidden;
 }
 
 .lenis.lenis-scrolling iframe {
-  pointer-events: none;
+	pointer-events: none;
 }
 
 /* Selection styling */
 ::selection {
-  background-color: rgba(255, 169, 82, 0.35);
-  color: #1b1413;
+	background-color: rgba(188, 5, 49, 0.28);
+	color: #ffffff;
 }
 
 /* Image loading fade */
 img {
-  transition: opacity 0.3s ease;
+	transition: opacity 0.3s ease;
 }
 
 img[loading="lazy"] {
-  opacity: 0;
+	opacity: 0;
 }
 
 img[loading="lazy"][data-loaded],
 img:not([loading="lazy"]) {
-  opacity: 1;
+	opacity: 1;
 }
 
 /* Custom scrollbar for desktop */
 @media (min-width: 768px) {
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
+	::-webkit-scrollbar {
+		width: 8px;
+	}
 
-  ::-webkit-scrollbar-track {
-    background: #671127;
-  }
+	::-webkit-scrollbar-track {
+		background: #fda850;
+	}
 
-  ::-webkit-scrollbar-thumb {
-    background: rgba(255, 169, 82, 0.5);
-    border-radius: 4px;
-  }
+	::-webkit-scrollbar-thumb {
+		background: rgba(188, 5, 49, 0.62);
+		border-radius: 4px;
+	}
 
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 169, 82, 0.72);
-  }
+	::-webkit-scrollbar-thumb:hover {
+		background: rgba(188, 5, 49, 0.86);
+	}
 }
 
 /* Ensure proper text rendering */
 body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
 }
 
 /* Focus visible styles */
 *:focus-visible {
-  outline: 2px solid rgba(255, 169, 82, 0.85);
-  outline-offset: 2px;
+	outline: 2px solid rgba(188, 5, 49, 0.85);
+	outline-offset: 2px;
 }
 
 /* Remove default button styles */
 button {
-  background: none;
-  border: none;
-  cursor: pointer;
+	background: none;
+	border: none;
+	cursor: pointer;
 }
 
 /* Link hover transitions */
 a {
-  transition: color 0.3s ease, opacity 0.3s ease;
+	transition:
+		color 0.3s ease,
+		opacity 0.3s ease;
 }
 
 /* Swiper custom styles */
 .swiper-wrapper {
-  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+	transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+}
+
+/* id vision section */
+#vision {
+	background:
+		radial-gradient(
+			circle at top left,
+			rgba(188, 5, 49, 0.12),
+			transparent 28%
+		),
+		linear-gradient(180deg, #fda850 0%, #ffb96f 100%);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-image: url("/vision/section-mision-bg.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 }

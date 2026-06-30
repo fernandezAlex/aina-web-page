@@ -165,7 +165,7 @@ export function IntroMission() {
             {introMissionConfig.paragraphs.map((paragraph) => (
               <p
                 key={paragraph.text}
-                className="intro-mission-paragraph text-base md:text-lg font-body leading-relaxed text-softblack opacity-0"
+                className="intro-mission-paragraph text-lg md:text-xl font-body leading-relaxed text-softblack opacity-0"
               >
                 {paragraph.links?.length
                   ? (() => {
@@ -221,7 +221,13 @@ export function IntroMission() {
                   src={image.src}
                   alt={image.alt}
                   className={`w-full h-full object-cover will-change-transform ${
-                    index === 2 ? 'object-top' : ''
+                    index === 1
+                      ? 'object-center md:object-[center_calc(50%_+_40px)]'
+                      : index === 3
+                        ? 'object-[38%_center]'
+                        : index === 4
+                          ? 'object-center md:object-[center_calc(50%_+_40px)]'
+                          : 'object-center'
                   }`}
                   loading="lazy"
                 />

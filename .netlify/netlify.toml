@@ -1,0 +1,28 @@
+plugins = []
+headers = []
+redirects = []
+
+[functions]
+
+[functions."*"]
+
+[build]
+publish = "/Users/alexf/Downloads/aina-web-page/dist"
+publishOrigin = "config"
+commandOrigin = "config"
+command = "npm run build"
+
+[build.environment]
+VITE_PUBLIC_BASE = "/"
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]

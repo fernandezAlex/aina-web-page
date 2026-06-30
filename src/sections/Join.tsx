@@ -3,279 +3,300 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
   ArrowUpRight,
+  Globe,
   GraduationCap,
   HandHeart,
+  Heart,
   Users,
 } from 'lucide-react';
 import { useSiteContent } from '../i18n';
 
-type JoinIcon = typeof HandHeart;
-
 gsap.registerPlugin(ScrollTrigger);
 
-const joinIcons: JoinIcon[] = [HandHeart, Users, GraduationCap];
-const joinPrimaryActionThemes = [
+const heroImage = `${import.meta.env.BASE_URL}aina/main/aina-child-embrace.jpg`;
+const membershipImages = [
+  `${import.meta.env.BASE_URL}aina/join/join-gallery-2.jpg`,
+  `${import.meta.env.BASE_URL}aina/join/join-gallery-1.jpg`,
+  `${import.meta.env.BASE_URL}aina/main/aina-child-embrace.jpg`,
+] as const;
+const secondaryImages = [
+  `${import.meta.env.BASE_URL}aina/main/aina-girl-conversation.jpg`,
+  `${import.meta.env.BASE_URL}aina/main/aina-library-portrait.jpg`,
+] as const;
+
+const membershipIcons = [Users, HandHeart, Globe] as const;
+const membershipTones = [
   {
-    shell: 'border-secondary/20 bg-[linear-gradient(180deg,#fff8f3_0%,#fff1e7_100%)]',
-    halo: 'from-[#f97316]/22 via-[#ffae7a]/12 to-transparent',
-    accent: 'bg-[linear-gradient(160deg,#f97316_0%,#ff8f4a_100%)]',
-    arrow: 'border-secondary/25 bg-secondary text-softblack group-hover:bg-[#ff8b43]',
-    imageRing: 'border-secondary/20',
+    iconShell: 'bg-primary text-white',
+    title: 'text-primary',
+    button: 'bg-primary text-white hover:bg-[#a60d30]',
   },
   {
-    shell: 'border-primary/18 bg-[linear-gradient(180deg,#fff4f6_0%,#ffe8ed_100%)]',
-    halo: 'from-primary/20 via-[#df3359]/10 to-transparent',
-    accent: 'bg-[linear-gradient(160deg,#c4143b_0%,#df3359_100%)]',
-    arrow: 'border-primary/20 bg-primary text-white group-hover:bg-[#df3359]',
-    imageRing: 'border-primary/18',
+    iconShell: 'bg-[#ff8b14] text-white',
+    title: 'text-[#f47d0c]',
+    button: 'bg-[#ff8b14] text-white hover:bg-[#f47d0c]',
   },
   {
-    shell: 'border-[#d89b11]/22 bg-[linear-gradient(180deg,#fff9e8_0%,#fff2c7_100%)]',
-    halo: 'from-[#efb11f]/24 via-[#f7cb4e]/12 to-transparent',
-    accent: 'bg-[linear-gradient(160deg,#efb11f_0%,#f7cb4e_100%)]',
-    arrow: 'border-[#d89b11]/22 bg-[#efb11f] text-softblack group-hover:bg-[#f7cb4e]',
-    imageRing: 'border-[#d89b11]/22',
+    iconShell: 'bg-[#efa513] text-white',
+    title: 'text-[#e99e06]',
+    button: 'bg-[#efa513] text-white hover:bg-[#db9308]',
   },
 ] as const;
-const joinSecondaryActionTheme = {
-  shell: 'border-secondary/20 bg-[linear-gradient(180deg,#fff8f3_0%,#fff1e8_100%)]',
-  halo: 'from-secondary/18 via-[#ffb98d]/10 to-transparent',
-  accent: 'bg-[linear-gradient(160deg,#f97316_0%,#ff8f4a_100%)]',
-  arrow: 'border-secondary/25 bg-secondary text-softblack group-hover:bg-[#ff8b43]',
-  imageRing: 'border-secondary/20',
-} as const;
-const joinActionImages = [
-  [
-    {
-      src: `${import.meta.env.BASE_URL}aina/main/aina-child-close-smile.jpg`,
-      alt: 'Apoyo educativo sostenido en Nepal',
-    },
-    {
-      src: `${import.meta.env.BASE_URL}aina/main/aina-classroom-support.jpg`,
-      alt: 'Acompañamiento cercano en el aula',
-    },
-    {
-      src: `${import.meta.env.BASE_URL}aina/main/aina-child-embrace.jpg`,
-      alt: 'Impacto social compartido desde distintos países',
-    },
-  ],
-  [
-    {
-      src: `${import.meta.env.BASE_URL}aina/main/aina-girl-conversation.jpg`,
-      alt: 'Voluntariado de proximidad y acompañamiento',
-    },
-  ],
-  [
-    {
-      src: `${import.meta.env.BASE_URL}aina/main/aina-book-portrait-1.jpg`,
-      alt: 'Conversación con el equipo de Aina Institute',
-    },
-  ],
-] as const;
+
+function JoinButton({
+  href,
+  label,
+  className,
+}: {
+  href: string;
+  label: string;
+  className: string;
+}) {
+  const opensInNewTab = href.startsWith('http');
+
+  return (
+    <a
+      href={href}
+      target={opensInNewTab ? '_blank' : undefined}
+      rel={opensInNewTab ? 'noreferrer' : undefined}
+      className={`inline-flex items-center justify-center gap-3 rounded-full px-6 py-3 text-base font-sans font-bold transition-all duration-300 hover:-translate-y-0.5 ${className}`}
+    >
+      {label}
+      <ArrowUpRight className="h-4 w-4" strokeWidth={2} />
+    </a>
+  );
+}
+
+function JoinSectionHeading({
+  icon,
+  title,
+  titleClassName,
+}: {
+  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
+  title: string;
+  titleClassName?: string;
+}) {
+  const Icon = icon;
+
+  return (
+    <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
+      <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-primary text-white shadow-[0_18px_38px_rgba(169,17,47,0.18)] sm:h-24 sm:w-24">
+        <Icon className="h-10 w-10" strokeWidth={1.8} />
+      </div>
+      <div>
+        <h3 className={`max-w-[13ch] text-[2.35rem] font-serif font-bold leading-[0.96] text-primary md:text-[3.2rem] ${titleClassName ?? ''}`}>
+          {title}
+        </h3>
+        <div className="mt-4 h-px w-16 bg-[#f09838]" />
+      </div>
+    </div>
+  );
+}
 
 export function Join() {
   const { join } = useSiteContent();
   const sectionRef = useRef<HTMLElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
-  const blocksRef = useRef<HTMLDivElement>(null);
+  const animatedRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      ScrollTrigger.create({
-        trigger: headerRef.current,
-        start: 'top 85%',
-        onEnter: () => {
-          gsap.fromTo(
-            headerRef.current,
-            { y: 60, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }
-          );
-        },
-        once: true,
-      });
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;
 
-      ScrollTrigger.create({
-        trigger: blocksRef.current,
-        start: 'top 82%',
-        onEnter: () => {
-          const blocks = blocksRef.current?.querySelectorAll('[data-join-block]');
-          if (blocks) {
-            gsap.fromTo(
-              blocks,
-              { y: 44, opacity: 0 },
-              {
-                y: 0,
-                opacity: 1,
-                duration: 0.8,
-                ease: 'power3.out',
-                stagger: 0.12,
-              }
-            );
+    const ctx = gsap.context(() => {
+      const items = gsap.utils.toArray<HTMLElement>('.join-fade-item');
+      if (items.length) {
+        gsap.fromTo(
+          items,
+          { y: 42, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.95,
+            ease: 'power3.out',
+            stagger: 0.1,
+            scrollTrigger: {
+              trigger: animatedRef.current,
+              start: 'top 82%',
+              once: true,
+            },
           }
-        },
-        once: true,
-      });
+        );
+      }
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
+  const supportBlock = join.blocks[0];
+  const volunteerBlock = join.blocks[1];
+  const instituteBlock = join.blocks[2];
+
   return (
     <section
       ref={sectionRef}
       id="unete"
-      className="relative w-full overflow-hidden bg-offwhite py-14 md:py-32"
+      className="relative overflow-hidden bg-offwhite py-16 md:py-24"
     >
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-forest-dark/10 to-transparent md:h-32" />
-      <div className="relative mx-auto max-w-7xl px-5 md:px-12">
-        <div ref={headerRef} className="mb-8 max-w-4xl opacity-0 md:mb-20">
-          <p className="accent-kicker mb-3 text-sm font-body uppercase tracking-widest md:mb-4">
-            {join.eyebrow}
-          </p>
-          <h2 className="text-[2.7rem] font-sans font-bold leading-[0.96] tracking-tight text-primary md:text-6xl lg:text-7xl">
-            {join.title}
-          </h2>
-          <p className="mt-4 max-w-3xl text-base font-body leading-relaxed text-black md:mt-6 md:text-lg">
-            {join.description}
-          </p>
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,214,168,0.35),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(244,155,64,0.16),transparent_26%)]" />
+
+      <div ref={animatedRef} className="relative mx-auto flex max-w-[122rem] flex-col gap-6 px-5 md:px-10 xl:px-16">
+        <div className="grid items-stretch gap-8 lg:grid-cols-[minmax(0,1.04fr)_minmax(22rem,0.9fr)] lg:gap-10">
+          <div className="join-fade-item flex flex-col justify-center pt-2 lg:pr-6">
+            <div className="flex items-center gap-4 text-[#f27f14]">
+              <p className="text-[3rem] font-serif italic leading-none md:text-[4rem]">
+                {join.eyebrow}
+              </p>
+              <div className="flex flex-1 items-center gap-3">
+                <div className="h-px flex-1 bg-current/65" />
+                <Heart className="h-8 w-8" strokeWidth={1.8} />
+              </div>
+            </div>
+
+            <h2 className="mt-3 max-w-[10ch] text-[3.6rem] font-serif font-bold leading-[0.92] tracking-tight text-primary md:text-[5.2rem] xl:text-[6.2rem]">
+              {join.title}
+            </h2>
+            <div className="mt-6 h-px w-16 bg-[#f09838]" />
+            <p className="mt-6 max-w-[21ch] text-xl leading-relaxed text-softblack md:text-[2rem]">
+              {join.description}
+            </p>
+          </div>
+
+          <div className="join-fade-item relative min-h-[22rem] overflow-hidden rounded-[2.2rem] bg-[#f3e1d0] shadow-[0_26px_60px_rgba(147,89,35,0.18)] md:min-h-[32rem]">
+            <img
+              src={heroImage}
+              alt="Aina abraza a un niño en Nepal"
+              className="h-full w-full object-cover"
+              loading="lazy"
+            />
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-[42%] bg-[linear-gradient(90deg,rgba(247,242,234,0.96)_0%,rgba(247,242,234,0.28)_68%,rgba(247,242,234,0)_100%)]" />
+            <div className="pointer-events-none absolute -left-12 top-[-3%] h-[106%] w-[44%] rounded-full border-[8px] border-white/65 opacity-80" />
+            <div className="pointer-events-none absolute -left-7 top-[3%] h-[96%] w-[36%] rounded-full border border-[#edd6c1]/90 opacity-90" />
+          </div>
         </div>
 
-        <div className="mb-6 grid grid-cols-2 gap-3 md:mb-12 md:grid-cols-4 md:gap-4">
-          {join.gallery.map((image) => (
-            <div key={image.src} className="aspect-[4/5] overflow-hidden rounded-[1.35rem] border border-softblack/10 bg-white shadow-sm md:rounded-[1.75rem]">
+        <article className="join-fade-item rounded-[2rem] border border-[#efd7c2] bg-[linear-gradient(180deg,rgba(255,255,255,0.9)_0%,rgba(255,250,246,0.92)_100%)] p-4 shadow-[0_20px_50px_rgba(138,80,31,0.08)] md:rounded-[2.5rem] md:p-8 xl:p-10">
+          <div className="mx-auto max-w-5xl text-center">
+            <div className="flex items-center justify-center gap-4">
+              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary text-white shadow-[0_16px_34px_rgba(169,17,47,0.18)]">
+                <Users className="h-7 w-7" strokeWidth={1.8} />
+              </div>
+              <h3 className="text-[2.2rem] font-serif font-bold leading-none text-primary md:text-[3.4rem]">
+                {supportBlock.title}
+              </h3>
+            </div>
+            <div className="mx-auto mt-4 h-px w-16 bg-[#f09838]" />
+            <div className="mx-auto mt-5 max-w-5xl space-y-4 text-lg leading-relaxed text-softblack md:text-[1.9rem] md:leading-[1.45]">
+              <p>{supportBlock.summary}</p>
+              <p>{supportBlock.description}</p>
+            </div>
+          </div>
+
+          <div className="mt-8 grid gap-4 lg:grid-cols-3 xl:gap-5">
+            {supportBlock.actions.map((action, index) => {
+              const Icon = membershipIcons[index];
+              const tone = membershipTones[index];
+
+              return (
+                <article
+                  key={action.href}
+                  className="overflow-hidden rounded-[1.6rem] border border-[#ecd5c0] bg-white shadow-[0_16px_40px_rgba(138,80,31,0.08)]"
+                >
+                  <div className="aspect-[1.24/1] overflow-hidden">
+                    <img
+                      src={membershipImages[index] ?? membershipImages[0]}
+                      alt={action.label}
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <div className="relative px-5 pb-5 pt-10 text-center md:px-6 md:pb-6">
+                    <div className={`absolute left-1/2 top-0 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-[4px] border-white shadow-[0_14px_28px_rgba(138,80,31,0.12)] ${tone.iconShell}`}>
+                      <Icon className="h-7 w-7" strokeWidth={1.8} />
+                    </div>
+
+                    <h4 className={`mx-auto max-w-[12ch] text-[2rem] font-serif font-bold leading-[1] ${tone.title}`}>
+                      {action.label}
+                    </h4>
+                    <p className="mx-auto mt-4 max-w-[20ch] text-lg leading-relaxed text-softblack md:text-[1.26rem]">
+                      {action.description}
+                    </p>
+
+                    <div className="mt-6">
+                      <JoinButton href={action.href} label={action.label} className={`${tone.button} w-full text-center`} />
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </article>
+
+        <article className="join-fade-item overflow-hidden rounded-[2rem] border border-[#efd7c2] bg-[linear-gradient(90deg,rgba(255,255,255,0.94)_0%,rgba(255,248,242,0.96)_52%,rgba(255,230,196,0.68)_100%)] shadow-[0_20px_50px_rgba(138,80,31,0.08)]">
+          <div className="grid items-stretch gap-6 lg:grid-cols-[minmax(0,0.98fr)_minmax(20rem,0.92fr)]">
+            <div className="flex flex-col justify-center px-6 py-7 md:px-8 md:py-10 xl:px-10">
+              <JoinSectionHeading icon={HandHeart} title={volunteerBlock.title} />
+              <p className="mt-5 max-w-[30ch] text-lg leading-relaxed text-softblack md:text-[1.34rem]">
+                {volunteerBlock.summary}
+              </p>
+              <div className="mt-7">
+                <JoinButton
+                  href={volunteerBlock.actions[0]?.href ?? '#'}
+                  label={volunteerBlock.actions[0]?.label ?? ''}
+                  className="bg-primary text-white hover:bg-[#a60d30]"
+                />
+              </div>
+            </div>
+
+            <div className="min-h-[20rem] lg:min-h-full">
               <img
-                src={image.src}
-                alt={image.alt}
+                src={secondaryImages[0]}
+                alt="Aina comparte un momento cercano con un niño en Nepal"
                 className="h-full w-full object-cover"
                 loading="lazy"
               />
             </div>
-          ))}
-        </div>
+          </div>
+        </article>
 
-        <div ref={blocksRef} className="grid gap-4 md:gap-6 lg:grid-cols-2">
-          {join.blocks.map((block, index) => {
-            const Icon = joinIcons[index];
-            const isPrimaryBlock = index === 0;
+        <article className="join-fade-item overflow-hidden rounded-[2rem] border border-[#efd7c2] bg-[linear-gradient(90deg,rgba(255,255,255,0.94)_0%,rgba(255,248,242,0.96)_52%,rgba(255,236,208,0.72)_100%)] shadow-[0_20px_50px_rgba(138,80,31,0.08)]">
+          <div className="grid items-stretch gap-6 lg:grid-cols-[minmax(0,0.98fr)_minmax(20rem,0.92fr)]">
+            <div className="flex flex-col justify-center px-6 py-7 md:px-8 md:py-10 xl:px-10">
+              <JoinSectionHeading
+                icon={GraduationCap}
+                title={instituteBlock.title}
+                titleClassName="text-[#f27f14]"
+              />
+              <p className="mt-5 max-w-[34ch] text-lg leading-relaxed text-softblack md:text-[1.34rem]">
+                {instituteBlock.summary}
+              </p>
+              <p className="mt-5 max-w-[34ch] text-lg leading-relaxed text-softblack md:text-[1.34rem]">
+                {instituteBlock.description}
+              </p>
+              {instituteBlock.note ? (
+                <p className="mt-5 text-xl font-sans font-bold text-[#f27f14] md:text-[1.45rem]">
+                  {instituteBlock.note}
+                </p>
+              ) : null}
+              <div className="mt-7">
+                <JoinButton
+                  href={instituteBlock.actions[0]?.href ?? '#'}
+                  label={instituteBlock.actions[0]?.label ?? ''}
+                  className="bg-[#ff8b14] text-white hover:bg-[#f27f14]"
+                />
+              </div>
+            </div>
 
-            return (
-              <article
-                key={block.title}
-                data-join-block
-                className={[
-                  'accent-card flex flex-col justify-between rounded-[1.5rem] border border-secondary/15 bg-white p-5 opacity-0 shadow-[0_20px_50px_rgba(103,17,39,0.08)] transition-transform duration-300 hover:-translate-y-1 md:rounded-[2rem] md:p-8',
-                  isPrimaryBlock
-                    ? 'md:min-h-[27rem] lg:col-span-2 lg:min-h-[24rem]'
-                    : 'md:min-h-[27rem] lg:min-h-[24rem]',
-                ].join(' ')}
-              >
-                <div>
-                  <div className="mb-4 flex items-start justify-between gap-4 md:mb-6">
-                    <div className="space-y-2 md:space-y-3">
-                      <p className="accent-kicker text-xs font-body uppercase tracking-[0.22em]">
-                        {block.eyebrow}
-                      </p>
-                      <h3 className="max-w-[14ch] text-2xl font-sans font-bold leading-[0.98] tracking-tight text-primary md:text-[2.2rem]">
-                        {block.title}
-                      </h3>
-                    </div>
-
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-secondary/14 text-secondary md:h-12 md:w-12">
-                      <Icon className="h-5 w-5" strokeWidth={2} />
-                    </div>
-                  </div>
-
-                  <p className="mb-4 max-w-[28ch] text-base font-sans font-semibold leading-snug text-softblack md:mb-5 md:text-lg">
-                    {block.summary}
-                  </p>
-
-                  <p className="text-base font-body leading-relaxed text-softblack/70 md:text-lg">
-                    {block.description}
-                  </p>
-                </div>
-
-                <div
-                  className={[
-                    'mt-6 gap-3 md:mt-10',
-                    isPrimaryBlock
-                      ? 'grid md:grid-cols-2 xl:grid-cols-3'
-                      : 'grid grid-cols-1',
-                  ].join(' ')}
-                >
-                  {block.actions.map((action, actionIndex) => {
-                    const opensInNewTab = action.href.startsWith('http');
-                    const actionImage = joinActionImages[index]?.[actionIndex];
-                    const theme = isPrimaryBlock
-                      ? joinPrimaryActionThemes[actionIndex]
-                      : joinSecondaryActionTheme;
-
-                    return (
-                      <a
-                        key={action.href}
-                        href={action.href}
-                        target={opensInNewTab ? '_blank' : undefined}
-                        rel={opensInNewTab ? 'noreferrer' : undefined}
-                        className={[
-                          'group relative flex w-full overflow-hidden rounded-[1.6rem] border px-4 py-5 text-center text-sm font-sans font-semibold text-softblack shadow-[0_16px_32px_rgba(103,17,39,0.10),inset_0_1px_0_rgba(255,255,255,0.28)] transition-all duration-300 hover:-translate-y-1 md:rounded-[1.85rem] md:px-5 md:py-6 md:text-base',
-                          theme.shell,
-                          isPrimaryBlock ? 'min-h-[12.75rem]' : 'min-h-[12rem]',
-                        ].join(' ')}
-                      >
-                        <span
-                          className={[
-                            'pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b opacity-90',
-                            theme.halo,
-                          ].join(' ')}
-                        />
-
-                        <span className="relative flex w-full flex-col items-center">
-                          <span
-                            className={[
-                              'relative flex h-20 w-20 items-center justify-center overflow-hidden rounded-full border-[3px] bg-white shadow-[0_14px_28px_rgba(103,17,39,0.14)] md:h-24 md:w-24',
-                              theme.imageRing,
-                            ].join(' ')}
-                          >
-                            {actionImage ? (
-                              <img
-                                src={actionImage.src}
-                                alt={actionImage.alt}
-                                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                                loading="lazy"
-                              />
-                            ) : (
-                              <span className="h-full w-full rounded-full bg-white/35" aria-hidden="true" />
-                            )}
-                          </span>
-
-                          <span className="mt-4 block min-w-0 text-balance leading-snug md:mt-5">
-                            {action.label}
-                          </span>
-
-                          <span
-                            className={[
-                              'mt-4 inline-flex h-11 items-center justify-center rounded-full px-4 text-sm font-semibold shadow-[0_10px_18px_rgba(103,17,39,0.10)] transition-all duration-300 group-hover:scale-[1.03] md:mt-5 md:h-12 md:px-5',
-                              theme.accent,
-                            ].join(' ')}
-                          >
-                            <span className="mr-2">Ir</span>
-                            <span
-                              className={[
-                                'flex h-8 w-8 items-center justify-center rounded-full border transition-colors duration-300 md:h-9 md:w-9',
-                                theme.arrow,
-                              ].join(' ')}
-                            >
-                              <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={1.8} />
-                            </span>
-                          </span>
-                        </span>
-                      </a>
-                    );
-                  })}
-                </div>
-              </article>
-            );
-          })}
-        </div>
+            <div className="min-h-[20rem] lg:min-h-full">
+              <img
+                src={secondaryImages[1]}
+                alt="Espacio de aprendizaje vinculado a Aina Institute"
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </article>
       </div>
     </section>
   );
