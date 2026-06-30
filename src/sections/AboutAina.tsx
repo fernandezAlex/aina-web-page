@@ -16,6 +16,8 @@ export function AboutAina() {
   const [shouldAnimateStats, setShouldAnimateStats] = useState(false);
   const closingParagraph = aboutAinaConfig.paragraphs[aboutAinaConfig.paragraphs.length - 1];
   const bodyParagraphs = aboutAinaConfig.paragraphs.slice(0, -1);
+  const hasImpactCardContent =
+    aboutAinaConfig.gallery.length > 0 || aboutAinaConfig.impactStats.length > 0;
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -32,19 +34,21 @@ export function AboutAina() {
         once: true,
       });
 
-      ScrollTrigger.create({
-        trigger: statsRef.current,
-        start: 'top 78%',
-        onEnter: () => {
-          setShouldAnimateStats(true);
-          gsap.fromTo(
-            statsRef.current,
-            { y: 60, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }
-          );
-        },
-        once: true,
-      });
+      if (statsRef.current) {
+        ScrollTrigger.create({
+          trigger: statsRef.current,
+          start: 'top 78%',
+          onEnter: () => {
+            setShouldAnimateStats(true);
+            gsap.fromTo(
+              statsRef.current,
+              { y: 60, opacity: 0 },
+              { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }
+            );
+          },
+          once: true,
+        });
+      }
 
       const leadBlocks = leadBlocksRef.current?.querySelectorAll('.about-aina-block');
       if (leadBlocks) {
@@ -73,7 +77,7 @@ export function AboutAina() {
   if (
     !aboutAinaConfig.title &&
     aboutAinaConfig.paragraphs.length === 0 &&
-    aboutAinaConfig.impactStats.length === 0
+    !hasImpactCardContent
   ) {
     return null;
   }
@@ -86,7 +90,13 @@ export function AboutAina() {
     >
       <div className="absolute inset-x-0 top-0 h-px bg-softblack/10" />
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(560px,1.2fr)] lg:gap-14">
+        <div
+          className={`grid items-start gap-12 ${
+            hasImpactCardContent
+              ? 'lg:grid-cols-[minmax(0,0.8fr)_minmax(560px,1.2fr)] lg:gap-14'
+              : ''
+          }`}
+        >
           <div>
             <div ref={headerRef} className="mb-3 opacity-0">
               {aboutAinaConfig.subtitle && (
@@ -116,16 +126,18 @@ export function AboutAina() {
             )}
           </div>
 
-          <aside ref={statsRef} className="opacity-0 lg:sticky lg:top-8">
-            <ImpactGalleryCard
-              images={aboutAinaConfig.gallery}
-              stats={aboutAinaConfig.impactStats}
-              label={aboutAinaConfig.impactLabel}
-              ariaLabel={aboutAinaConfig.impactAriaLabel}
-              locale={locale}
-              shouldAnimate={shouldAnimateStats}
-            />
-          </aside>
+          {hasImpactCardContent && (
+            <aside ref={statsRef} className="opacity-0 lg:sticky lg:top-8">
+              <ImpactGalleryCard
+                images={aboutAinaConfig.gallery}
+                stats={aboutAinaConfig.impactStats}
+                label={aboutAinaConfig.impactLabel}
+                ariaLabel={aboutAinaConfig.impactAriaLabel}
+                locale={locale}
+                shouldAnimate={shouldAnimateStats}
+              />
+            </aside>
+          )}
         </div>
 
         {closingParagraph && (
