@@ -17,7 +17,7 @@ const heroImage = `${import.meta.env.BASE_URL}aina/main/aina-child-embrace.jpg`;
 const membershipImages = [
 	`${import.meta.env.BASE_URL}aina/join/join-gallery-2.jpg`,
 	`${import.meta.env.BASE_URL}aina/join/join-gallery-1.jpg`,
-	`${import.meta.env.BASE_URL}aina/main/aina-child-embrace.jpg`,
+	`${import.meta.env.BASE_URL}aina/main/aina-child-wall-2.jpg`,
 ] as const;
 const secondaryImages = [
 	`${import.meta.env.BASE_URL}aina/main/aina-girl-conversation.jpg`,
@@ -159,7 +159,7 @@ export function Join() {
 							{join.title}
 						</h2>
 						<div className="mt-6 h-px bg-[#f09838]" />
-						<p className="mt-6 text-xl font-serif font-bold italic leading-relaxed text-forest-mid md:text-[2rem]">
+						<p className="mt-6 max-w-5xl text-left text-xl font-body leading-relaxed text-softblack/70 md:text-2xl">
 							{join.description}
 						</p>
 					</div>
@@ -208,7 +208,9 @@ export function Join() {
 										<img
 											src={membershipImages[index] ?? membershipImages[0]}
 											alt={action.label}
-											className="h-full w-full object-cover"
+											className={`h-full w-full object-cover ${
+												index === 0 ? "object-top" : "object-center"
+											}`}
 											loading="lazy"
 										/>
 									</div>

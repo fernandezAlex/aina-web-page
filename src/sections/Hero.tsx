@@ -5,6 +5,8 @@ import { useSiteContent } from "../i18n";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const heroBackgroundImage = `${import.meta.env.BASE_URL}bg-img-header.jpeg`;
+
 export function Hero() {
 	const { hero: heroConfig } = useSiteContent();
 	const sectionRef = useRef<HTMLElement>(null);
@@ -94,11 +96,11 @@ export function Hero() {
 			{/* Layer 1: Background image */}
 			<div
 				className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-				style={{ backgroundImage: 'url(/bg-img-header.jpeg)' }}
+				style={{ backgroundImage: `url(${heroBackgroundImage})`, opacity: 0.18 }}
 			/>
 
 			{/* Layer 2: Brand color veil */}
-			<div className="absolute inset-0 bg-gradient-to-b from-forest-dark/82 via-forest-dark/84 to-forest-mid/86" />
+			<div className="absolute inset-0 bg-gradient-to-b from-forest-dark/88 via-forest-dark/90 to-forest-mid/88" />
 
 			{/* Subtle texture overlay */}
 			<div
