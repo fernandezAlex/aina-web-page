@@ -37,6 +37,7 @@ export function AnimatedCounter({
 
     const startTime = Date.now();
     const endTime = startTime + duration * 1000;
+    let animationFrameId: number;
 
     const updateCount = () => {
       const now = Date.now();
@@ -50,13 +51,15 @@ export function AnimatedCounter({
       }
 
       if (now < endTime) {
-        requestAnimationFrame(updateCount);
+        animationFrameId = requestAnimationFrame(updateCount);
       } else {
         setCount(end);
       }
     };
 
-    requestAnimationFrame(updateCount);
+    animationFrameId = requestAnimationFrame(updateCount);
+
+    return () => cancelAnimationFrame(animationFrameId);
   }, [end, duration, shouldAnimate]);
 
   return (
