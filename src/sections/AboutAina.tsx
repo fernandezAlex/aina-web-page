@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { StatsCard } from '../components/StatsCard';
+import { ImpactGalleryCard } from '../components/ImpactGalleryCard';
 import { useI18n, useSiteContent } from '../i18n';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -11,14 +11,11 @@ export function AboutAina() {
   const { aboutAina: aboutAinaConfig } = useSiteContent();
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
-  const blocksRef = useRef<HTMLDivElement>(null);
   const leadBlocksRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
+  const statsRef = useRef<HTMLElement>(null);
   const [shouldAnimateStats, setShouldAnimateStats] = useState(false);
   const closingParagraph = aboutAinaConfig.paragraphs[aboutAinaConfig.paragraphs.length - 1];
   const bodyParagraphs = aboutAinaConfig.paragraphs.slice(0, -1);
-  const leadParagraphs = bodyParagraphs.slice(0, 2);
-  const sideParagraphs = bodyParagraphs.slice(2);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -48,26 +45,6 @@ export function AboutAina() {
         },
         once: true,
       });
-
-      const blocks = blocksRef.current?.querySelectorAll('.about-aina-block');
-      if (blocks) {
-        gsap.fromTo(
-          blocks,
-          { y: 28, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: 'power3.out',
-            stagger: 0.1,
-            scrollTrigger: {
-              trigger: blocksRef.current,
-              start: 'top 85%',
-              once: true,
-            },
-          }
-        );
-      }
 
       const leadBlocks = leadBlocksRef.current?.querySelectorAll('.about-aina-block');
       if (leadBlocks) {
@@ -109,9 +86,9 @@ export function AboutAina() {
     >
       <div className="absolute inset-x-0 top-0 h-px bg-softblack/10" />
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid lg:grid-cols-[minmax(0,0.95fr)_minmax(320px,0.55fr)] gap-12 md:gap-16 items-start">
+        <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(560px,1.2fr)] lg:gap-14">
           <div>
-            <div ref={headerRef} className="opacity-0 mb-12 md:mb-16">
+            <div ref={headerRef} className="mb-3 opacity-0">
               {aboutAinaConfig.subtitle && (
                 <p className="accent-kicker text-sm font-body uppercase tracking-widest mb-4">
                   {aboutAinaConfig.subtitle}
@@ -120,71 +97,34 @@ export function AboutAina() {
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-sans font-bold text-primary tracking-tight max-w-3xl">
                 {aboutAinaConfig.title}
               </h2>
-              <p className="mt-6 max-w-3xl text-base md:text-lg font-body leading-relaxed text-softblack/70">
+              <p className="mt-6 max-w-3xl text-lg font-body leading-relaxed text-softblack md:text-xl">
                 {aboutAinaConfig.intro}
               </p>
             </div>
 
-            {leadParagraphs.length > 0 && (
-              <div ref={leadBlocksRef} className="mb-10 space-y-5 md:mb-12">
-                {leadParagraphs.map((paragraph) => (
+            {bodyParagraphs.length > 0 && (
+              <div ref={leadBlocksRef} className="mb-10 space-y-2 md:mb-12">
+                {bodyParagraphs.map((paragraph) => (
                   <p
                     key={paragraph}
-                    className="about-aina-block max-w-3xl text-base leading-relaxed text-softblack opacity-0 md:text-lg"
+                    className="about-aina-block max-w-3xl text-lg leading-relaxed text-softblack opacity-0 md:text-xl"
                   >
                     {paragraph}
                   </p>
                 ))}
               </div>
             )}
-
-            <div
-              ref={statsRef}
-              className="accent-card mb-10 opacity-0 rounded-lg border border-secondary/15 bg-white p-8 shadow-sm md:mb-12 md:p-10"
-              aria-label={aboutAinaConfig.impactAriaLabel}
-            >
-              <StatsCard
-                stats={aboutAinaConfig.impactStats}
-                label={aboutAinaConfig.impactLabel}
-                shouldAnimate={shouldAnimateStats}
-                valueClassName="text-5xl md:text-6xl"
-                locale={locale}
-              />
-            </div>
-
           </div>
 
-          <aside className="space-y-10 lg:sticky lg:top-10">
-            <div className="grid grid-cols-2 gap-4">
-              {aboutAinaConfig.gallery.map((image, index) => (
-                <div
-                  key={image.src}
-                  className={`overflow-hidden rounded-[1.75rem] border border-softblack/10 bg-white shadow-sm ${
-                    index === 0 ? 'col-span-2 aspect-[4/3]' : 'aspect-[4/5]'
-                  }`}
-                >
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className={`h-full w-full object-cover ${index === 0 ? 'object-top' : ''}`}
-                    loading="lazy"
-                  />
-                </div>
-              ))}
-            </div>
-
-            {sideParagraphs.length > 0 && (
-              <div ref={blocksRef} className="space-y-5">
-                {sideParagraphs.map((paragraph) => (
-                  <p
-                    key={paragraph}
-                    className="about-aina-block text-base leading-relaxed text-softblack opacity-0 md:text-lg"
-                  >
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
-            )}
+          <aside ref={statsRef} className="opacity-0 lg:sticky lg:top-8">
+            <ImpactGalleryCard
+              images={aboutAinaConfig.gallery}
+              stats={aboutAinaConfig.impactStats}
+              label={aboutAinaConfig.impactLabel}
+              ariaLabel={aboutAinaConfig.impactAriaLabel}
+              locale={locale}
+              shouldAnimate={shouldAnimateStats}
+            />
           </aside>
         </div>
 
