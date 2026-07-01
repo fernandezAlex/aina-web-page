@@ -215,7 +215,7 @@ export function IntroMission() {
                   key={image.src}
                   className={`grid-item relative overflow-hidden rounded-lg group cursor-pointer opacity-0 ${
                     index === 0 ? 'md:col-span-1 md:row-span-2' : ''
-                  } ${index === 3 ? 'row-span-2' : ''}`}
+                  }`}
                 >
                 <img
                   src={image.src}
@@ -224,7 +224,7 @@ export function IntroMission() {
                     index === 1
                       ? 'object-center md:object-[center_calc(50%_+_40px)]'
                       : index === 3
-                        ? 'object-[38%_center]'
+                        ? 'object-right'
                         : index === 4
                           ? 'object-center md:object-[center_calc(50%_+_40px)]'
                           : 'object-center'

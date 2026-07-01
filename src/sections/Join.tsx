@@ -17,7 +17,7 @@ const heroImage = `${import.meta.env.BASE_URL}aina/main/aina-child-embrace.jpg`;
 const membershipImages = [
 	`${import.meta.env.BASE_URL}aina/join/dscf1500.jpg`,
 	`${import.meta.env.BASE_URL}aina/join/join-gallery-1.jpg`,
-	`${import.meta.env.BASE_URL}aina/main/aina-child-embrace.jpg`,
+	`${import.meta.env.BASE_URL}aina/join/join-gallery-2.jpg`,
 ] as const;
 const secondaryImages = [
 	`${import.meta.env.BASE_URL}aina/main/aina-join-volunteer-terrain.jpg`,
@@ -85,7 +85,7 @@ function JoinSectionHeading({
 			</div>
 			<div>
 				<h3
-					className={`max-w-[13ch] text-[2.35rem] font-serif font-bold leading-[0.96] text-primary md:text-[3.2rem] ${titleClassName ?? ""}`}
+					className={`text-[2.35rem]  font-bold leading-[0.96] text-primary md:text-[3.2rem] ${titleClassName ?? ""}`}
 				>
 					{title}
 				</h3>
@@ -148,7 +148,7 @@ export function Join() {
 					<div className="grid items-stretch gap-8 lg:grid-cols-[minmax(0,1.04fr)_minmax(22rem,0.9fr)] lg:gap-10">
 						<div className="join-fade-item flex flex-col justify-center pt-2 lg:pr-6">
 							<div className="flex items-center gap-4 text-[#f27f14]">
-								<p className="text-[3rem] font-serif italic leading-none md:text-[4rem]">
+								<p className="text-[3rem]  italic leading-none md:text-[4rem]">
 									{join.eyebrow}
 								</p>
 								<div className="flex flex-1 items-center gap-3">
@@ -157,11 +157,11 @@ export function Join() {
 								</div>
 							</div>
 
-							<h2 className="mt-3 max-w-[10ch] text-[3.6rem] font-serif font-bold leading-[0.92] tracking-tight text-primary md:text-[5.2rem] xl:text-[6.2rem]">
+							<h2 className="mt-3  text-[3.6rem] font-bold leading-[0.92] tracking-tight text-primary md:text-[5.2rem] xl:text-[6.2rem]">
 								{join.title}
 							</h2>
 							<div className="mt-6 h-px w-16 bg-[#f09838]" />
-							<p className="mt-6 max-w-[21ch] text-xl leading-relaxed text-softblack md:text-[2rem]">
+							<p className="mt-6  text-xl leading-relaxed text-softblack md:text-[2rem]">
 								{join.description}
 							</p>
 						</div>
@@ -180,17 +180,20 @@ export function Join() {
 					</div>
 
 					<article className="join-fade-item rounded-[2rem] border border-[#efd7c2] bg-[linear-gradient(180deg,rgba(255,255,255,0.9)_0%,rgba(255,250,246,0.92)_100%)] p-4 shadow-[0_20px_50px_rgba(138,80,31,0.08)] md:rounded-[2.5rem] md:p-8 xl:p-10">
-						<div className="mx-auto max-w-5xl text-center">
+						<div className="mx-auto max-w-5xl text-left">
 							<div className="flex items-center justify-center gap-4">
 								<div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary text-white shadow-[0_16px_34px_rgba(169,17,47,0.18)]">
 									<Users className="h-7 w-7" strokeWidth={1.8} />
 								</div>
-								<h3 className="text-[2.2rem] font-serif font-bold leading-none text-primary md:text-[3.4rem]">
+								<br />
+								<h3 className="text-[2.2rem] font-bold text-primary md:text-[3.4rem] text-left">
 									{supportBlock.title}
 								</h3>
+								<br />
 							</div>
 							<div className="mx-auto mt-4 h-px w-16 bg-[#f09838]" />
-							<div className="mx-auto mt-5 max-w-5xl space-y-4 text-lg leading-relaxed text-softblack md:text-[1.9rem] md:leading-[1.45]">
+							<br />
+							<div className="text-left md:text-[1.26rem]">
 								<p>{supportBlock.summary}</p>
 								<p>{supportBlock.description}</p>
 							</div>
@@ -204,18 +207,18 @@ export function Join() {
 								return (
 									<article
 										key={action.href}
-										className="overflow-hidden rounded-[1.6rem] border border-[#ecd5c0] bg-white shadow-[0_16px_40px_rgba(138,80,31,0.08)]"
+										className="flex h-full flex-col overflow-hidden rounded-[1.6rem] border border-[#ecd5c0] bg-white shadow-[0_16px_40px_rgba(138,80,31,0.08)]"
 									>
 										<div className="aspect-[1.24/1] overflow-hidden">
 											<img
 												src={membershipImages[index] ?? membershipImages[0]}
 												alt={action.label}
-												className={`h-full w-full object-cover ${index === 0 ? "object-top" : ""}`}
+												className={`h-full w-full object-cover ${index === 0 || index === 2 ? "object-top" : ""}`}
 												loading="lazy"
 											/>
 										</div>
 
-										<div className="relative px-5 pb-5 pt-10 text-center md:px-6 md:pb-6">
+										<div className="relative flex flex-1 flex-col px-5 pb-5 pt-10 text-center md:px-6 md:pb-6">
 											<div
 												className={`absolute left-1/2 top-0 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-[4px] border-white shadow-[0_14px_28px_rgba(138,80,31,0.12)] ${tone.iconShell}`}
 											>
@@ -223,15 +226,15 @@ export function Join() {
 											</div>
 
 											<h4
-												className={`mx-auto max-w-[12ch] text-[2rem] font-serif font-bold leading-[1] ${tone.title}`}
+												className={`mx-auto text-[2rem]  font-bold leading-[1] ${tone.title}`}
 											>
 												{action.label}
 											</h4>
-											<p className="mx-auto mt-4 max-w-[20ch] text-lg leading-relaxed text-softblack md:text-[1.26rem]">
+											<p className="mx-auto mt-6 text-lg text-softblack md:text-[1.26rem]">
 												{action.description}
 											</p>
 
-											<div className="mt-6">
+											<div className="mt-auto pt-6">
 												<JoinButton
 													href={action.href}
 													label={action.label}
@@ -252,7 +255,7 @@ export function Join() {
 									icon={HandHeart}
 									title={volunteerBlock.title}
 								/>
-								<p className="mt-5 max-w-[30ch] text-lg leading-relaxed text-softblack md:text-[1.34rem]">
+								<p className="mt-5 text-lg leading-relaxed text-softblack md:text-[1.34rem]">
 									{volunteerBlock.summary}
 								</p>
 								<div className="mt-7">
@@ -283,10 +286,10 @@ export function Join() {
 									title={instituteBlock.title}
 									titleClassName="text-[#f27f14]"
 								/>
-								<p className="mt-5 max-w-[34ch] text-lg leading-relaxed text-softblack md:text-[1.34rem]">
+								<p className="mt-5 text-lg leading-relaxed text-softblack md:text-[1.34rem]">
 									{instituteBlock.summary}
 								</p>
-								<p className="mt-5 max-w-[34ch] text-lg leading-relaxed text-softblack md:text-[1.34rem]">
+								<p className="mt-5  text-lg leading-relaxed text-softblack md:text-[1.34rem]">
 									{instituteBlock.description}
 								</p>
 								{instituteBlock.note ? (
