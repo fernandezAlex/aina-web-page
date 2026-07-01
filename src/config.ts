@@ -364,11 +364,11 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
       ],
       gallery: [
         {
-          src: asset('/aina/about/aina-with-girl.jpg'),
+          src: asset('/aina/about/aina-opportunities-top-new.jpg'),
           alt: 'Aina Barca comparte un momento cercano con una niña',
         },
         {
-          src: asset('/aina/about/aina-child-closeup.jpg'),
+          src: asset('/aina/about/aina-opportunities-stage-new.jpg'),
           alt: 'Aina Barca sonríe junto a un niño en Nepal',
         },
         {
@@ -771,8 +771,8 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
         { value: 1000, prefix: '+', label: 'families have found support, community, and hope', useGrouping: true },
       ],
       gallery: [
-        { src: asset('/aina/about/aina-with-girl.jpg'), alt: 'Aina Barca sharing a close moment with a girl' },
-        { src: asset('/aina/about/aina-child-closeup.jpg'), alt: 'Aina Barca smiling beside a child in Nepal' },
+        { src: asset('/aina/about/aina-opportunities-top-new.jpg'), alt: 'Aina Barca sharing a close moment with a girl' },
+        { src: asset('/aina/about/aina-opportunities-stage-new.jpg'), alt: 'Aina Barca smiling beside a child in Nepal' },
         { src: asset('/aina/about/aina-temple-selfie.jpg'), alt: 'Self-portrait of Aina Barca with a Nepalese temple in the background' },
       ],
     },
@@ -1117,8 +1117,8 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
         { value: 1000, prefix: '+', label: 'famílies han trobat suport, comunitat i esperança', useGrouping: true },
       ],
       gallery: [
-        { src: asset('/aina/about/aina-with-girl.jpg'), alt: "Aina Barca comparteix un moment proper amb una nena" },
-        { src: asset('/aina/about/aina-child-closeup.jpg'), alt: "Aina Barca somriu al costat d'un infant al Nepal" },
+        { src: asset('/aina/about/aina-opportunities-top-new.jpg'), alt: "Aina Barca comparteix un moment proper amb una nena" },
+        { src: asset('/aina/about/aina-opportunities-stage-new.jpg'), alt: "Aina Barca somriu al costat d'un infant al Nepal" },
         { src: asset('/aina/about/aina-temple-selfie.jpg'), alt: "Autoretrat d'Aina Barca amb un temple del Nepal al fons" },
       ],
     },
