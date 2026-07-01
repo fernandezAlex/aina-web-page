@@ -15,7 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const heroImage = `${import.meta.env.BASE_URL}aina/main/aina-child-embrace.jpg`;
 const membershipImages = [
-	`${import.meta.env.BASE_URL}aina/join/join-gallery-2.jpg`,
+	`${import.meta.env.BASE_URL}aina/join/dscf1500.jpg`,
 	`${import.meta.env.BASE_URL}aina/join/join-gallery-1.jpg`,
 	`${import.meta.env.BASE_URL}aina/main/aina-child-embrace.jpg`,
 ] as const;
@@ -210,7 +210,7 @@ export function Join() {
 											<img
 												src={membershipImages[index] ?? membershipImages[0]}
 												alt={action.label}
-												className="h-full w-full object-cover"
+												className={`h-full w-full object-cover ${index === 0 ? "object-top" : ""}`}
 												loading="lazy"
 											/>
 										</div>
