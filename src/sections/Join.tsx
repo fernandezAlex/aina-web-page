@@ -186,7 +186,7 @@ export function Join() {
 									<Users className="h-7 w-7" strokeWidth={1.8} />
 								</div>
 								<br />
-								<h3 className="text-[2.2rem] font-bold text-primary md:text-[3.4rem] text-left">
+								<h3 className="text-[2.35rem] font-bold leading-[0.96] text-primary md:text-[3.2rem]">
 									{supportBlock.title}
 								</h3>
 								<br />
