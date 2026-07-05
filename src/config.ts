@@ -246,6 +246,65 @@ const pressOfficialUrls: Record<string, string> = {
 
 const pressHref = (name: string) => pressOfficialUrls[name];
 
+const pressAppearanceOrder = [
+	"RNE",
+	"Mundo Solidario",
+	"RTVE",
+	"La Vanguardia",
+	"El Confidencial",
+	"Radio Madrid SER",
+	"Radio Irun SER",
+	"SER Catalunya",
+	"TV3",
+	"RAC1",
+	"Onda Cero",
+	"UOC",
+	"EITB",
+	"Radio Galega",
+	"Ara",
+	"El Diario Vasco",
+	"Mujer Emprendedora",
+	"Todo Literatura",
+	"Eco Diario",
+	"Regio7",
+	"Nepal Television",
+	"National Gold",
+	"Team TV",
+	"Online Khabar",
+	"Ratopati",
+	"News24",
+	"RPP",
+] as const;
+
+const pressAppearanceRank = new Map<string, number>(
+	pressAppearanceOrder.map((name, index) => [name, index]),
+);
+
+const normalizePressAppearanceName = (name: string) => {
+	switch (name) {
+		case "Regió7":
+			return "Regio7";
+		default:
+			return name;
+	}
+};
+
+const orderPressAppearances = (appearances: PressAppearance[]) =>
+	[...appearances].sort((left, right) => {
+		const leftRank =
+			pressAppearanceRank.get(normalizePressAppearanceName(left.name)) ??
+			Number.MAX_SAFE_INTEGER;
+		const rightRank =
+			pressAppearanceRank.get(normalizePressAppearanceName(right.name)) ??
+			Number.MAX_SAFE_INTEGER;
+
+		if (leftRank !== rightRank) {
+			return leftRank - rightRank;
+		}
+
+		return left.name.localeCompare(right.name);
+	});
+
 const navHrefs = [
 	"#hero",
 	"#sobre-aina",
@@ -434,9 +493,9 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
 					ctaLabel: "Ir a la web",
 					href: "https://www.siashafoundation.org/",
 					initials: "AS",
-					logoSrc: asset("/siasha/hetauda-school.webp"),
-					logoAlt: "Imagen real de Asha Special School en Hetauda",
-					mediaMode: "image",
+					logoSrc: asset("/vision/asha-special-school-logo.png"),
+					logoAlt: "Logotipo de Asha Special School & Rehabilitation Center",
+					mediaMode: "logo",
 				},
 				{
 					title: "Aina Institute",
@@ -515,7 +574,7 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
 			nextLabel: "Ver siguiente medio",
 			mediaAriaLabel: "Ver aparición en prensa",
 			indicatorAriaLabel: "Ir al medio",
-			appearances: [
+			appearances: orderPressAppearances([
 				{
 					name: "Radio Galega",
 					href: pressHref("Radio Galega"),
@@ -684,7 +743,7 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
 					category: "Radio",
 					imageSrc: asset("/aina/press-media/onda-cero.png"),
 				},
-			],
+			]),
 		},
 		recognitions: {
 			eyebrow: "Reconocimientos",
@@ -1019,9 +1078,9 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
 					ctaLabel: "Visit website",
 					href: "https://www.siashafoundation.org/",
 					initials: "AS",
-					logoSrc: asset("/siasha/hetauda-school.webp"),
-					logoAlt: "Real image of Asha Special School in Hetauda",
-					mediaMode: "image",
+					logoSrc: asset("/vision/asha-special-school-logo.png"),
+					logoAlt: "Asha Special School & Rehabilitation Center logo",
+					mediaMode: "logo",
 				},
 				{
 					title: "Aina Institute",
@@ -1099,7 +1158,7 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
 			nextLabel: "View next outlet",
 			mediaAriaLabel: "View press feature",
 			indicatorAriaLabel: "Go to outlet",
-			appearances: [
+			appearances: orderPressAppearances([
 				{
 					name: "Radio Galega",
 					href: pressHref("Radio Galega"),
@@ -1268,7 +1327,7 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
 					category: "Radio",
 					imageSrc: asset("/aina/press-media/onda-cero.png"),
 				},
-			],
+			]),
 		},
 		recognitions: {
 			eyebrow: "Recognitions",
@@ -1593,9 +1652,9 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
 					ctaLabel: "Anar al web",
 					href: "https://www.siashafoundation.org/",
 					initials: "AS",
-					logoSrc: asset("/siasha/hetauda-school.webp"),
-					logoAlt: "Imatge real de l'Asha Special School a Hetauda",
-					mediaMode: "image",
+					logoSrc: asset("/vision/asha-special-school-logo.png"),
+					logoAlt: "Logotip d'Asha Special School & Rehabilitation Center",
+					mediaMode: "logo",
 				},
 				{
 					title: "Aina Institute",
@@ -1673,7 +1732,7 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
 			nextLabel: "Veure el mitjà següent",
 			mediaAriaLabel: "Veure aparició a la premsa",
 			indicatorAriaLabel: "Anar al mitjà",
-			appearances: [
+			appearances: orderPressAppearances([
 				{
 					name: "Radio Galega",
 					href: pressHref("Radio Galega"),
@@ -1842,7 +1901,7 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
 					category: "Radio",
 					imageSrc: asset("/aina/press-media/onda-cero.png"),
 				},
-			],
+			]),
 		},
 		recognitions: {
 			eyebrow: "Reconeixements",

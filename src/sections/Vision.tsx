@@ -73,11 +73,18 @@ function VisionCopyBlock({
 	className?: string;
 }) {
 	const alignmentClasses =
-		align === "center"
-			? "text-center items-center"
-			: align === "right"
-				? "items-center text-center lg:items-start lg:text-left"
-				: "items-center text-center lg:items-start lg:text-left";
+		card.href === "https://siasha.org/es/"
+			? "items-start text-left"
+			: align === "center"
+				? "text-center items-center"
+				: align === "right"
+					? "items-center text-center lg:items-start lg:text-left"
+					: "items-center text-center lg:items-start lg:text-left";
+	const ctaAlignmentClass =
+		card.href === "https://siasha.org/es/" ||
+		card.href === "https://ainainstitute.es/"
+			? "lg:self-center"
+			: "";
 
 	return (
 		<article className={`flex flex-col ${alignmentClasses} ${className}`}>
@@ -99,7 +106,7 @@ function VisionCopyBlock({
 				href={card.href}
 				target="_blank"
 				rel="noreferrer"
-				className="mt-7 inline-flex items-center gap-3 rounded-full bg-primary px-7 py-3 text-base font-sans font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#9f112f]"
+				className={`mt-7 inline-flex items-center gap-3 rounded-full bg-primary px-7 py-3 text-base font-sans font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#9f112f] ${ctaAlignmentClass}`}
 			>
 				{card.ctaLabel}
 				<ArrowUpRight className="h-4 w-4" />
@@ -215,6 +222,9 @@ export function Vision() {
 
 				<div
 					ref={compositionRef}
+					style={{
+						paddingBottom: "14rem",
+					}}
 					className="relative mt-8 pb-20 md:mt-18 lg:pb-32"
 				>
 					<div className="grid gap-10 lg:hidden">
@@ -276,14 +286,6 @@ export function Vision() {
 								strokeDasharray="3 8"
 								strokeLinecap="round"
 							/>
-							<path
-								d="M 600 948 C 602 862, 602 800, 602 708"
-								fill="none"
-								stroke="rgba(240,142,45,0.7)"
-								strokeWidth="1.8"
-								strokeDasharray="3 8"
-								strokeLinecap="round"
-							/>
 						</svg>
 
 						{leftTop ? (
@@ -325,19 +327,19 @@ export function Vision() {
 						</div>
 
 						{leftTop ? (
-							<div className="vision-fade-item absolute left-[26.5%] top-[12%] w-[12.5rem] xl:left-[28%] xl:w-[15rem]">
+							<div className="vision-fade-item absolute left-[26.5%] top-[16%] w-[10rem] xl:left-[30%] xl:w-[15rem]">
 								<VisionBubble card={leftTop} />
 							</div>
 						) : null}
 
 						{rightTop ? (
-							<div className="vision-fade-item absolute right-[25.5%] top-[12%] w-[12.5rem] xl:right-[28%] xl:w-[15rem]">
+							<div className="vision-fade-item absolute right-[25.5%] top-[16%] w-[10rem] xl:right-[31%] xl:w-[15rem]">
 								<VisionBubble card={rightTop} />
 							</div>
 						) : null}
 
 						{leftBottom ? (
-							<div className="vision-fade-item absolute left-[20%] top-[46%] w-[13.2rem] xl:left-[26%] xl:w-[16rem]">
+							<div className="vision-fade-item absolute left-[20%] top-[40%] w-[10rem] xl:left-[29%] xl:w-[15rem]">
 								<VisionBubble
 									card={leftBottom}
 									imageClassName={
@@ -348,21 +350,21 @@ export function Vision() {
 						) : null}
 
 						{rightBottom ? (
-							<div className="vision-fade-item absolute right-[25%] top-[46.5%] w-[11.2rem] xl:right-[28%] xl:w-[15rem]">
+							<div className="vision-fade-item absolute right-[35%] top-[40%] w-[10rem] xl:right-[30%] xl:w-[15rem]">
 								<VisionBubble card={rightBottom} />
 							</div>
 						) : null}
 
 						{centerCard ? (
 							<>
-								<div className="vision-fade-item absolute left-1/2 top-[29.5%] w-[14rem] -translate-x-1/2 xl:w-[16rem]">
+								<div className="vision-fade-item absolute left-1/2 top-[56%] w-[10rem] -translate-x-1/2 xl:w-[15rem]">
 									<VisionBubble card={centerCard} />
 								</div>
 
 								<VisionCopyBlock
 									card={centerCard}
 									align="center"
-									className="vision-fade-item absolute left-1/2 top-[66%] w-[42rem] max-w-[calc(100%-8rem)] -translate-x-1/2"
+									className="vision-fade-item absolute left-1/2 top-[75%] w-[42rem] max-w-[calc(100%-8rem)] -translate-x-1/2"
 								/>
 							</>
 						) : null}

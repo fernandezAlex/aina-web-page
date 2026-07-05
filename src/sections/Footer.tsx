@@ -66,7 +66,7 @@ export function Footer() {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${footerBackgroundImage})`, opacity: 0.18 }}
       />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(253,168,80,0.92)_0%,rgba(253,168,80,0.94)_50%,rgba(255,185,111,0.92)_100%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-forest-dark/88 via-forest-dark/90 to-forest-mid/88" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {footerConfig.logoText && (
@@ -109,7 +109,7 @@ export function Footer() {
           </div>
         )}
 
-        <div ref={contentRef} className="relative opacity-0">
+        <div ref={contentRef} className="relative overflow-hidden rounded-[1.75rem] bg-[linear-gradient(180deg,rgba(253,168,80,0.18)_0%,rgba(253,168,80,0.34)_38%,rgba(253,168,80,0.72)_100%)] px-5 py-6 opacity-0 md:px-8 md:py-8">
           <div className="mb-16">
             {hasNavigation && (
               <div>
