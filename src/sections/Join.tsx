@@ -213,7 +213,13 @@ export function Join() {
 											<img
 												src={membershipImages[index] ?? membershipImages[0]}
 												alt={action.label}
-												className={`h-full w-full object-cover ${index === 0 || index === 2 ? "object-top" : ""}`}
+												className={`h-full w-full object-cover ${
+													index === 0
+														? "object-top"
+														: index === 2
+															? "scale-[1.16] object-[52%_18%]"
+															: ""
+												}`}
 												loading="lazy"
 											/>
 										</div>
