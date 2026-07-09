@@ -3,10 +3,14 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
 	ArrowUpRight,
+	BookOpen,
+	Facebook,
 	Globe,
 	GraduationCap,
 	HandHeart,
 	Heart,
+	Instagram,
+	Linkedin,
 	Users,
 } from "lucide-react";
 import { useSiteContent } from "../i18n";
@@ -23,6 +27,30 @@ const secondaryImages = [
 	`${import.meta.env.BASE_URL}aina/main/aina-join-volunteer-terrain.jpg`,
 	`${import.meta.env.BASE_URL}aina/main/aina-join-institute-group.jpg`,
 ] as const;
+const socialLinks = [
+	{
+		href: "https://www.instagram.com/aina.barca/",
+		label: "Instagram",
+		icon: Instagram,
+		className:
+			"border-[#f6d4bd] bg-white/90 text-[#d85e25] hover:border-[#f1a066] hover:bg-[#fff7f0]",
+	},
+	{
+		href: "https://www.facebook.com/aina.barca/",
+		label: "Facebook",
+		icon: Facebook,
+		className:
+			"border-[#f1d9c8] bg-white/90 text-primary hover:border-[#d98695] hover:bg-[#fff8fa]",
+	},
+	{
+		href: "https://www.linkedin.com/in/aina-barca/",
+		label: "LinkedIn",
+		icon: Linkedin,
+		className:
+			"border-[#f5decb] bg-white/90 text-[#f08a1d] hover:border-[#f0b16a] hover:bg-[#fff9f2]",
+	},
+] as const;
+const storiesUrl = "http://eepurl.com/cWGZ3j";
 
 const membershipIcons = [Users, HandHeart, Globe] as const;
 const membershipTones = [
@@ -319,6 +347,60 @@ export function Join() {
 									className="h-full w-full object-cover"
 									loading="lazy"
 								/>
+							</div>
+						</div>
+					</article>
+
+					<article className="join-fade-item relative overflow-hidden rounded-[2rem] border border-[#efd7c2] bg-[linear-gradient(135deg,rgba(255,252,248,0.98)_0%,rgba(255,245,235,0.98)_52%,rgba(255,233,205,0.9)_100%)] px-6 py-8 shadow-[0_24px_54px_rgba(138,80,31,0.1)] md:px-8 md:py-10 xl:px-10">
+						<div className="pointer-events-none absolute inset-y-0 right-0 w-[26rem] bg-[radial-gradient(circle_at_center,rgba(242,127,20,0.12),transparent_62%)]" />
+						<div className="pointer-events-none absolute left-10 top-10 h-24 w-24 rounded-full border border-[#f2c9a6]/70" />
+						<div className="relative grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_auto] lg:items-center">
+							<div>
+								<div className="flex items-center gap-4 text-[#f27f14]">
+									<div className="flex h-14 w-14 items-center justify-center rounded-full bg-white text-[#f27f14] shadow-[0_18px_38px_rgba(242,127,20,0.16)]">
+										<BookOpen className="h-7 w-7" strokeWidth={1.8} />
+									</div>
+									<p className="text-sm font-sans font-semibold uppercase tracking-[0.34em] text-[#c76818]">
+										Sigue conectado
+									</p>
+								</div>
+
+								<h3 className="mt-5 max-w-2xl text-[2.15rem] font-bold leading-[0.98] text-primary md:text-[2.85rem]">
+									Sigue conectado con las historias, aprendizajes y avances de
+									este camino.
+								</h3>
+							</div>
+
+							<div className="relative flex flex-col gap-5">
+								<div className="flex flex-wrap items-center gap-4">
+									{socialLinks.map((link) => {
+										const Icon = link.icon;
+
+										return (
+											<a
+												key={link.href}
+												href={link.href}
+												target="_blank"
+												rel="noreferrer"
+												aria-label={link.label}
+												className={`inline-flex h-16 w-16 items-center justify-center rounded-full border text-current shadow-[0_14px_30px_rgba(138,80,31,0.08)] transition-all duration-300 hover:-translate-y-1 ${link.className}`}
+											>
+												<Icon className="h-7 w-7" strokeWidth={1.8} />
+											</a>
+										);
+									})}
+								</div>
+
+								<div className="flex flex-col items-start gap-3">
+									<p className="text-sm font-sans font-semibold uppercase tracking-[0.28em] text-[#b7642d]">
+										Historias de Nepal
+									</p>
+									<JoinButton
+										href={storiesUrl}
+										label="Lee Historias de Nepal"
+										className="bg-primary text-white hover:bg-[#a60d30]"
+									/>
+								</div>
 							</div>
 						</div>
 					</article>

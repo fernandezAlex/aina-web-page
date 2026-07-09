@@ -254,8 +254,8 @@ export function Vision() {
 							preserveAspectRatio="none"
 							aria-hidden="true"
 						>
-							<path
-								d="M 212 184 C 268 170, 298 180, 346 205"
+							{/* <path
+								d="M 232 186 C 270 176, 296 182, 328 198"
 								fill="none"
 								stroke="rgba(240,142,45,0.7)"
 								strokeWidth="1.8"
@@ -286,7 +286,7 @@ export function Vision() {
 								strokeDasharray="3 8"
 								strokeLinecap="round"
 							/>
-						</svg>
+						</svg> */}
 
 						{leftTop ? (
 							<VisionCopyBlock
