@@ -46,6 +46,7 @@ export function IntroMission() {
 
       const paragraphItems = paragraphsRef.current?.querySelectorAll('.intro-mission-paragraph');
       if (paragraphItems?.length) {
+        gsap.set(paragraphItems, { y: 30, opacity: 0 });
         gsap.fromTo(
           paragraphItems,
           { y: 30, opacity: 0 },
@@ -165,7 +166,7 @@ export function IntroMission() {
             {introMissionConfig.paragraphs.map((paragraph) => (
               <p
                 key={paragraph.text}
-                className="intro-mission-paragraph text-lg md:text-xl font-body leading-relaxed text-softblack opacity-0"
+                className="intro-mission-paragraph text-lg md:text-xl font-body leading-relaxed text-softblack"
               >
                 {paragraph.links?.length
                   ? (() => {

@@ -91,7 +91,7 @@ export function Hero() {
 		<section
 			ref={sectionRef}
 			id="hero"
-			className="relative min-h-[82svh] w-full flex items-center justify-center overflow-hidden bg-forest-dark sm:min-h-screen"
+			className="hero-section relative flex min-h-[82svh] w-full items-center justify-center overflow-hidden bg-forest-dark sm:min-h-screen"
 		>
 			{/* Layer 1: Background image */}
 			<div
@@ -113,11 +113,11 @@ export function Hero() {
 			{/* Layer 3: Big Text */}
 			<div
 				ref={textRef}
-				className="absolute inset-x-0 top-[27%] z-10 flex justify-center px-3 will-change-transform md:top-[22%] lg:top-[20%]"
+				className="hero-title-layer absolute inset-x-0 top-[27%] z-10 flex justify-center px-3 will-change-transform md:top-[22%] lg:top-[20%]"
 			>
 				<p
 					aria-hidden="true"
-					className="whitespace-nowrap text-center font-sans text-[clamp(2.75rem,11.25vw,11rem)] font-extrabold leading-none tracking-normal text-secondary select-none"
+					className="hero-title whitespace-nowrap text-center font-sans font-extrabold leading-none tracking-normal text-secondary select-none"
 				>
 					{heroConfig.backgroundText}
 				</p>
@@ -127,13 +127,13 @@ export function Hero() {
 			{heroConfig.heroImage && (
 				<div
 					ref={modelRef}
-					className="absolute inset-0 flex items-end justify-center z-20 will-change-transform"
+					className="absolute inset-0 z-20 flex items-end justify-center will-change-transform"
 				>
-					<div className="relative w-[72vw] max-w-[430px] md:w-[36vw] md:max-w-[520px] lg:w-[28vw]">
+					<div className="hero-model-wrap relative w-[72vw] max-w-[430px] md:w-[36vw] md:max-w-[520px] lg:w-[28vw]">
 						<img
 							src={heroConfig.heroImage}
 							alt={heroConfig.heroImageAlt}
-							className="w-full h-auto object-contain"
+							className="hero-model-image h-auto w-full object-contain"
 							loading="eager"
 						/>
 					</div>
@@ -143,11 +143,11 @@ export function Hero() {
 			{/* Layer 5: Main content */}
 			<div
 				ref={overlayTextRef}
-				className="absolute inset-x-0 top-[18%] z-30 px-5 will-change-transform md:top-[14%] md:px-12"
+				className="hero-overlay absolute inset-x-0 top-[18%] z-30 px-5 will-change-transform md:top-[14%] md:px-12"
 			>
 				<div className="mx-auto flex max-w-5xl flex-col items-center gap-3 text-center text-white md:gap-4">
 					{heroConfig.overlayText && (
-						<p className="font-sans text-[1.45rem] font-bold tracking-tight text-secondary/96 md:text-[2.3rem] lg:text-[3rem]">
+						<p className="hero-overlay-copy font-sans font-bold tracking-tight text-secondary/96">
 							{heroConfig.overlayText}
 						</p>
 					)}

@@ -214,34 +214,57 @@ const asset = (path: string) =>
 const year = new Date().getFullYear();
 
 const pressOfficialUrls: Record<string, string> = {
-	"Radio Galega": "https://crtvg.gal/programacion-rg",
-	"National Gold": "https://nationalgoldhd.com/",
-	RTVE: "https://www.rtve.es/",
-	"Radio Madrid SER": "https://cadenaser.com/radio-madrid/",
-	News24: "https://www.news24.com/",
-	RAC1: "https://www.rac1.cat/",
-	Regio7: "https://www.regio7.cat/",
-	TV3: "https://www.3cat.cat/tv3/",
-	"Radio Irun SER": "https://cadenaser.com/radio-irun/",
-	"Nepal Television": "https://www.ntv.org.np/",
-	"Mujer Emprendedora": "https://www.paginasdemujeremprendedora.net/",
-	EITB: "https://www.eitb.eus/",
-	RNE: "https://www.rtve.es/radio/",
-	"Mundo Solidario": "https://www.mundo-solidario.com/",
-	"Team TV": "https://www.teamtv.online/",
-	"El Confidencial": "https://www.elconfidencial.com/",
-	"El Diario Vasco": "https://www.diariovasco.com/",
-	Confidenciales: "https://www.elconfidencial.com/",
-	"SER Catalunya": "https://cadenaser.com/cataluna/",
-	Ratopati: "https://www.ratopati.com/",
-	Ara: "https://www.ara.cat/",
-	"La Vanguardia": "https://www.lavanguardia.com/",
-	"Todo Literatura": "https://www.todoliteratura.es/",
-	"Eco Diario": "https://ecodiario.mx/",
-	"Online Khabar": "https://www.onlinekhabar.com/",
-	RPP: "https://rpp.pe/",
-	UOC: "https://www.uoc.edu/",
-	"Onda Cero": "https://www.ondacero.es/",
+	"Radio Galega":
+		"http://www.crtvg.es/rg/destacados/a-tarde-a-tarde-do-dia-24-10-2019-4202175?fbclid=IwAR0wJD3jsMmNQEfIxJrGglygfCLsDkU50ka4Nx8zdocFV8vumHokHuNLeP8_aem_AfTmvjn8W6aUl9b7jxCDHqmkcmtcyZRag1gZBb3Gh8-0kRxGxE-GkHr5nfDFNGRLOD0&mibextid=Zxz2cZ",
+	"National Gold":
+		"https://www.facebook.com/reel/1077457140384191",
+	RTVE:
+		"https://www.rtve.es/alacarta/audios/mundo-solidario/mundo-solidario-grave-crisis-humanitaria-nepal-06-06-21/5931625/?fbclid=IwAR2ab7_GLC1Zr_iDbraq_o06dtRPhNl8lDPXGhQdgOzs70q4-0HINh0kqKc_aem_AfaLqniK6-P0jll1vX2H4trhSrz5WcU16uiFqnkPvXAUwYpi1UdWoQ_8IA1MKvzwhEM&mibextid=Zxz2cZ",
+	"Radio Madrid SER":
+		"https://cadenaser.com/emisora/2019/06/06/radio_madrid/1559808536_913834.html",
+	News24:
+		"https://www.news24nepal.tv/2020/11/30/721550?fbclid=IwAR2e3kI3gT_iANQpC7xgN-ih5wZP_zcij2D73zMKEHCiNUAgJ7_CQ0S9W1E",
+	RAC1:
+		"https://www.rac1.cat/programes/tot-es-possible/20190604/462677176658/escola-nepal.html",
+	Regio7:
+		"https://amp.regio7.cat/cultures/2019/04/26/aina-barca-parla-joviat-manresa/540765.html?fbclid=IwAR3dyR5NkdWczD5V22byigagagD7Nkza-monOtKE5eZyZQdoOST2kOvLn4A",
+	TV3:
+		"https://www.ccma.cat/tv3/alacarta/els-matins/amb-22-anys-construeix-una-escola-deducacio-especial-al-nepal/video/5977587/?fbclid=IwAR0imL8BO15WGdZpdmjhaxD2kv4Ef_XL_brAQOL9qUOzmRNvJwM5hZxXBVw#.Xe4pp8YL4Ho.whatsapp",
+	"Radio Irun SER": "https://cadenaser.com/audio/1775649928563/",
+	"Nepal Television": "https://www.youtube.com/watch?v=ZVh2RzOE_tA",
+	"Mujer Emprendedora":
+		"http://www.mujeremprendedora.net/aina-barca-relata-hecho-levantar-escuela-nepal/",
+	EITB:
+		"https://www.eitb.eus/es/radio/radio-euskadi/programas/boulevard/detalle/6394048/aina-barca-presenta-su-ong-familia-hetauda-escuela-nepal/?fbclid=IwAR3b8ckmq7alNyTCyyDIltXaH75X27upV8DkT6ibFlMfGmrrnEAifyQvQFo",
+	RNE:
+		"https://www.rtve.es/alacarta/audios/mundo-solidario/mundo-solidario-asha-fuerza-esperanza-12-05-19/5201003/",
+	"Mundo Solidario":
+		"https://www.rtve.es/alacarta/audios/mundo-solidario/mundo-solidario-grave-crisis-humanitaria-nepal-06-06-21/5931625/?fbclid=IwAR2ab7_GLC1Zr_iDbraq_o06dtRPhNl8lDPXGhQdgOzs70q4-0HINh0kqKc_aem_AfaLqniK6-P0jll1vX2H4trhSrz5WcU16uiFqnkPvXAUwYpi1UdWoQ_8IA1MKvzwhEM&mibextid=Zxz2cZ",
+	"Team TV": "https://www.facebook.com/100094882665767/videos/1805402429994485",
+	"El Confidencial":
+		"https://www.elconfidencial.com/ultima-hora-en-vivo/2019-05-01/una-catalana-lucha-por-los-derechos-de-los-ninos-discapacitados-en-nepal_2203598/",
+	"El Diario Vasco":
+		"https://www.diariovasco.com/bidasoa/hondarribia/realidad-invisible-altero-vida-joven-barcelonesa-20260410202455-nt.html?ref=https%3A%2F%2Fwww.diariovasco.com%2Fbidasoa%2Fhondarribia%2Frealidad-invisible-altero-vida-joven-barcelonesa-20260410202455-nt.html",
+	Confidenciales:
+		"https://www.rtve.es/alacarta/audios/confidencies/confidencies-aina-barca/5164723/",
+	"SER Catalunya":
+		"https://www.facebook.com/AquiCuni/videos/702204676903193/UzpfSTExOTU4OTcwNTM6MTAyMTYzMzk3MjI2NjQ0NDQ/",
+	Ratopati:
+		"https://www.ratopati.com/story/210499/2021/12/10/aina-barca-",
+	Ara:
+		"https://criatures.ara.cat/escola/ong-crear-escola-educacio-especial-nepal_0_2303169671.html",
+	"La Vanguardia":
+		"https://www.lavanguardia.com/vida/20190501/461986068175/una-catalana-lucha-por-los-derechos-de-los-ninos-discapacitados-en-nepal.html",
+	"Todo Literatura":
+		"https://www.todoliteratura.es/noticia/50962/actualidad/asha-o-la-fuerza-de-la-esperanza-el-sueno-de-levantar-una-escuela-en-nepal.html",
+	"Eco Diario":
+		"https://ecodiario.eleconomista.es/educacion/noticias/9853640/05/19/Una-catalana-lucha-por-los-derechos-de-los-ninos-discapacitados-en-Nepal.html",
+	"Online Khabar":
+		"https://www.onlinekhabar.com/2017/09/624725#.WbNnrCAsnwc.facebook",
+	RPP: "https://www.youtube.com/live/QCBHjNz9Ack",
+	UOC: "https://www.uoc.edu/es/news/2019/038-aina-barca",
+	"Onda Cero":
+		"https://www.ondacero.es/solo-ondaceroes/toma-pastilla-roja/podcast/1x05-viaje-al-pasado-sin-movernos-del-presente_201912115df0ade30cf2285413da3cd1.html",
 };
 
 const pressHref = (name: string) => pressOfficialUrls[name];
@@ -1420,14 +1443,20 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
 						{
 							label: "Become a member from Spain",
 							href: "https://familiadehetauda.org/hazte-socio/",
+							description:
+								"Your monthly support makes it possible for us to keep accompanying hundreds of children and families.",
 						},
 						{
 							label: "Become a member from Nepal",
 							href: "https://www.siashafoundation.org/get-involved/",
+							description:
+								"If you are in Nepal, your local support directly strengthens our projects on the ground.",
 						},
 						{
 							label: "Become a member from elsewhere",
 							href: "https://siasha.org/hazte-socio/",
+							description:
+								"From anywhere in the world, you can be part of this change and help transform lives.",
 						},
 					],
 				},
@@ -1435,9 +1464,9 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
 					eyebrow: "Volunteering",
 					title: "Live the mission from within.",
 					summary:
-						"Share the daily rhythm of the team and support real processes.",
-					description:
 						"Share daily life with the women and teams who work every day to build a more inclusive and humane society in Nepal through education, inclusion, and love put into action.",
+					description:
+						"Be part of the daily work behind each school, each process, and each opportunity created on the ground.",
 					actions: [
 						{
 							label: "I want to volunteer",
@@ -1447,11 +1476,12 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
 				},
 				{
 					eyebrow: "Aina Institute",
-					title: "Turn your vocation into professional impact.",
+					title: "Train to transform lives.",
 					summary:
-						"Practical training to build strong and sustainable projects.",
+						"Through Aina Institute, people from different countries learn how to build solid, sustainable projects capable of creating real impact.",
 					description:
-						"Through Aina Institute, people from different countries learn how to build solid, sustainable projects capable of creating real impact. Because vocation alone is not always enough. Tools, strategy, and a structure that can sustain change are also needed. Turn your vocation into your profession.",
+						"Because vocation alone is not always enough. Tools, strategy, and a structure that can sustain change are also needed.",
+					note: "Turn your vocation into your profession.",
 					actions: [
 						{ label: "Talk to the team", href: "https://wa.me/34610094664" },
 					],
@@ -1994,14 +2024,20 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
 						{
 							label: "Fes-te soci des d'Espanya",
 							href: "https://familiadehetauda.org/hazte-socio/",
+							description:
+								"El teu suport mensual fa possible que continuem acompanyant centenars d'infants i famílies.",
 						},
 						{
 							label: "Fes-te soci des del Nepal",
 							href: "https://www.siashafoundation.org/get-involved/",
+							description:
+								"Si ets al Nepal, el teu suport local enforteix directament els nostres projectes sobre el terreny.",
 						},
 						{
 							label: "Fes-te soci des d'altres llocs del món",
 							href: "https://siasha.org/hazte-socio/",
+							description:
+								"Des de qualsevol lloc del món, pots formar part d'aquest canvi i ajudar a transformar vides.",
 						},
 					],
 				},
@@ -2009,9 +2045,9 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
 					eyebrow: "Voluntariat",
 					title: "Viu la missió des de dins.",
 					summary:
-						"Comparteix el dia a dia amb l'equip i acompanya processos reals.",
-					description:
 						"Comparteix el dia a dia amb les dones i els equips que treballen cada dia per construir una societat més inclusiva i humana al Nepal des de l'educació, la inclusió i l'amor posat en acció.",
+					description:
+						"Forma part del treball quotidià que hi ha darrere de cada escola, de cada procés i de cada oportunitat creada sobre el terreny.",
 					actions: [
 						{
 							label: "Vull ser voluntari",
@@ -2021,11 +2057,12 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
 				},
 				{
 					eyebrow: "Aina Institute",
-					title: "Converteix la teva vocació en impacte professional.",
+					title: "Forma't per transformar vides.",
 					summary:
-						"Formació pràctica per construir projectes sòlids i sostenibles.",
+						"A través d'Aina Institute, persones de diferents països aprenen a construir projectes sòlids, sostenibles i capaços de generar un impacte real.",
 					description:
-						"A través d'Aina Institute, persones de diferents països aprenen a construir projectes sòlids, sostenibles i capaços de generar un impacte real. Perquè tenir vocació no sempre és suficient. També fan falta eines, estratègia i una estructura capaç de sostenir el canvi. Converteix la teva vocació en la teva professió.",
+						"Perquè tenir vocació no sempre és suficient. També fan falta eines, estratègia i una estructura capaç de sostenir el canvi.",
+					note: "Converteix la teva vocació en la teva professió.",
 					actions: [
 						{ label: "Parla amb l'equip", href: "https://wa.me/34610094664" },
 					],

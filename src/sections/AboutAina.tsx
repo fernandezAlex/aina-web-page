@@ -149,8 +149,8 @@ export function AboutAina() {
               <div className="pointer-events-none absolute -left-4 top-8 h-20 w-20 rounded-full border border-white/24 bg-white/8 blur-[1px]" />
               <div className="pointer-events-none absolute -right-6 bottom-5 h-24 w-24 rounded-full border border-[#ffe2b8]/28 bg-white/10 blur-sm" />
               <div className="pointer-events-none absolute left-1/2 top-5 h-9 w-9 -translate-x-1/2 rotate-45 rounded-[0.9rem] border border-white/28 bg-white/12" />
-              <div className="pointer-events-none absolute left-8 top-8 flex h-14 w-14 items-center justify-center rounded-full border border-white/28 bg-white/12 shadow-[0_10px_24px_rgba(255,255,255,0.08)]">
-                <Heart className="h-6 w-6 text-white" fill="currentColor" strokeWidth={1.8} />
+              <div className="pointer-events-none absolute left-3 top-3 flex h-12 w-12 items-center justify-center rounded-full border border-white/22 bg-white/10 shadow-[0_10px_24px_rgba(255,255,255,0.08)] md:left-5 md:top-5 md:h-14 md:w-14">
+                <Heart className="h-5 w-5 text-white/90 md:h-6 md:w-6" fill="currentColor" strokeWidth={1.8} />
               </div>
 
               <p className="relative text-2xl font-sans font-semibold leading-tight tracking-tight text-primary md:text-3xl lg:text-4xl">
