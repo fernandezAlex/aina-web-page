@@ -91,6 +91,66 @@ body {
 	max-height: min(76svh, 640px);
 }
 
+@media (max-width: 767px) {
+	.hero-section {
+		min-height: 92svh;
+	}
+
+	.hero-title-layer {
+		top: 24%;
+	}
+
+	.hero-overlay {
+		top: 13%;
+	}
+
+	.hero-title {
+		font-size: clamp(3.2rem, 14vw, 6rem);
+	}
+
+	.hero-overlay-copy {
+		font-size: clamp(1.8rem, 7vw, 2.8rem);
+	}
+
+	.hero-model-wrap,
+	.hero-model-image {
+		max-height: min(82svh, 760px);
+	}
+
+	.hero-model-wrap {
+		width: min(88vw, 32rem);
+		max-width: 32rem;
+	}
+}
+
+@media (min-width: 780px) and (max-width: 1023px) {
+	.hero-section {
+		min-height: 90svh;
+	}
+
+	.hero-model-wrap,
+	.hero-model-image {
+		max-height: min(84svh, 880px);
+	}
+
+	.hero-model-wrap {
+		width: min(46vw, 36rem);
+		max-width: 36rem;
+	}
+}
+
+@media (min-width: 1024px) {
+	.hero-model-wrap,
+	.hero-model-image {
+		max-height: min(70svh, 980px);
+	}
+
+	.hero-model-wrap {
+		width: min(34vw, 34rem);
+		max-width: 34rem;
+	}
+}
+
 /* Focus visible styles */
 *:focus-visible {
 	outline: 2px solid rgba(188, 5, 49, 0.85);
