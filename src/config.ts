@@ -219,7 +219,7 @@ const pressOfficialUrls: Record<string, string> = {
 	"National Gold":
 		"https://www.facebook.com/reel/1077457140384191",
 	RTVE:
-		"https://www.rtve.es/alacarta/audios/mundo-solidario/mundo-solidario-grave-crisis-humanitaria-nepal-06-06-21/5931625/?fbclid=IwAR2ab7_GLC1Zr_iDbraq_o06dtRPhNl8lDPXGhQdgOzs70q4-0HINh0kqKc_aem_AfaLqniK6-P0jll1vX2H4trhSrz5WcU16uiFqnkPvXAUwYpi1UdWoQ_8IA1MKvzwhEM&mibextid=Zxz2cZ",
+		"https://www.rtve.es/alacarta/audios/confidencies/confidencies-aina-barca/5164723/",
 	"Radio Madrid SER":
 		"https://cadenaser.com/emisora/2019/06/06/radio_madrid/1559808536_913834.html",
 	News24:
@@ -245,8 +245,6 @@ const pressOfficialUrls: Record<string, string> = {
 		"https://www.elconfidencial.com/ultima-hora-en-vivo/2019-05-01/una-catalana-lucha-por-los-derechos-de-los-ninos-discapacitados-en-nepal_2203598/",
 	"El Diario Vasco":
 		"https://www.diariovasco.com/bidasoa/hondarribia/realidad-invisible-altero-vida-joven-barcelonesa-20260410202455-nt.html?ref=https%3A%2F%2Fwww.diariovasco.com%2Fbidasoa%2Fhondarribia%2Frealidad-invisible-altero-vida-joven-barcelonesa-20260410202455-nt.html",
-	Confidenciales:
-		"https://www.rtve.es/alacarta/audios/confidencies/confidencies-aina-barca/5164723/",
 	"SER Catalunya":
 		"https://www.facebook.com/AquiCuni/videos/702204676903193/UzpfSTExOTU4OTcwNTM6MTAyMTYzMzk3MjI2NjQ0NDQ/",
 	Ratopati:
@@ -699,12 +697,6 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
 					href: pressHref("El Diario Vasco"),
 					category: "Prensa escrita",
 					imageSrc: asset("/aina/press-media/el-diario-vasco.png"),
-				},
-				{
-					name: "Confidenciales",
-					href: pressHref("Confidenciales"),
-					category: "Revista / portada",
-					imageSrc: asset("/aina/press-media/confidenciales-cover.png"),
 				},
 				{
 					name: "SER Catalunya",
@@ -1285,12 +1277,6 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
 					imageSrc: asset("/aina/press-media/el-diario-vasco.png"),
 				},
 				{
-					name: "Confidenciales",
-					href: pressHref("Confidenciales"),
-					category: "Magazine / cover",
-					imageSrc: asset("/aina/press-media/confidenciales-cover.png"),
-				},
-				{
 					name: "SER Catalunya",
 					href: pressHref("SER Catalunya"),
 					category: "Radio",
@@ -1864,12 +1850,6 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
 					href: pressHref("El Diario Vasco"),
 					category: "Premsa escrita",
 					imageSrc: asset("/aina/press-media/el-diario-vasco.png"),
-				},
-				{
-					name: "Confidenciales",
-					href: pressHref("Confidenciales"),
-					category: "Revista / portada",
-					imageSrc: asset("/aina/press-media/confidenciales-cover.png"),
 				},
 				{
 					name: "SER Catalunya",
