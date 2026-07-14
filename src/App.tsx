@@ -45,7 +45,7 @@ function App() {
   const { siteConfig, hero } = useSiteContent();
 
   useEffect(() => {
-    const currentUrl = window.location.href;
+    const canonicalUrl = `${window.location.origin}${window.location.pathname}`;
     const imageUrl = new URL(siteConfig.socialImage, window.location.origin).toString();
 
     if (siteConfig.siteTitle) {
@@ -100,7 +100,7 @@ function App() {
 
     upsertMeta('meta[property="og:url"]', {
       property: 'og:url',
-      content: currentUrl,
+      content: canonicalUrl,
     });
 
     upsertMeta('meta[property="og:locale"]', {
@@ -135,7 +135,7 @@ function App() {
 
     upsertLink('link[rel="canonical"]', {
       rel: 'canonical',
-      href: currentUrl,
+      href: canonicalUrl,
     });
   }, [siteConfig]);
 
