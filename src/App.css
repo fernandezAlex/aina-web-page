@@ -97,7 +97,7 @@ body {
 	}
 
 	.hero-title-layer {
-		top: 24%;
+		top: 20%;
 	}
 
 	.hero-overlay {
@@ -109,7 +109,7 @@ body {
 	}
 
 	.hero-overlay-copy {
-		font-size: clamp(1.8rem, 7vw, 2.8rem);
+		font-size: clamp(1.6rem, 7vw, 2.8rem);
 	}
 
 	.hero-model-wrap,
