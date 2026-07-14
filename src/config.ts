@@ -354,7 +354,7 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
 		},
 		hero: {
 			backgroundText: "Aina Barca",
-			heroImage: asset("/aina-con-nino.png"),
+			heroImage: asset("/aina-con-nino.webp"),
 			heroImageAlt: "Aina Barca sosteniendo y abrazando a un niño",
 			overlayText: "El amor puesto en acción",
 			brandName: "Aina Barca",
@@ -939,7 +939,7 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
 		},
 		hero: {
 			backgroundText: "Aina Barca",
-			heroImage: asset("/aina-con-nino.png"),
+			heroImage: asset("/aina-con-nino.webp"),
 			heroImageAlt: "Aina Barca holding and embracing a child",
 			overlayText: "Love put into action",
 			brandName: "Aina Barca",
@@ -1520,7 +1520,7 @@ const contentByLocale: Record<Locale, LocalizedSiteContent> = {
 		},
 		hero: {
 			backgroundText: "Aina Barca",
-			heroImage: asset("/aina-con-nino.png"),
+			heroImage: asset("/aina-con-nino.webp"),
 			heroImageAlt: "Aina Barca sostenint i abraçant un nen",
 			overlayText: "L'amor posat en acció",
 			brandName: "Aina Barca",
