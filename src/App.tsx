@@ -45,7 +45,10 @@ function App() {
   const { siteConfig, hero } = useSiteContent();
 
   useEffect(() => {
-    const canonicalUrl = `${window.location.origin}${window.location.pathname}`;
+    const baseUrl = `${window.location.origin}${window.location.pathname}`;
+    const getLocalizedUrl = (language: 'es' | 'en' | 'ca') =>
+      language === 'es' ? baseUrl : `${baseUrl}?lang=${language}`;
+    const canonicalUrl = getLocalizedUrl(siteConfig.language);
     const imageUrl = new URL(siteConfig.socialImage, window.location.origin).toString();
 
     if (siteConfig.siteTitle) {
@@ -136,6 +139,30 @@ function App() {
     upsertLink('link[rel="canonical"]', {
       rel: 'canonical',
       href: canonicalUrl,
+    });
+
+    upsertLink('link[rel="alternate"][hreflang="x-default"]', {
+      rel: 'alternate',
+      hreflang: 'x-default',
+      href: getLocalizedUrl('es'),
+    });
+
+    upsertLink('link[rel="alternate"][hreflang="es"]', {
+      rel: 'alternate',
+      hreflang: 'es',
+      href: getLocalizedUrl('es'),
+    });
+
+    upsertLink('link[rel="alternate"][hreflang="en"]', {
+      rel: 'alternate',
+      hreflang: 'en',
+      href: getLocalizedUrl('en'),
+    });
+
+    upsertLink('link[rel="alternate"][hreflang="ca"]', {
+      rel: 'alternate',
+      hreflang: 'ca',
+      href: getLocalizedUrl('ca'),
     });
   }, [siteConfig]);
 

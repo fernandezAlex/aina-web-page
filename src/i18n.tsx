@@ -1,6 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import {
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -10,6 +11,7 @@ import {
 import { getSiteContent, type Locale } from './config';
 
 const STORAGE_KEY = 'aina-preferred-locale';
+const URL_PARAM = 'lang';
 
 type I18nContextValue = {
   locale: Locale;
@@ -28,8 +30,22 @@ function normalizeLocale(value?: string | null): Locale {
   return 'es';
 }
 
+function getUrlLocale(): Locale | null {
+  if (typeof window === 'undefined') return null;
+
+  const params = new URLSearchParams(window.location.search);
+  const lang = params.get(URL_PARAM);
+
+  if (!lang) return null;
+
+  return normalizeLocale(lang);
+}
+
 function getInitialLocale(): Locale {
   if (typeof window === 'undefined') return 'es';
+
+  const urlLocale = getUrlLocale();
+  if (urlLocale) return urlLocale;
 
   const stored = window.localStorage.getItem(STORAGE_KEY);
   if (stored) return normalizeLocale(stored);
@@ -38,13 +54,37 @@ function getInitialLocale(): Locale {
 }
 
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocale] = useState<Locale>(getInitialLocale);
+  const [locale, setLocaleState] = useState<Locale>(getInitialLocale);
+
+  const setLocale = useCallback((nextLocale: Locale) => {
+    setLocaleState(nextLocale);
+
+    if (typeof window === 'undefined') return;
+
+    const url = new URL(window.location.href);
+    url.searchParams.set(URL_PARAM, nextLocale);
+    window.history.replaceState({}, '', url);
+  }, []);
 
   useEffect(() => {
     window.localStorage.setItem(STORAGE_KEY, locale);
   }, [locale]);
 
-  const value = useMemo(() => ({ locale, setLocale }), [locale]);
+  useEffect(() => {
+    const handlePopState = () => {
+      const urlLocale = getUrlLocale();
+
+      if (urlLocale) {
+        setLocaleState(urlLocale);
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  const value = useMemo(() => ({ locale, setLocale }), [locale, setLocale]);
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
 }
