@@ -50,6 +50,7 @@ case "$DEPLOY_PROTOCOL" in
     ssl_protect=false
     ;;
   ftps)
+    # cPanel exposes explicit FTPS: connect over FTP and upgrade with AUTH TLS.
     ssl_allow=true
     ssl_force=true
     ssl_protect=true
@@ -61,7 +62,7 @@ case "$DEPLOY_PROTOCOL" in
 esac
 
 normalized_remote_dir="${DEPLOY_REMOTE_DIR%/}/"
-connect_url="${DEPLOY_PROTOCOL}://${DEPLOY_HOST}:${DEPLOY_PORT}"
+connect_url="ftp://${DEPLOY_HOST}:${DEPLOY_PORT}"
 
 # The password is passed through lftp's environment support so it is not printed.
 export LFTP_PASSWORD="$DEPLOY_PASSWORD"
