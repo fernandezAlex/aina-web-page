@@ -33,6 +33,10 @@ npm run dev
 npm run build
 ```
 
+## Despliegue
+
+El despliegue de producción se automatiza con GitHub Actions. La configuración inicial, los secretos necesarios, la primera publicación y la recuperación están documentados en [`DEPLOYMENT.md`](./DEPLOYMENT.md).
+
 ## Nota
 
 Este repo es independiente del proyecto principal de Si Asha Foundation. Reutiliza su documentacion de marca como referencia de trabajo, pero mantiene su propio historial Git, configuracion y despliegue.
