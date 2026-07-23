@@ -26,9 +26,11 @@ No se deben guardar credenciales en archivos del repositorio.
 1. Confirmar en el panel del hosting el directorio raíz real del dominio.
 2. Hacer una copia de seguridad de los archivos actualmente publicados.
 3. Configurar los seis secretos anteriores.
-4. Fusionar la rama de preparación en `main`.
-5. Abrir **Actions → Deploy to Production Server → Run workflow**.
-6. Comprobar que el job termina correctamente y revisar el dominio.
+4. Fusionar la rama de preparación en `main`. La fusión ejecutará automáticamente el primer despliegue.
+5. Abrir **Actions → Deploy to Production Server** y comprobar que el job termina correctamente.
+6. Revisar el dominio, sus recursos estáticos y las páginas principales.
+
+Después de la primera publicación, el mismo workflow puede volver a ejecutarse manualmente mediante **Run workflow**.
 
 > Importante: el despliegue utiliza sincronización con borrado (`mirror --reverse --delete`). El contenido remoto que no exista en `dist/` se eliminará. `PROD_FTP_SERVER_DIR` debe apuntar únicamente a la raíz de esta web, nunca a una carpeta compartida con correo, copias de seguridad u otros proyectos.
 
@@ -50,10 +52,14 @@ Antes de la primera automatización debe conservarse una copia de la versión ac
 
 ## Transferencia al cliente
 
-Al transferir el repositorio, revisar con el cliente:
+GitHub conserva los secretos, webhooks y claves de despliegue asociados cuando se transfiere un repositorio. El workflow de producción y las credenciales FTP deberían seguir funcionando sin volver a introducir sus valores. Aun así, inmediatamente después de la transferencia hay que hacer una publicación de comprobación y revisar las políticas de GitHub Actions de la cuenta u organización receptora.
 
-- que controla el entorno `production` y sus secretos;
+Revisar con el cliente:
+
+- que controla el entorno `production` y puede administrar sus secretos;
+- que GitHub Actions está habilitado y permite las acciones oficiales usadas por el workflow;
 - que dispone del acceso al hosting;
 - que puede ejecutar una publicación manual;
 - que conoce el directorio remoto correcto;
-- que puede revocar y renovar el usuario FTP después de la entrega.
+- que puede revocar y renovar el usuario FTP después de la entrega;
+- que el repositorio mantiene la rama principal con el nombre `main`.
