@@ -329,19 +329,19 @@ export function Vision() {
 						</div>
 
 						{leftTop ? (
-							<div className="vision-fade-item absolute left-[26.5%] top-[16%] w-[10rem] xl:left-[30%] xl:w-[15rem]">
+							<div className="vision-bubble-left vision-fade-item absolute left-[26.5%] top-[16%] w-[10rem] xl:left-[30%] xl:w-[15rem]">
 								<VisionBubble card={leftTop} />
 							</div>
 						) : null}
 
 						{rightTop ? (
-							<div className="vision-fade-item absolute right-[25.5%] top-[16%] w-[10rem] xl:right-[31%] xl:w-[15rem]">
+							<div className="vision-bubble-right vision-fade-item absolute right-[25.5%] top-[16%] w-[10rem] xl:right-[31%] xl:w-[15rem]">
 								<VisionBubble card={rightTop} />
 							</div>
 						) : null}
 
 						{leftBottom ? (
-							<div className="vision-fade-item absolute left-[20%] top-[40%] w-[10rem] xl:left-[29%] xl:w-[15rem]">
+							<div className="vision-bubble-left vision-fade-item absolute left-[20%] top-[40%] w-[10rem] xl:left-[29%] xl:w-[15rem]">
 								<VisionBubble
 									card={leftBottom}
 									imageClassName={
@@ -352,14 +352,14 @@ export function Vision() {
 						) : null}
 
 						{rightBottom ? (
-							<div className="vision-fade-item absolute right-[35%] top-[40%] w-[10rem] xl:right-[30%] xl:w-[15rem]">
+							<div className="vision-bubble-right vision-fade-item absolute right-[35%] top-[40%] w-[10rem] xl:right-[30%] xl:w-[15rem]">
 								<VisionBubble card={rightBottom} />
 							</div>
 						) : null}
 
 						{centerCard ? (
 							<>
-								<div className="vision-fade-item absolute left-1/2 top-[56%] w-[10rem] -translate-x-1/2 xl:w-[15rem]">
+								<div className="vision-bubble-center vision-fade-item absolute left-1/2 top-[56%] w-[10rem] -translate-x-1/2 xl:w-[15rem]">
 									<VisionBubble card={centerCard} />
 								</div>
 

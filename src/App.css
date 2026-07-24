@@ -270,3 +270,17 @@ a {
 		width: min(29vw, 22rem);
 	}
 }
+
+@media (min-width: 1020px) and (max-width: 1450px) {
+	.vision-bubble-left {
+		width: 12rem;
+		left: 31%;
+	}
+	.vision-bubble-right {
+		width: 12rem;
+		right: 35%;
+	}
+	.vision-bubble-center {
+		width: 12rem;
+	}
+}
