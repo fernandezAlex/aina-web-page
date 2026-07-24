@@ -77,7 +77,11 @@ lftp --env-password -u "$DEPLOY_USERNAME" "$connect_url" -e "
   set ftp:ssl-protect-data $ssl_protect
   set ssl:verify-certificate yes
   cd $normalized_remote_dir
-  mirror --reverse --delete --verbose ${DEPLOY_LOCAL_DIR%/}/ ./
+  mirror --reverse --delete --verbose \
+    --exclude-glob .ftpquota \
+    --exclude-glob .well-known \
+    --exclude-glob '.well-known/**' \
+    ${DEPLOY_LOCAL_DIR%/}/ ./
   bye
 "
 
